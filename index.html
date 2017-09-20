@@ -13,7 +13,87 @@
     <link rel="stylesheet" href="css/common.min.css">
     <link rel="stylesheet" href="css/base.min.css">
 </head>
-<body>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header">
+        <div class="left">
+            <a href="javascript:;">
+                <i class="sprite icon-warn"></i>
+                <em class="tag red"></em>
+            </a>
+        </div>
+        <div class="mid">
+            <label class="logo"><img src="img/logo.png"></label>
+        </div>
+        <div class="right">
+            <a href="javascript:;">
+                <i class="sprite icon-help"></i>
+            </a>
+        </div>
+    </div>
+    <div class="overflow">
+        <div class="banner">
+            <div class="swiper-container" id="banner">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide ">
+                        <a href="#">
+                            <img class="swiper-lazy" data-src="img/banner1.jpg"
+                                 src="img/shop-banner-def.jpg">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img class="swiper-lazy" data-src="img/banner1.jpg"
+                                 src="img/shop-banner-def.jpg">
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
 
+    <!--显示产品大图-->
+    <div class="ft-pop-disk product-big animated-left">
+        <div class="ft-pop-box">
+            <div class="ft-disk-hd">
+                <span class="ft-disk-title" id="productLength"><i>12</i> of <i>12</i></span>
+                <a class="ft-close-btn"><i class="ft-sprite"></i></a>
+            </div>
+            <div class="ft-disk-bd">
+                <div class="product-big-list">
+                    <div class="swiper-container" id="productBig">
+                        <div class="swiper-wrapper"></div>
+                        <div class='swiper-loading'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        var bannerBox = FB.newSwiper("#banner", 1, {
+            autoplay: 3000,
+            pagination: ".swiper-pagination"
+        });
+
+        //显示产品大图
+        $(document).on("click", "#banner", function (e) {
+            var that = this;
+            e.stopPropagation();
+            showBigImg({
+                swiperEle: bannerBox,
+                clickEle: that,
+                animateEle: ".product-big"
+            })
+        });
+    })
+</script>
 </body>
 </html>

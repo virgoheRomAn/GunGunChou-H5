@@ -40,9 +40,9 @@ FB.preventFun = function (e) {
 };
 //判断body是否滚动
 (function (ele) {
-    if (!$(ele).hasClass("fb-overflow-hide")) {
+    if (!$(ele).hasClass("overflow-hide")) {
         if ($(document.body).hasClass("isHide")) {
-            $(ele).addClass("fb-overflow-hide").removeClass("isHide");
+            $(ele).addClass("overflow-hide").removeClass("isHide");
             FB.isBodyHide = true;
         } else {
             FB.isBodyHide = false;
