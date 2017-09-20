@@ -1,0 +1,281 @@
+@import "variable";
+
+//设置盒子
+.layer-box() {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.layer-box-height() {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.set-layout(@d,@w,@h,@p:relative) {
+  position: e(@p);
+  display: e(@d);
+  width: @w;
+  height: @h;
+}
+
+.layer-margin(@start: 0, @end: 40) {
+  .fn-mt(@n: @start) when (@n <= @end) {
+    .mt-@{n} {
+      margin-top: unit(@n, px) !important;
+    }
+    .fn-mt(@n+5);
+  }
+  .fn-mr(@n: @start) when (@n <= @end) {
+    .mr-@{n} {
+      margin-right: unit(@n, px) !important;
+    }
+    .fn-mr(@n+5);
+  }
+  .fn-mb(@n: @start) when (@n <= @end) {
+    .mb-@{n} {
+      margin-bottom: unit(@n, px) !important;
+    }
+    .fn-mb(@n+5);
+  }
+  .fn-ml(@n: @start) when (@n <= @end) {
+    .ml-@{n} {
+      margin-left: unit(@n, px) !important;
+    }
+    .fn-ml(@n+5);
+  }
+  .fn-mar-all(@n: @start) when (@n <= @end) {
+    .mar-all-@{n} {
+      margin: unit(@n, px) !important;
+    }
+    .fn-mar-all(@n+5);
+  }
+  .fn-mt;
+  .fn-mr;
+  .fn-mb;
+  .fn-ml;
+  .fn-mar-all;
+}
+
+.layer-padding(@start: 0, @end: 40) {
+  .fn-pt(@n: @start) when (@n <= @end) {
+    .pt-@{n} {
+      padding-top: unit(@n, px) !important;
+    }
+    .fn-pt(@n+5);
+  }
+  .fn-pr(@n: @start) when (@n <= @end) {
+    .pr-@{n} {
+      padding-right: unit(@n, px) !important;
+    }
+    .fn-pr(@n+5);
+  }
+  .fn-pb(@n: @start) when (@n <= @end) {
+    .pb-@{n} {
+      padding-bottom: unit(@n, px) !important;
+    }
+    .fn-pb(@n+5);
+  }
+  .fn-pl(@n: @start) when (@n <= @end) {
+    .pl-@{n} {
+      padding-left: unit(@n, px) !important;
+    }
+    .fn-pl(@n+5);
+  }
+  .fn-pad-all(@n: @start) when (@n <= @end) {
+    .pad-all-@{n} {
+      padding: unit(@n, px) !important;
+    }
+    .fn-pad-all(@n+5);
+  }
+  .fn-pt;
+  .fn-pr;
+  .fn-pb;
+  .fn-pl;
+  .fn-pad-all;
+}
+
+//设置位置
+.fn-pos-tl(@t,@l) {
+  top: @t;
+  left: @l;
+}
+
+.fn-pos-tr(@t,@r) {
+  top: @t;
+  right: @r;
+}
+
+.fn-pos-bl(@b,@l) {
+  bottom: @b;
+  left: @l;
+}
+
+.fn-pos-br(@b,@r) {
+  bottom: @b;
+  right: @r;
+}
+
+.fn-pos-mid(@mar) {
+  .fn-pos-tl(@mid, @mid);
+  margin: @mar;
+}
+
+//字体样式
+.ft-family() {
+  font-family: @ft-family;
+}
+
+.ft-style(@type:normal) {
+  font-style: @type;
+}
+
+.ft-weight(@weight:normal) {
+  font-weight: @weight;
+}
+
+.ft-decoration(@type:none) {
+  text-decoration: @type;
+}
+
+.ft-wrap() {
+  text-wrap: wrap;
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.ft-ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis
+}
+
+.ft-clamp(@line) {
+  display: -webkit-box !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @line
+}
+
+.font-size(@n, @i: 8) when (@i =< @n) {
+  .fs-@{i} {
+    font-size: unit(@i/10, @rem);
+  }
+  .font-size(@n, (@i+1));
+}
+
+.fs-number(@size:1.2,@unit:@rem) {
+  font-size: unit(@size, @unit);
+}
+
+.text-color(@color) {
+  color: @color;
+}
+
+.text-middle(@height) {
+  height: @height;
+  line-height: @height;
+}
+
+//阴影
+.fn-box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+
+/*按钮*/
+.fn-button-style(@w,@h,@tc,@bg,@bc,@r) {
+  .set-layout(block, @w, @h);
+  .border-radius(@r);
+  .text-color(@tc);
+  background: e(@bg);
+  border: 1px solid @bc;
+  text-align: center;
+  line-height: @h;
+  font-size: @fs-12;
+  &.radius {
+    .border-radius(20px);
+  }
+  &.link {
+    background: transparent;
+    border: 0 none;
+  }
+  &.line {
+    background: transparent;
+    &.white {
+      border: 1px solid @white;
+    }
+    &.blue {
+      border: 1px solid @blue-2c97ff;
+      color: @blue-2c97ff;
+    }
+  }
+  &.no-bd {
+    border: 0 none;
+  }
+}
+
+
+//字体渐变
+.text-gradient(@s:#03d6ff,@e:#038aff) {
+  background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(@s), to(@e));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+//三角样式
+.fn-arrow-dir(@width:8px,@color) {
+  width: 0;
+  height: 0;
+  border-width: @width;
+  border-style: solid;
+  border-color: @color;
+}
+
+//设置边框
+.fn-border-none(@border:@dir-string) {
+  .fn-border-type(@i:1) when (@i<length(@border)) {
+    @string: e(extract(@dir-string, @i));
+    .border-none-@{string} {
+      border-@{string}: 0 none !important;
+    }
+    .fn-border-type(@i+1);
+  }
+  .fn-border-type(@i:1) when (@i=length(@border)) {
+    @string: e(extract(@dir-string, @i));
+    .border-@{string} {
+      border: 0 none !important;
+    }
+  }
+  .fn-border-type;
+}
+
+.border-top(@arguments) {
+  border-top: @arguments;
+}
+
+.border-bto(@arguments) {
+  border-bottom: @arguments;
+}
+
+.border-left(@arguments) {
+  border-left: @arguments;
+}
+
+.border-right(@arguments) {
+  border-right: @arguments;
+}
+
+.border-all(@arguments) {
+  border: @arguments;
+}
+
+//设置角度
+.border-radius(@radius:5px) {
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
