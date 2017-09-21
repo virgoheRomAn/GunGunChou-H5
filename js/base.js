@@ -14,9 +14,31 @@ function resizeInit(callback) {
     }).trigger("resize");
 }
 
+//设置滚动条
+function setProgress(ele, start, end) {
+    $(ele).each(function () {
+        var that = this;
+        FB.progressBox({
+            element: {
+                container: $(that).find(".fb-progress"),
+                text: $(that).find(".meter"),
+                runner: $(that).find(".runner")
+            },
+            number: $(that).find(".meter").text().split("%")[0],
+            time: 1000,
+            startFun: function (opt) {
+                if (start) start.call(this, opt);
+            },
+            endFun: function (opt) {
+                if (end) end.call(this, opt);
+            }
+        });
+    });
+}
+
 //页面滚动
 function pageScroll(opt) {
-    var deafuilts = {
+    var defaults = {
         element: window,
         top: "#goTop",
         hasTop: true,
@@ -24,13 +46,13 @@ function pageScroll(opt) {
         ajaxFun: null,
         topFun: null
     };
-    var opts = $.extend({}, deafuilts, opt);
+    var opts = $.extend({}, defaults, opt);
     var $top = $(opts.top), $ele = $(opts.element);
     var _isTop = false;
     var isWindow = opts.element == window;
     var beforeScrollTop = $ele.scrollTop();
     $ele.scroll(function () {
-        var pageHeight = isWindow ? $(document).height() : $(this).find(".ft-overflow-box").eq(0).height();
+        var pageHeight = isWindow ? $(document).height() : $(this).find(".overflow-box").eq(0).height();
         var windowHeight = $(this).height();
         var afterScrollTop = $(this).scrollTop();
         var delta = afterScrollTop - beforeScrollTop;
@@ -128,7 +150,7 @@ function popLeftMenu(option) {
                 return false;
             }
             clearTimeout(_timer_);
-            if (!C.isBodyHide) {
+            if (!FB.isBodyHide) {
                 $("html,body").addClass("ft-overflow-hide");
             }
             $diskEle.fadeIn(300);
@@ -182,6 +204,7 @@ function showPopPlayer(option) {
     }, opt.time);
 
     $(document).on("click", opt.closeEle, closeFun);
+
     function closeFun() {
         var that = this;
         $(that).parents(opt.animateEle).removeClass("active");

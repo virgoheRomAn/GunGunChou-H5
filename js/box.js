@@ -152,23 +152,25 @@
              * @param obj
              */
             init: function (text, icon, obj) {
-                var w = obj ? obj.width ? parseInt(obj.width) : 150 : 150;
-                var h = obj ? obj.height ? parseInt(obj.height) : 50 : 50;
-                var ani = obj ? obj.animate ? obj.animate : "j-alert-ani" : "j-alert-ani";
-                var iconType = obj ? obj.iconType ? obj.iconType : "H" : "H";
-                var isFull = obj ? obj.isFull ? obj.isFull : false : false;
-                var iconCSS = obj ? obj.iconCSS ? obj.iconCSS : "" : "";
-                var textCSS = obj ? obj.textCSS ? obj.textCSS : "" : "";
+                var opts = {};
+                var w = opts.w = obj ? obj.width ? parseInt(obj.width) : 150 : 150;
+                var h = opts.h = obj ? obj.height ? parseInt(obj.height) : 50 : 50;
+                var ani = opts.ani = obj ? obj.animate ? obj.animate : "j-alert-ani" : "j-alert-ani";
+                var iconType = opts.iconType = obj ? obj.iconType ? obj.iconType : "H" : "H";
+                var isFull = opts.isFull = obj ? obj.isFull ? obj.isFull : false : false;
+                var iconCSS = opts.iconCSS = obj ? obj.iconCSS ? obj.iconCSS : "" : "";
+                var textCSS = opts.textCSS = obj ? obj.textCSS ? obj.textCSS : "" : "";
                 //判断是否全屏
                 var fullCls = isFull ? "j-alert-full" : "";
                 //判断是否含有小图标
-                var iconHTML = "", iconCls = "";
+                var iconHTML = "", iconCls = "", iconTypeCls = "";
                 if (icon) {
                     iconCls = "j-alert-hasIcon";
-                    var iconTypeCls = (iconType.toLowerCase() == "h") ? "j-alert-iconH" : "j-alert-iconV";
+                    iconTypeCls = (iconType.toLowerCase() == "h") ? "j-alert-iconH" : "j-alert-iconV";
                     iconHTML = '<label class="j-alert-icon"><img width="30px" height="30px" src="' + icon + '"></label>';
                 } else {
                     iconCls = "j-alert-noneIcon";
+                    iconTypeCls = "";
                 }
                 var html = '\
                     <div id="jDisk" class="j-alert-box">\
@@ -218,8 +220,8 @@
                     _setBoxLayout("#jDisk .j-alert", w, h);
                 } else {
                     var $body = $("html,body");
-                    if (!$body.hasClass("IsOverFlowHide")) {
-                        $body.addClass("IsOverFlowHide");
+                    if (!$body.hasClass("isHide")) {
+                        $body.addClass("isHide");
                     }
                     var $fullEle = $(".j-alert-intro");
                     $fullEle.parents(".j-alert-cont").css("width", "auto");
@@ -239,7 +241,7 @@
                 }
                 if (obj && obj.showCallBack) obj.showCallBack.call($("#jDisk")[0]);
                 //关闭
-                $.jClose(obj);
+                $.jClose(obj, opts);
             },
             tips: function (text, obj) {
                 $.jAlert.init(text, "", obj);
@@ -320,7 +322,8 @@
             $(document.body).append(_html);
 
             //添加样式
-            var textBar = $(".j-confirm-text"), btnBar = $(".j-confirm-btn"), titleBar = $(".j-confirm-title"), btnBox = $(".j-btn");
+            var textBar = $(".j-confirm-text"), btnBar = $(".j-confirm-btn"), titleBar = $(".j-confirm-title"),
+                btnBox = $(".j-btn");
             //按钮加样式-首先读取按钮组中设置的样式，
             //其次读取css中btnCss数组
             btnBox.each(function (i) {
@@ -396,9 +399,10 @@
         /**
          * 关闭弹窗
          * @param opt {type,time,callback}
+         * @param opts {opts}
          * @returns {boolean}
          */
-        jClose: function (opt) {
+        jClose: function (opt, opts) {
             var $box = $("#jDisk");
             var _time = opt ? (!opt.time ? 1000 : opt.time) : 1000;
             var _type = opt ? (!opt.type ? 1 : opt.type) : 1;
@@ -409,13 +413,12 @@
                 console.error("找不到元素：'jDisk'");
                 return false;
             }
-            console.log(_time, _type, _callback);
             switch (_type) {
                 case 1:
                     clearTimeout(_timer_);
                     _timer_ = setTimeout(function () {
-                        if ($body.hasClass("IsOverFlowHide")) {
-                            $body.removeClass("IsOverFlowHide");
+                        if ($body.hasClass("isHide")) {
+                            $body.removeClass("isHide");
                         }
                         ele.fadeOut(function () {
                             $(this).remove();
@@ -424,8 +427,8 @@
                     }, _time);
                     break;
                 case 2:
-                    if ($body.hasClass("IsOverFlowHide")) {
-                        $body.removeClass("IsOverFlowHide");
+                    if ($body.hasClass("isHide")) {
+                        $body.removeClass("isHide");
                     }
                     ele.fadeOut(300, function () {
                         $(this).remove();
@@ -442,15 +445,15 @@
     //添加样式到页面
     (function _setBoxCss() {
         var str = "\
-            .IsOverFlowHide{position: relative;  display: block;  width: 100%; height: 100%; overflow: hidden;}\
+            .isHide{position: relative;  display: block;  width: 100%; height: 100%; overflow: hidden;}\
             .j-alert-box{position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 10000;}\
-            .j-alert{display: block; position: absolute; top: 50%; left: 50%; z-index: 1000; background: rgba(0,0,0,0.7); text-align: center; border-radius: 3px;}\
+            .j-alert{display: block; position: absolute; top: 50%; left: 50%; z-index: 1000; background: rgba(0,0,0,0.8); text-align: center; border-radius: 3px;}\
             .j-alert.j-alert-full{width: 100%; height: 100%; top: 0; left: 0;}\
             .j-alert-cont{position: relative;display: table; width: 100%; height: 100%; padding: 15px;}\
             .j-alert-intro{position: relative; display: table-cell; width: 100%; vertical-align: middle;}\
             .j-alert-icon{display: block; width: 24px; height: 24px;}\
             .j-alert-icon img{display: block; width: 100%; height: 100%;}\
-            .j-alert-text{display: block; width: 100%; line-height: 20px; font-size: 14px; color: #ffffff; text-align: center;}\
+            .j-alert-text{display: block; width: 100%; line-height: 24px; font-size: 14px; color: #ffffff; text-align: center;}\
             .j-alert-hasIcon.j-alert-iconH .j-alert-icon{position: absolute; top:50%; left:0; margin-top: -12px; }\
             .j-alert-hasIcon.j-alert-iconH .j-alert-intro{padding-left: 30px;}\
             .j-alert-hasIcon.j-alert-iconH .j-alert-text{text-align: left;}\

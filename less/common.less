@@ -172,7 +172,7 @@ iframe, img {
     }
   }
   &.bto {
-    padding-bottom: @base*40;
+    padding-bottom: @base*52;
     &.small {
       padding-bottom: @base*30;
     }
@@ -268,22 +268,52 @@ iframe, img {
   }
 }
 
+/*模块*/
+.fb-module {
+  .layer-box;
+  .m-title {
+    .layer-box;
+    .text-middle(44px);
+    .border-bto(1px solid #c4c4c4);
+    background: @white;
+    font-size: @fs-14;
+    color: @g-333;
+    padding: 0 20px;
+  }
+  .m-cont {
+    .layer-box;
+    padding: 0 20px;
+  }
+}
+
+/*列表*/
+.fb-list {
+  .layer-box;
+  .item {
+    .layer-box;
+    margin: 20px 0;
+    padding: 10px;
+    background: @white;
+  }
+}
+
 /*进度条*/
 .fb-progress {
   &.gradient {
     .set-layout("block", 100%, 6px, "relative");
     background-color: transparent;
-    background-image: -webkit-linear-gradient(left, #5bd8ff, #ff0000);
-    background-image: linear-gradient(left, #5bd8ff, #ff0000);
+    background-image: -webkit-linear-gradient(left, #ffad00, #fe3030);
+    background-image: linear-gradient(left, #ffad00, #fe3030);
     .fn-box-shadow(0 -2px 2px rgba(0, 0, 0, 0.4) inset);
   }
   & > .runner {
+    .layer-box-height;
     .p-abs;
     .fn-pos-tr(0, 0);
-    .layer-box-height;
     background-color: transparent;
-    background-image: -webkit-linear-gradient(top, #999999, #212121);
-    background-image: linear-gradient(top, #999999, #212121);
+    background-image: -webkit-linear-gradient(top, #999, #212121);
+    background-image: linear-gradient(top, #999, #212121);
+    .border-radius(0 3px 3px 0);
   }
   .meter {
     .p-abs;
@@ -479,7 +509,7 @@ iframe, img {
   .text-color(#ff4a49) !important;
 }
 
-.tc-ff5e5e {
+.tc-ff3d3d {
   .text-color(@red-ff3d3d) !important;
 }
 
@@ -504,6 +534,12 @@ iframe, img {
 }
 
 /*css3-transform*/
+.j-new-animate {
+  .fn-transtion(all .3s ease);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
 /*左侧进入*/
 .animated-left {
   transform: translate3d(100%, 0, 0);
@@ -571,8 +607,8 @@ iframe, img {
 /***************************************************************************************/
 /*j弹窗动画*/
 .animated {
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation-delay: 0s;
@@ -583,13 +619,13 @@ iframe, img {
 
 @-webkit-keyframes j-alert-ani {
   0% {
-    -webkit-transform: scale(0);
+    -webkit-transform: scale(1.1);
     opacity: 0;
   }
-  50% {
-    -webkit-transform: scale(1.2);
-    opacity: 1;
-  }
+  //50% {
+  //  -webkit-transform: scale(1.2);
+  //  opacity: 1;
+  //}
   100% {
     -webkit-transform: scale(1);
     opacity: 1;
@@ -598,13 +634,13 @@ iframe, img {
 
 @keyframes j-alert-ani {
   0% {
-    transform: scale(0);
+    transform: scale(1.1);
     opacity: 0;
   }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
+  //50% {
+  //  transform: scale(1.2);
+  //  opacity: 1;
+  //}
   100% {
     transform: scale(1);
     opacity: 1;

@@ -1,24 +1,114 @@
-var FB = window.Global = window.Global || {
-        isBodyHide: false,    //是否限制HTML,BODY
-        verifyExp: {
-            telephone: /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
-            telCode: /^[0-9]{6}$/,
-            strengthA: {
-                number: /^[0-9]+$/,
-                letterCaps: /^[A-Z]+$/,
-                letterLows: /^[a-z]+$/,
-                symbol: /^\W+$/
-            },
-            strengthB: {
-                numLetterA: /^(([0-9]+[a-z]+)|([a-z]+[0-9]+))[0-9a-z]*$/,
-                numLetterB: /^(([0-9]+[A-Z]+)|([A-Z]+[0-9]+))[0-9A-Z]*$/,
-                numSymbol: /^((\W+[0-9]+)|([0-9]+\W+))[\W0-9]*$/,
-                LetterALetterB: /^(([A-Z]+[a-z]+)|([a-z]+[A-Z]+))[A-Za-z]*$/,
-                LetterASymbol: /^((\W+[a-z]+)|([a-z]+\W+))[\Wa-z]*$/,
-                LetterBSymbol: /^((\W+[A-Z]+)|([A-Z]+\W+))[\WA-Z]*$/
+//声明FB函数对象集合
+var FB = window.Global = window.Global || {};
+//声明FB集合属性
+FB.verifyExp = {
+    telephone: /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
+    telCode: /^[0-9]{6}$/,
+    strengthA: {
+        number: /^[0-9]+$/,
+        letterCaps: /^[A-Z]+$/,
+        letterLows: /^[a-z]+$/,
+        symbol: /^\W+$/
+    },
+    strengthB: {
+        numLetterA: /^(([0-9]+[a-z]+)|([a-z]+[0-9]+))[0-9a-z]*$/,
+        numLetterB: /^(([0-9]+[A-Z]+)|([A-Z]+[0-9]+))[0-9A-Z]*$/,
+        numSymbol: /^((\W+[0-9]+)|([0-9]+\W+))[\W0-9]*$/,
+        LetterALetterB: /^(([A-Z]+[a-z]+)|([a-z]+[A-Z]+))[A-Za-z]*$/,
+        LetterASymbol: /^((\W+[a-z]+)|([a-z]+\W+))[\Wa-z]*$/,
+        LetterBSymbol: /^((\W+[A-Z]+)|([A-Z]+\W+))[\WA-Z]*$/
+    }
+};
+FB.win = window;
+/**
+ * 验证form表单
+ * @param val   输入验证的值
+ */
+FB.testForm = {
+    /**
+     * 验证手机号
+     * @param val
+     * @returns {number}0-空，1-大于11位，2-验证通过，3-格式不对
+     */
+    phone: function (val) {
+        var _val = val;
+        var _length = _val.length;
+        if (_length == 0) return 0;
+        if (_length > 11) return 1;
+        if (eval(FB.verifyExp.telephone).test(_val)) {
+            return 2;
+        } else {
+            return 3;
+        }
+    },
+    /**
+     * 验证密码
+     * @param val
+     * @param options 设置错误文本
+     * @returns {object}
+     */
+    password: function (val, options) {
+        var defaults = {
+            isSimple: true,    //开启简单密码检验
+            isCaps: true,  //开启键盘大写验证
+            isShift: false,   //开启Shift按键验证
+            showTag: true, //开启小tag提示
+            minLength: 6,
+            simpleLength: 6,
+            strongLength: 12,
+            nullText: "密码不能为空！",
+            lengthLess: "密码不能小于6位！",
+            successText: "设置密码成功！",
+            capsText: "注意：键盘大写锁定已打开，请注意大小写！",
+            shiftText: "注意：您按住了Shift键",
+            psdSimple: "密码太简单，有被盗风险，请换复杂的密码组合！"
+        };
+        var opt = $.extend({}, defaults, options);
+        var l = val.toString().length;
+        var resultOPT = {};
+        if (l == 0) {
+            resultOPT.type = 0;
+            resultOPT.text = opt.nullText;
+        } else if (l < opt.minLength) {
+            resultOPT.type = 0;
+            resultOPT.text = opt.lengthLess;
+        } else {
+            if (eval(FB.verifyExp.strengthA.number).test(val) || eval(FB.verifyExp.strengthA.letterCaps).test(val) || eval(FB.verifyExp.strengthA.letterLows).test(val) || eval(FB.verifyExp.strengthA.symbol).test(val)) {
+                //弱
+                if (!opt.isSimple) {
+                    resultOPT.type = 1;
+                    resultOPT.text = opt.successText;
+                } else {
+                    //等于简单长度
+                    if (l == opt.simpleLength) {
+                        resultOPT.type = 0;
+                        resultOPT.text = opt.psdSimple;
+                    } else {
+                        resultOPT.type = 1;
+                        resultOPT.text = opt.successText;
+                    }
+                }
+            } else if (eval(FB.verifyExp.strengthB.numLetterA).test(val) || eval(FB.verifyExp.strengthB.numLetterB).test(val) || eval(FB.verifyExp.strengthB.numSymbol).test(val) || eval(FB.verifyExp.strengthB.LetterALetterB).test(val) || eval(FB.verifyExp.strengthB.LetterASymbol).test(val) || eval(FB.verifyExp.strengthB.LetterBSymbol).test(val)) {
+                if (l == opt.strongLength) {
+                    //强
+                    resultOPT.type = 3;
+                    resultOPT.text = opt.successText;
+                } else {
+                    //中
+                    resultOPT.type = 2;
+                    resultOPT.text = opt.successText;
+                }
+            } else {
+                //强
+                resultOPT.type = 3;
+                resultOPT.text = opt.successText;
             }
         }
-    };
+        //回调
+        resultOPT.options = opt;
+        return resultOPT;
+    }
+};
 //屏蔽部分默认事件
 (function () {
     var touchtime = new Date().getTime();
@@ -35,9 +125,6 @@ var FB = window.Global = window.Global || {
         }
     }, false);
 }());
-FB.preventFun = function (e) {
-    e.preventDefault();
-};
 //判断body是否滚动
 (function (ele) {
     if (!$(ele).hasClass("overflow-hide")) {
@@ -51,6 +138,27 @@ FB.preventFun = function (e) {
         FB.isBodyHide = true;
     }
 }("html,body"));
+//阻止默认事件
+FB.preventFun = function (e) {
+    var evt = e || window.event;
+    evt.preventDefault();
+};
+//组织冒泡
+FB.propagationFun = function (e) {
+    var evt = e || window.event;
+    evt.stopPropagation();
+};
+/**
+ * 添加函数名称
+ * @param name 函数名称
+ * @param callback  函数方法
+ * @returns {FB.addFun} 当前对象
+ * @constructor
+ */
+FB.addFun = function (name, callback) {
+    window[name] = callback;
+    return this;
+};
 /**
  * 显示滑动动画
  * @param dom   触发元素
@@ -68,6 +176,25 @@ FB.animateTransform = {
             $(tag).removeClass("active");
             if (callback) callback.call(tag);
         });
+    }
+};
+/**
+ * 给元素加样式
+ * @param ele   动画元素
+ * @param cls   样式名称
+ */
+FB.elementAddCls = function (ele, cls) {
+    cls = cls || "active";
+    return {
+        show: function () {
+            $(ele).addClass(cls);
+        },
+        hide: function () {
+            $(ele).removeClass(cls);
+        },
+        toggle: function () {
+            $(ele).toggleClass(cls);
+        }
     }
 };
 /**
@@ -136,7 +263,7 @@ FB.numberCalculate = function (tag, maxNum, minNum, type, callback) {
                 tag.find("input").val(_max);
             } else {
                 tag.find("input").val(_num);
-                if (callback)  callback.call(tag[0], _num, _max);
+                if (callback) callback.call(tag[0], _num, _max);
             }
         }
     } else if (type == "cut") {
@@ -148,79 +275,10 @@ FB.numberCalculate = function (tag, maxNum, minNum, type, callback) {
                 tag.find("input").val(minNum);
             } else {
                 tag.find("input").val(_num);
-                if (callback)  callback.call(tag[0], _num);
+                if (callback) callback.call(tag[0], _num);
             }
         }
     }
-};
-/**
- * 倒计时(包含天)
- * @param tags   目标
- * @param time
- * @param Fun
- */
-FB.dayTimeDown = function (tags, time, Fun) {
-    var boxEle, dayEle, hourEle, minEle, secEle;
-    if ((typeof tags) == "string" || $(tags).data("time")) {
-        boxEle = $(tags);
-        dayEle = ".ft-time-day";
-        hourEle = ".ft-time-hour";
-        minEle = ".ft-time-minute";
-        secEle = ".ft-time-second";
-    } else {
-        boxEle = $(tags.boxEle);
-        dayEle = tags.dayEle;
-        hourEle = tags.hourEle;
-        minEle = tags.minEle;
-        secEle = tags.secEle;
-    }
-
-    var dayFormat = (dayEle ? (boxEle.find(dayEle).data("format") ? boxEle.find(dayEle).data("format") : "") : "");
-    var hourFormat = (hourEle ? (boxEle.find(hourEle).data("format") ? boxEle.find(hourEle).data("format") : "") : "");
-    var minFormat = (minEle ? (boxEle.find(minEle).data("format") ? boxEle.find(minEle).data("format") : "") : "");
-    var secFormat = (secEle ? (boxEle.find(secEle).data("format") ? boxEle.find(secEle).data("format") : "") : "");
-
-    var countTime = 0;
-    if (time) {
-        if ((typeof time) == "number") {
-            countTime = time / 1000;
-        } else {
-            countTime = parseInt((new Date("" + time + "") - new Date()) / 1000);
-        }
-    } else {
-        countTime = parseInt((new Date("" + boxEle.data("time") + "") - new Date()) / 1000);
-    }
-    var int_day = Math.floor(countTime / 60 / 60 / 24);
-    var int_hour = Math.floor(countTime / (60 * 60));
-    var int_minute = Math.floor(countTime / 60) - (int_hour * 60);
-    var int_second = Math.floor(countTime) - (int_hour * 60 * 60) - (int_minute * 60);
-    //初始化
-    if (dayEle) boxEle.find(dayEle).html(FB.padZero(int_day, 2) + dayFormat);
-    if (hourEle) boxEle.find(hourEle).html(FB.padZero(int_hour % 24, 2) + hourFormat);
-    if (minEle) boxEle.find(minEle).html(FB.padZero(int_minute, 2) + minFormat);
-    if (secEle) boxEle.find(secEle).html(FB.padZero(int_second, 2) + secFormat);
-    var _time;
-    _time = setInterval(function () {
-        countTime--;
-        if (countTime > 0) {
-            int_day = Math.floor(countTime / 60 / 60 / 24);
-            int_hour = Math.floor(countTime / (60 * 60));
-            int_minute = Math.floor(countTime / 60) - (int_hour * 60);
-            int_second = Math.floor(countTime) - (int_hour * 60 * 60) - (int_minute * 60);
-        } else {
-            int_day = 0;
-            int_hour = 0;
-            int_minute = 0;
-            int_second = 0;
-            if (Fun) Fun.call(boxEle[0]);
-            clearInterval(_time);
-        }
-        if (dayEle) boxEle.find(dayEle).html(FB.padZero(int_day, 2) + dayFormat);
-        if (hourEle) boxEle.find(hourEle).html(FB.padZero(int_hour % 24, 2) + hourFormat);
-        if (minEle) boxEle.find(minEle).html(FB.padZero(int_minute, 2) + minFormat);
-        if (secEle) boxEle.find(secEle).html(FB.padZero(int_second, 2) + secFormat);
-    }, 1000);
-    return _time;
 };
 /**
  * 计算图片大小
@@ -302,17 +360,6 @@ FB.setImageLayout = function (imgEle, referW, referH, imgW, imgH, type) {
     }
 };
 /**
- * 清除文字
- * @param tag   清楚元素
- */
-FB.clearText = function (tag) {
-    if (tag[0].nodeName.toLowerCase() == "input" || tag[0].nodeName.toLowerCase() == "textarea") {
-        $(tag).val("");
-    } else {
-        $(tag).html("");
-    }
-};
-/**
  * 补零
  * @param num 补零的数字
  * @param n 补零的位数
@@ -358,48 +405,99 @@ FB.getNowTime = function (type) {
  * @param finishFun   结束回调
  * @param countFun   倒计时回调
  */
-var _timer_ = 0;
-FB.countDown = function (dom, time, finishFun, countFun) {
-    clearInterval(_timer_);
+var _countDown_timer_ = 0;
+FB.countDown = function (dom, time, format, finishFun, countFun) {
+    clearInterval(_countDown_timer_);
     var that = this;
-    var _times = (time == "" || time == null || time == undefined) ? 120 : time;
+    var _times = !time ? 120 : time;
     var $this = $(dom);
-    if (!$this.hasClass("show-time")) {
-        if ($this.parents("#codeTextNum").length > 0) {
-            $this.text(FB.padZero(_times, 2));
-        } else {
-            $this.text(FB.padZero(_times, 2) + "秒后重发").addClass("active");
-        }
-    } else {
-        $this.text(FB.padZero(_times, 2));
-    }
-    _timer_ = setInterval(function () {
-        if (countFun) countFun.call(dom, _times);
+    $this.text(FB.padZero(_times, 2) + format[1]).addClass("active");
+    _countDown_timer_ = setInterval(function () {
+        countFun && countFun.call(dom, _times);
         _times--;
         if (_times == 0) {
-            if (!$this.hasClass("show-time")) {
-                $this.text("获取验证码").removeClass("active");
-            }
-            clearInterval(_timer_);
+            $this.text(format[0]).removeClass("active");
+            clearInterval(_countDown_timer_);
             finishFun && finishFun.call($this);
         } else {
-            if (!$this.hasClass("show-time")) {
-                if ($this.parents("#codeTextNum").length > 0) {
-                    $this.text(FB.padZero(_times, 2));
-                } else {
-                    $this.text(FB.padZero(_times, 2) + "秒后重发");
-                }
-            } else {
-                $this.text(FB.padZero(_times, 2));
-            }
+            $this.text(FB.padZero(_times, 2) + format[1]).addClass("active");
         }
     }, 1000);
 
     that.stopTimeFun = function () {
-        clearInterval(_timer_);
-        $this.text("获取验证码").removeClass("active");
-        finishFun & finishFun.call($this);
+        clearInterval(_countDown_timer_);
+        $this.text(format[0]).removeClass("active");
+        finishFun && finishFun.call($this);
     }
+};
+/**
+ * 倒计时(包含天)
+ * @param tags   目标
+ * @param time
+ * @param Fun
+ */
+FB.dayTimeDown = function (tags, time, Fun) {
+    var boxEle, dayEle, hourEle, minEle, secEle, loadEle;
+    if ((typeof tags) == "string" || $(tags).data("time")) {
+        boxEle = $(tags);
+        dayEle = ".time-day";
+        hourEle = ".time-hour";
+        minEle = ".time-minute";
+        secEle = ".time-second";
+        loadEle = ".loading";
+    } else {
+        boxEle = $(tags.boxEle);
+        dayEle = tags.dayEle;
+        hourEle = tags.hourEle;
+        minEle = tags.minEle;
+        secEle = tags.secEle;
+        loadEle = tags.loadEle;
+    }
+
+    var dayFormat = (dayEle ? (boxEle.find(dayEle).data("format") ? boxEle.find(dayEle).data("format") : "") : "");
+    var hourFormat = (hourEle ? (boxEle.find(hourEle).data("format") ? boxEle.find(hourEle).data("format") : "") : "");
+    var minFormat = (minEle ? (boxEle.find(minEle).data("format") ? boxEle.find(minEle).data("format") : "") : "");
+    var secFormat = (secEle ? (boxEle.find(secEle).data("format") ? boxEle.find(secEle).data("format") : "") : "");
+
+    var countTime = 0;
+    if (time) {
+        if ((typeof time) == "number") {
+            countTime = time / 1000;
+        } else {
+            countTime = parseInt((new Date("" + time + "") - new Date()) / 1000);
+        }
+    } else {
+        countTime = parseInt((new Date("" + boxEle.data("time") + "") - new Date()) / 1000);
+    }
+    var int_day, int_hour, int_minute, int_second;
+    var _time;
+
+    boxEle.find(loadEle).show();
+
+    _time = setInterval(function () {
+        if (boxEle.find(loadEle).css("display") != "none") {
+            boxEle.find(loadEle).hide();
+        }
+        countTime--;
+        if (countTime > 0) {
+            int_day = Math.floor(countTime / 60 / 60 / 24);
+            int_hour = Math.floor(countTime / (60 * 60));
+            int_minute = Math.floor(countTime / 60) - (int_hour * 60);
+            int_second = Math.floor(countTime) - (int_hour * 60 * 60) - (int_minute * 60);
+        } else {
+            int_day = 0;
+            int_hour = 0;
+            int_minute = 0;
+            int_second = 0;
+            if (Fun) Fun.call(boxEle[0]);
+            clearInterval(_time);
+        }
+        if (dayEle) boxEle.find(dayEle).html(FB.padZero(int_day, 2) + "<em>" + dayFormat + "</em>");
+        if (hourEle) boxEle.find(hourEle).html(FB.padZero(int_hour % 24, 2) + "<em>" + hourFormat + "</em>");
+        if (minEle) boxEle.find(minEle).html(FB.padZero(int_minute, 2) + "<em>" + minFormat + "</em>");
+        if (secEle) boxEle.find(secEle).html(FB.padZero(int_second, 2) + "<em>" + secFormat + "</em>");
+    }, 1000);
+    return _time;
 };
 /**
  * 图片加载
@@ -410,6 +508,7 @@ FB.countDown = function (dom, time, finishFun, countFun) {
  */
 FB.loadImages = function (imgElement, checkForComplete, src, callback) {
     var image;
+
     //回调函数
     function onReady() {
         if (callback) callback();
@@ -451,39 +550,43 @@ FB.getQueryString = function (name) {
     return null;
 };
 /**
- * 验证form表单
- * @param val   输入验证的值
+ * 设置进度掉
+ * @param options
  */
-FB.testForm = {
-    phone: function (val) {
-        var _phone = "";
-        var _val = val;
-        if (_val.length != 0) {
-            if (_val.length == 11) {
-                _phone = !!eval(FB.verifyExp.telephone).test(_val);
-            } else if (_val.length > 0) {
-                _phone = false;
-            }
+FB.progressBox = function (options) {
+    var defOpt = {
+        element: {
+            container: ".fb-progress",
+            text: ".meter",
+            runner: ".runner"
+        },
+        textMove: false,    //文字是否跟随移动
+        number: "100",
+        time: 1000
+    };
+    var option = $.extend({}, defOpt, options);
+    var ele = option.element;
+    var $progress = $(ele.container);
+    var $text = !$progress.find(ele.text).length ? $(ele.text) : $progress.find(ele.text);
+    var $run = $progress.find(ele.runner);
+    var _clear_timer_ = 0, num = 0;
+    var time = option.time ? option.time : 0;
+    var interval = time / 60;
+    var that = this;
+    clearInterval(_clear_timer_);
+    $progress.addClass("running");
+    var timeFun = function () {
+        if (num <= parseInt(option.number)) {
+            $text.html(num.toString() + (option.format ? option.format : "%"));
+            $run.css("width", (100 - num) / 100 * 100 + "%");
+            if (option.textMove) $text.css("right", (100 - num) / 100 * 100 + "%");
+            num++;
+            if (option.startFun) option.startFun.call(that, option);
         } else {
-            _phone = false;
+            clearInterval(_clear_timer_);
+            $progress.addClass("end").removeClass("running");
+            if (option.endFun) option.endFun.call(that, option);
         }
-        return _phone;
-    },
-    password: function (val) {
-        var _password = 0;
-        var _val = val;
-        if (_val.length >= 6) {
-            if (eval(FB.verifyExp.strengthA.number).test(_val) ||
-                eval(FB.verifyExp.strengthA.letterCaps).test(_val) ||
-                eval(FB.verifyExp.strengthA.letterLows).test(_val) ||
-                eval(FB.verifyExp.strengthA.symbol).test(_val)) {
-                _password = 1;    //密码正确
-            } else {
-                _password = 0;    //密码不满足正则
-            }
-        } else {
-            _password = 2;        //密码位数太少
-        }
-        return _password;
-    }
+    };
+    _clear_timer_ = setInterval(timeFun, interval);
 };
