@@ -8,7 +8,7 @@
   .layer-box;
   .p-abs;
   .fn-pos-tl(0, 0);
-  .border-bto(1px solid @g-e4e4);
+  //.border-bto(1px solid @g-e4e4);
   height: 44px;
   padding: 0 60px;
   .left {
@@ -45,6 +45,16 @@
       img {
         .layer-box-height;
       }
+    }
+    label.text {
+      .layer-box;
+      .p-abs;
+      .fn-pos-tl(50%, 50%);
+      .text-middle(30px);
+      margin: -15px 0 0 -50%;
+      font-size: @fs-18;
+      color: @g-333;
+      text-align: center;
     }
   }
   .right {
@@ -190,6 +200,24 @@
         }
       }
     }
+  }
+}
+
+//搜索
+.search {
+  .layer-box;
+  padding: 10px 70px 10px 20px;
+  background: @g-f5f5;
+  .btn {
+    .p-abs;
+    .fn-pos-tr(50%, 0);
+    .d-block;
+    width: 70px;
+    margin: -16px 0 0 0;
+    .text-middle(30px);
+    font-size: @fs-15;
+    color: @g-333;
+    text-align: center;
   }
 }
 
@@ -373,6 +401,20 @@
   height: 24px;
   background-position: 0 0;
   margin: -12px 0 0 -12px;
+}
+
+.icon-filtrate {
+  width: 24px;
+  height: 24px;
+  background-position: 0 -54px;
+  margin: -12px 0 0 -12px;
+}
+
+.icon-search {
+  width: 14px;
+  height: 14px;
+  background-position: -130px 0;
+  margin: -7px 0 0 -7px;
 }
 
 .ft-icon1 {

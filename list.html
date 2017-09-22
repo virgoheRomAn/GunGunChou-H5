@@ -8,88 +8,33 @@
     <meta name="wap-font-scale" content="no">
     <meta content="telephone=no" name="format-detection">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>滚滚筹-首页</title>
-    <link rel="stylesheet" href="css/swiper.min.css">
+    <title>滚滚筹-众筹列表</title>
     <link rel="stylesheet" href="css/common.min.css">
     <link rel="stylesheet" href="css/base.min.css">
 </head>
 <body class="isHide">
-<div class="wrap height top bto">
+<div class="wrap height top bto g-f5">
     <div class="header">
-        <div class="left">
-            <a href="notice.html">
-                <i class="sprite icon-warn"></i>
-                <em class="tag red"></em>
-            </a>
-        </div>
         <div class="mid">
-            <label class="logo"><img src="img/logo.png"></label>
+            <label class="text">众筹列表</label>
         </div>
         <div class="right">
-            <a href="help.html">
-                <i class="sprite icon-help"></i>
+            <a href="javascript:;">
+                <i class="sprite icon-filtrate"></i>
             </a>
         </div>
     </div>
     <div class="wrap height overflow">
         <div class="overflow-box">
-            <div class="banner">
-                <div class="swiper-container" id="banner">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide ">
-                            <a href="#">
-                                <img class="swiper-lazy" data-src="img/banner1.jpg"
-                                     src="img/banner-def.jpg">
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#">
-                                <img class="swiper-lazy" data-src="img/banner1.jpg"
-                                     src="img/banner-def.jpg">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
+            <div class="search">
+                <label class="user-form small radius before-text">
+                    <em><i class="sprite icon-search"></i></em>
+                    <input type="text" placeholder="输入需要查询的期数/名称" value="">
+                </label>
+                <a class="btn" href="javascript:;">搜索</a>
             </div>
-            <div class="nav">
-                <div class="fb-box-list">
-                    <ul class="row-4 clearfix">
-                        <li>
-                            <a class="active" href="safe.html">
-                                <em><img src="img/m-icon1.png"></em>
-                                <span>安全保障</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="javascript:;" id="sign">
-                                <em><img src="img/m-icon2.png"><i class="sign-tag"></i></em>
-                                <span>签到</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="integral.html">
-                                <em><img src="img/m-icon3.png"><i class="sprite icon-hot"></i></em>
-                                <span>积分</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="" href="ticket.html">
-                                <em><img src="img/m-icon4.png"></em>
-                                <span>领券中心</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <a class="lottery-img" href="lottery.html"><img class="fb-img-box" src="img/lottery.png"></a>
-            </div>
-            <div class="tag line gray"></div>
             <div class="product">
                 <div class="fb-module">
-                    <div class="m-title">
-                        <span>成功案例</span>
-                        <a class="fr tc-user" href="list.html">更多</a>
-                    </div>
                     <div class="m-cont">
                         <div class="fb-list">
                             <div class="item">
@@ -222,77 +167,14 @@
     </div>
 </div>
 
-<script type="text/template" id="couponBox">
-    <div class="coupon-bar">
-        <div class="item clearfix blue">
-            <i class="tag gray big"></i>
-            <i class="tag gray big"></i>
-            <div class="fl">
-                <span>50</span>
-                <em>积分</em>
-            </div>
-            <div class="fr">
-                <label class="small">小积分大用处</label>
-                <label class="small">可在认筹时进行抵扣或者用于抽奖</label>
-            </div>
-        </div>
-        <div class="item clearfix red">
-            <i class="tag gray big"></i>
-            <i class="tag gray big"></i>
-            <div class="fl">
-                <span>1.5</span>
-                <em>%</em>
-            </div>
-            <div class="fr">
-                <label class="tm-bold">单比认筹金额满2000使用</label>
-                <label>该增益券全平台通用， 投标增加年化收益率</label>
-            </div>
-        </div>
-        <div class="coupon-time mt-5">有效期：2017-12-30至2018-01-12</div>
-    </div>
-</script>
 <script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/swiper.jquery.min.js"></script>
 <script src="js/box.js"></script>
 <script src="js/common.js"></script>
 <script src="js/base.js"></script>
 <script>
     $(function () {
-        //弹出优惠券
-        $.jConfirm({
-            title: "恭喜你获得奖励!",
-            intro: $("#couponBox").html(),
-            close: false
-        }, [
-            {text: "我知道了", cls: "coupon-btn"}
-        ], "V", null, {
-            width: "250px",
-            cls: {
-                boxCls: "coupon-box",
-                titleCls: "coupon-title",
-                tipsBarCls: "coupon-tips"
-            }
-        });
-
-        //轮播图
-        FB.newSwiper("#banner", 1, {
-            autoplay: 3000,
-            pagination: ".swiper-pagination"
-        });
-
         //进度条
         setProgress(".progress-bar");
-
-        //签到
-        var sign_num = 0;
-        $("#sign").click(function () {
-            sign_num++;
-            FB.elementAddCls($(this).find("i.sign-tag")).show();
-            $(this).find("span").text("已签到");
-            if (sign_num >= 5) {
-                $.jAlert.tips("连续签到<i class='tc-ff3d3d'>" + sign_num + "天</i>， <br>恭喜获得积分<i class='tc-ff3d3d'>" + sign_num * 3 + "分</i>！");
-            }
-        });
     })
 </script>
 </body>

@@ -311,8 +311,8 @@ iframe, img {
     .p-abs;
     .fn-pos-tl(0, 0);
     background-color: transparent;
-    background-image: -webkit-gradient(linear,0% 0%, 100% 0%, from(#FFAD00), to(#FE3030));
-    background-image: linear-gradient(linear,0% 0%, 100% 0%, from(#FFAD00), to(#FE3030));
+    background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#FFAD00), to(#FE3030));
+    background-image: linear-gradient(linear, 0% 0%, 100% 0%, from(#FFAD00), to(#FE3030));
     .border-radius(3px);
   }
   .meter {
@@ -323,6 +323,96 @@ iframe, img {
     -webkit-text-shadow: 0 -1px 0 #cfcfcf;
     margin-top: 10px;
     font-size: @fs-12;
+  }
+}
+
+/*表单-输入框*/
+.user-form {
+  .p-rel;
+  .d-block;
+  .text-middle(40px);
+  .border-all(1px solid #cfcfcf);
+  .border-radius(3px);
+  padding: 0 10px;
+  background: @white;
+  &.line-block {
+    display: inline-block;
+  }
+  &.radius {
+    .border-radius(15px);
+    padding: 0 20px;
+    a.clean-btn, .search-btn {
+      right: 10px !important;
+    }
+  }
+  &.before-text {
+    padding-left: 35px;
+    em {
+      .p-abs;
+      left: 0;
+      top: 50%;
+      margin-top: -15px;
+      font-size: @fs-12;
+      display: block;
+      width: 40px;
+      .text-middle(30px);
+      text-align: center;
+      color: @error-color;
+      i {
+        .p-abs;
+        .fn-pos-tl(50%, 50%);
+      }
+    }
+  }
+  &.small {
+    .text-middle(30px);
+    a.clean-btn, .search-btn {
+      width: 30px !important;
+      height: 30px !important;
+      margin-top: -15px !important;
+    }
+    input {
+      &[type="text"], &[type="password"], &[type="number"] {
+        .text-middle(16px);
+        margin: 5px 0 0 0;
+        font-size: @fs-12;
+      }
+    }
+  }
+  &.error {
+    .border-all(1px solid @error-color);
+    input {
+      color: @error-color;
+    }
+  }
+  &.clean {
+    padding-right: 40px;
+    a.clean-btn, .search-btn {
+      .d-none;
+      .p-abs;
+      top: 50%;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      margin-top: -20px;
+      i {
+        .p-abs;
+        .fn-pos-tl(50%, 50%);
+      }
+    }
+    a.search-btn {
+      .d-block;
+    }
+  }
+  input {
+    &[type="text"], &[type="password"], &[type="number"] {
+      .layer-box;
+      .text-middle(20px);
+      border: 0 none;
+      font-size: @fs-14;
+      background: transparent;
+      margin-top: 10px;
+    }
   }
 }
 

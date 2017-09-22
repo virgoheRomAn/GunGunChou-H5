@@ -287,7 +287,7 @@
             var intro = (typeof textObj).toString().toLowerCase() == "string" ? textObj : textObj.intro;
             var title = textObj ? textObj.title : "";
             var intro_cls = textObj.title ? "j-intro-normal" : "j-intro-big";
-            var _html = "", btnStr = "", titleStr = "";
+            var _html = "", btnStr = "", titleStr = "", closeStr = "";
 
             //判断按钮形式
             var btn_cls = _type.toString().toLowerCase() == "v" ? "j-confirm-v" : "j-confirm-h";
@@ -301,12 +301,13 @@
 
             //判断是否含有标题
             var title_cls = "";
+            closeStr = textObj.close ? "<a class='j-close' href='javascript:;'>&times</a>" : "";
             if (textObj.title) {
                 title_cls = "j-confirm-hasTitle";
-                titleStr += '<label class="j-confirm-title">' + title + '</label>';
+                titleStr += '<label class="j-confirm-title">' + title + closeStr + '</label>';
             } else {
                 title_cls = "j-confirm-noTitle";
-                titleStr = "";
+                titleStr = closeStr;
             }
 
             _html += '<div id="jDisk" class="j-confirm-box">';
@@ -366,6 +367,13 @@
             _setBoxLayout("#jDisk .j-confirm", _w, __h + _newHeight + ((!titleBar || titleBar.length == 0) ? 0 : titleBar.outerHeight(true)));
 
             //绑定函数
+            $(document).on("click",".j-close",function(){
+                $.jClose({
+                    type: 2,
+                    time: 300
+                });
+            });
+
             btnBar.find("a.j-btn").each(function (i) {
                 if (btnAry[i].callback) {
                     $(this).click(function () {
@@ -464,7 +472,8 @@
             .j-confirm{position: absolute;  top: 50%; left: 50%; z-index: 1000; background: #FFF; text-align: center; border-radius: 5px; box-shadow: 2px 2px 8px rgba(68, 64, 64, 0.3)}\
             .j-confirm-text{display: table; margin: 0; padding: 15px; width: 100%;}\
             .j-confirm-text.j-confirm-hasTitle{padding-top: 0;}\
-            .j-confirm-title{display: block; width: 100%; margin: 15px 0 5px 0; padding: 0; font-weight: bold; font-size: 14px; text-align: center; color: #3c3c3c;}\
+            .j-confirm-title{position: relative; display: block; width: 100%; margin: 15px 0 5px 0; padding: 0; font-weight: bold; font-size: 14px; text-align: center; color: #3c3c3c;}\
+            .j-close{position: absolute; top: 50%; right: 5px; display: block; width: 30px; height: 30px; line-height: 26px; text-align: center; font-size: 26px; color: #999999; margin-top: -15px; font-weight: normal;}\
             .j-confirm-text >div{display: table-cell; width: 100%; font-weight: normal; vertical-align: middle; font-size: 12px; color: #3c3c3c;}\
             .j-confirm-text >div.j-intro-big{font-weight: bold; font-size: 14px;}\
             .j-confirm-btn{width: 100%; overflow: hidden;}\
