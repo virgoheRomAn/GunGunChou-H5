@@ -231,6 +231,9 @@ iframe, img {
       height: 0;
       zoom: 1;
     }
+    li {
+      margin-bottom: 10px;
+    }
     & > li {
       .layer-box;
       .fl;
@@ -283,6 +286,9 @@ iframe, img {
   .m-cont {
     .layer-box;
     padding: 0 20px;
+    &.pad {
+      padding: 10px 20px;
+    }
   }
 }
 
@@ -416,6 +422,78 @@ iframe, img {
   }
 }
 
+/*侧边弹窗*/
+.fb-pop-disk {
+  .layer-box-height;
+  .p-abs;
+  .fn-pos-tl(0, 0);
+  .d-none;
+  background: rgba(0, 0, 0, 0.7);
+  .fb-pop-box {
+    .layer-box-height;
+    .p-abs;
+    .fn-pos-tl(0, 0);
+    background: #ffffff;
+    &.top {
+      padding-top: 41px;
+    }
+    &.width {
+      width: 80%;
+    }
+    &.height {
+      height: 80%;
+    }
+    &.right {
+      left: auto;
+      right: 0;
+    }
+    &.bottom {
+      top: auto;
+      bottom: 0;
+    }
+    .fb-disk-hd {
+      .layer-box;
+      .p-abs;
+      .fn-pos-tl(0, 0);
+      height: 41px;
+      padding: 0 15px;
+      border-bottom: 1px solid @g-e4e4;
+      &.no-bd {
+        border-bottom: 0 none;
+      }
+      &.biger-pad {
+        padding: 0 20px;
+      }
+    }
+    .fb-disk-bd {
+      .layer-box-height;
+      &.bottom {
+        padding-bottom: 46px;
+      }
+      .fb-disk-footer {
+        .layer-box;
+        .p-abs;
+        .fn-pos-bl(0, 0);
+        height: 46px;
+      }
+    }
+    .fb-disk-close {
+      .p-abs;
+      .fn-pos-tl(0, 0);
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      font-size: 2.6rem;
+      color: @g-999;
+      i {
+        .p-abs;
+        .fn-pos-tl(50%, 50%);
+      }
+    }
+  }
+}
+
 /*三角*/
 .fb-arrow-dir {
   &.top {
@@ -452,6 +530,10 @@ iframe, img {
     width: auto;
     padding: 0 20px;
   }
+  &.big {
+    height: 46px;
+    line-height: 46px;
+  }
   &.small {
     height: 34px;
     line-height: 34px;
@@ -460,15 +542,26 @@ iframe, img {
     background: transparent;
     font-size: @fs-16;
     .border-radius(5px);
+    &.no-br {
+      .border-radius(0);
+    }
     &.red {
       @color: @error-color;
       background: @color;
       border: 1px solid @color;
+      color: @white;
+    }
+    &.gray {
+      @color: #eeeff3;
+      background: @color;
+      border: 1px solid @color;
+      color: @g-666;
     }
     &.blue {
       @color: #03bcff;
       background: @color;
       border: 1px solid @color;
+      color: @white;
     }
   }
 }

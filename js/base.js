@@ -125,25 +125,26 @@ function proImgLazyLoad(ele, cont, sucFuns, eroFuns) {
 
 //左侧菜单
 function popLeftMenu(option) {
+    var self = this;
     var defaults = {
         clickEle: "",
         diskEle: "",
         animateEle: "",
         isSwiper: false,
         swiperID: "",
-        isShowEle: false,
+        isShowEle: true,
         clickCallback: "",
         openCallback: "",
         closeCallback: ""
     };
-    var opt = $.extend({}, defaults, option);
+    var opt = self.opt = $.extend({}, defaults, option);
     var _timer_ = 0,
         mySwiper,
         $clickEle = $(opt.clickEle),
         $diskEle = $(opt.diskEle),
         $animateEle = $(opt.animateEle);
-    $clickEle.click(function () {
-        var that = this;
+
+    self.openFun = function () {
         if (opt.isShowEle) {
             if ($animateEle.hasClass("active")) {
                 $diskEle.click();
@@ -151,36 +152,42 @@ function popLeftMenu(option) {
             }
             clearTimeout(_timer_);
             if (!FB.isBodyHide) {
-                $("html,body").addClass("ft-overflow-hide");
+                $("html,body").addClass("overflow-hide");
             }
             $diskEle.fadeIn(300);
             _timer_ = setTimeout(function () {
                 $animateEle.addClass("active");
-                if (opt.openCallback) opt.openCallback.call(that, opt);
+                if (opt.openCallback) opt.openCallback.call(this, opt);
             }, 200);
             if (opt.isSwiper) {
                 mySwiper = FB.newSwiper("#menuBox", 3);
             }
         } else {
-            if (opt.clickCallback) opt.clickCallback.call(that, opt);
+            if (opt.clickCallback) opt.clickCallback.call(this, opt);
         }
+    };
+
+    self.closeFun = function (e) {
+        FB.propagationFun(e);
+        if (!FB.isBodyHide) {
+            $("html,body").removeClass("overflow-hide");
+        }
+        $animateEle.removeClass("active");
+        if (opt.closeCallback) opt.closeCallback.call(this, opt);
+        setTimeout($.proxy(function () {
+            $(this).fadeOut();
+        }, $diskEle), 300);
+    };
+
+    $clickEle.on("click", self.openFun);
+
+    $diskEle.on("click", self.closeFun);
+
+    $animateEle.click(function (e) {
+        FB.propagationFun(e);
     });
 
-    $diskEle.click(function (e) {
-        var that = this;
-        var _e = e || window.event;
-        var _tag = $(_e.target);
-        if (_tag.hasClass("ft-pop-disk")) {
-            if (!FB.isBodyHide) {
-                $("html,body").removeClass("ft-overflow-hide");
-            }
-            $animateEle.removeClass("active");
-            if (opt.closeCallback) opt.closeCallback.call(that, opt);
-            setTimeout(function () {
-                $(that).fadeOut();
-            }, 300);
-        }
-    });
+    return self;
 }
 
 //显示隐藏层
@@ -341,56 +348,6 @@ function shopCarHandle(option) {
     };
 
     self.init();
-}
-
-//筛选操作
-function filtrateHandle() {
-    var _filtrateTag;
-    $(".filtrate-list1 a").click(function () {
-        _filtrateTag = this;
-        if ($(this).find("span")) {
-            $(".filtrate-list2").addClass("active");
-            setTimeout(function () {
-                $(".filtrate-title").addClass("active");
-            }, 500);
-            $(".filtrate-clear,.filtrate-apply").addClass("active");
-        }
-    });
-
-    $(".filtrate-list2 a").click(function () {
-        $(this).toggleClass("active");
-    });
-
-    //返回
-    $(".filtrate-title a").click(function () {
-        $(".filtrate-title").removeClass("active");
-        $(".filtrate-list2").removeClass("active");
-        $(".filtrate-clear,.filtrate-apply").removeClass("active");
-    });
-
-    //清除
-    $(document).on("click", ".filtrate-clear", function () {
-        if ($(this).hasClass("active")) {
-            $(".filtrate-list2 a").removeClass("active");
-        } else {
-            $(".filtrate-list1 a span").text("");
-        }
-    });
-
-    //选中确定
-    $(document).on("click", ".filtrate-apply", function () {
-        if ($(this).hasClass("active")) {
-            var _text = "";
-            $(".filtrate-list2 a.active").each(function () {
-                _text += $(this).text() + ", ";
-            });
-            $(_filtrateTag).find("span").text(_text.substr(0, _text.length - 2));
-            $(".filtrate-title a").click();
-        } else {
-            //筛选条件成功
-            console.log("按照筛选选项查询");
-        }
-    });
 }
 
 //顶部横向导航

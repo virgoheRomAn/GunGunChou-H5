@@ -124,7 +124,7 @@
 }
 
 //设置过滤
-.fn-transtion(@mar){
+.fn-transtion(@mar) {
   transition: @mar;
   -webkit-transition: @mar;
 }
@@ -212,8 +212,16 @@
   }
   &.line {
     background: transparent;
+    color: @g-666;
+    line-height: 38px;
+    &.small {
+      line-height: 32px;
+    }
     &.white {
       border: 1px solid @white;
+    }
+    &.black {
+      border: 1px solid @g-333;
     }
     &.blue {
       border: 1px solid @blue-2c97ff;
@@ -224,7 +232,6 @@
     border: 0 none;
   }
 }
-
 
 //字体渐变
 .text-gradient(@s:#03d6ff,@e:#038aff) {
