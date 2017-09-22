@@ -301,19 +301,19 @@ iframe, img {
 .fb-progress {
   &.gradient {
     .set-layout("block", 100%, 6px, "relative");
-    background-color: transparent;
-    background-image: -webkit-linear-gradient(left, #ffad00, #fe3030);
-    background-image: linear-gradient(left, #ffad00, #fe3030);
-    .fn-box-shadow(0 -2px 2px rgba(0, 0, 0, 0.4) inset);
+    background-color: #c4c4c4;
+    //background-image: -webkit-linear-gradient(top, #999, #212121);
+    //background-image: linear-gradient(top, #999, #212121);
+    //.fn-box-shadow(0 -2px 2px rgba(0, 0, 0, 0.4) inset);
   }
   & > .runner {
     .layer-box-height;
     .p-abs;
-    .fn-pos-tr(0, 0);
+    .fn-pos-tl(0, 0);
     background-color: transparent;
-    background-image: -webkit-linear-gradient(top, #999, #212121);
-    background-image: linear-gradient(top, #999, #212121);
-    .border-radius(0 3px 3px 0);
+    background-image: -webkit-gradient(linear,0% 0%, 100% 0%, from(#FFAD00), to(#FE3030));
+    background-image: linear-gradient(linear,0% 0%, 100% 0%, from(#FFAD00), to(#FE3030));
+    .border-radius(3px);
   }
   .meter {
     .p-abs;

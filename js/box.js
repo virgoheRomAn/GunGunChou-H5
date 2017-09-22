@@ -461,7 +461,7 @@
             .j-alert.j-alert-full .j-alert-intro{position: absolute; top: 50%; left: 50%; display: table;}\
              .j-alert.j-alert-full .j-alert-iconH .j-alert-intro .j-alert-text{display: table-cell; vertical-align: middle;}\
             .j-confirm-box{position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 10000; background: rgba(0,0,0,0.5);}\
-            .j-confirm{position: absolute;  top: 50%; left: 50%; z-index: 1000; background: #FFF; text-align: center; border-radius: 5px; box-shadow: 2px 2px 3px #444040;}\
+            .j-confirm{position: absolute;  top: 50%; left: 50%; z-index: 1000; background: #FFF; text-align: center; border-radius: 5px; box-shadow: 2px 2px 8px rgba(68, 64, 64, 0.3)}\
             .j-confirm-text{display: table; margin: 0; padding: 15px; width: 100%;}\
             .j-confirm-text.j-confirm-hasTitle{padding-top: 0;}\
             .j-confirm-title{display: block; width: 100%; margin: 15px 0 5px 0; padding: 0; font-weight: bold; font-size: 14px; text-align: center; color: #3c3c3c;}\

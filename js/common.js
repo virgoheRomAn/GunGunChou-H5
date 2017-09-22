@@ -561,7 +561,7 @@ FB.progressBox = function (options) {
             runner: ".runner"
         },
         textMove: false,    //文字是否跟随移动
-        number: "100",
+        number: "0",
         time: 1000
     };
     var option = $.extend({}, defOpt, options);
@@ -578,7 +578,7 @@ FB.progressBox = function (options) {
     var timeFun = function () {
         if (num <= parseInt(option.number)) {
             $text.html(num.toString() + (option.format ? option.format : "%"));
-            $run.css("width", (100 - num) / 100 * 100 + "%");
+            $run.css("width", num / 100 * 100 + "%");
             if (option.textMove) $text.css("right", (100 - num) / 100 * 100 + "%");
             num++;
             if (option.startFun) option.startFun.call(that, option);

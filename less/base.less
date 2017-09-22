@@ -8,6 +8,7 @@
   .layer-box;
   .p-abs;
   .fn-pos-tl(0, 0);
+  .border-bto(1px solid @g-e4e4);
   height: 44px;
   padding: 0 60px;
   .left {
@@ -99,8 +100,9 @@
           line-height: 60px;
           margin: 0 auto 5px;
           text-align: center;
-          i.icon-hot{
-
+          i.icon-hot {
+            .p-abs;
+            .fn-pos-tr(-5px, -10px);
           }
           i.sign-tag {
             &.active {
@@ -240,11 +242,120 @@
   &.red {
     background: @red-ff3d3d;
   }
+  &.white {
+    background: @white;
+  }
+  &.gray {
+    background: #f4f4f4;
+  }
+  &.big {
+    width: 16px;
+    height: 16px;
+  }
   &.line {
     .border-radius(0);
     .set-layout("block", 100%, 15px);
     &.gray {
       background: @g-f5f5;
+    }
+  }
+}
+
+//优惠券弹窗
+.j-confirm-box {
+  .coupon-box {
+    background: #f4f4f4;
+    .coupon-title {
+      margin: 0;
+      .text-middle(44px);
+      color: @red-ff3d3d;
+      font-size: @fs-15;
+      background: @white;
+      .border-radius(5px 5px 0 0);
+    }
+    .coupon-tips {
+      padding: 0 20px 20px;
+    }
+    .coupon-btn {
+      &:extend(.fb-btn all);
+      border: 0 none;
+      .text-middle(44px);
+      width: 72%;
+      margin: 0 auto 20px;
+      font-size: @fs-18;
+      .border-radius(22px);
+    }
+  }
+}
+
+//优惠券
+.coupon-bar {
+  .layer-box;
+  .item {
+    .layer-box;
+    margin-top: 10px;
+    .border-radius(5px);
+    & > .tag {
+      .p-abs;
+      top: 50%;
+      margin-top: -8px;
+      &:nth-child(1) {
+        left: -8px;
+      }
+      &:nth-child(2) {
+        right: -8px;
+      }
+    }
+    & > .fl {
+      width: 32%;
+      font-size: 3.0rem;
+      color: @white;
+      font-weight: bold;
+      padding: 10px 0;
+      .border-right(1px dashed @white);
+      span, em {
+        .layer-box;
+        padding-left: 15px;
+        text-align: left;
+      }
+      span {
+        top: 2px;
+      }
+      em {
+        top: -7px;
+        font-size: @fs-18;
+      }
+    }
+    & > .fr {
+      width: 68%;
+      padding: 12px 14px 4px 10px;
+      label {
+        position: relative;
+        display: block;
+        font-size: @fs-12;
+        color: @white;
+        text-align: left;
+        line-height: 16px;
+        height: 32px;
+        margin-bottom: 10px;
+        &:extend(.tm-clamp all);
+        &.small {
+          &:nth-child(1) {
+            top: 5px;
+          }
+          &:nth-child(2) {
+            top: -5px;
+          }
+        }
+      }
+    }
+    &.blue {
+      background: radial-gradient(left center, circle cover, rgb(28, 227, 219), rgb(50, 199, 227) 30%, rgb(92, 130, 236) 100%);
+      background: -webkit-radial-gradient(left center, circle cover, rgb(28, 227, 219), rgb(50, 199, 227) 30%, rgb(92, 130, 236) 100%);
+    }
+    &.red {
+      background: radial-gradient(left center, circle cover, rgb(255, 135, 128), rgb(248, 111, 112) 30%, rgb(232, 78, 95) 100%);
+      background: -webkit-radial-gradient(left center, circle cover, rgb(255, 135, 128), rgb(248, 111, 112) 30%, rgb(232, 78, 95) 100%);
     }
   }
 }
