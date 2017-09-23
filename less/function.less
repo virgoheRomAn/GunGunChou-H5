@@ -124,14 +124,24 @@
 }
 
 //设置过滤
-.fn-transtion(@mar) {
+.fn-transition(@mar) {
   transition: @mar;
   -webkit-transition: @mar;
 }
 
+.fn-transform-origin(@mar) {
+  -webkit-transform-origin: @mar;
+  transform-origin: @mar;
+}
+
+.fn-transform(@mar){
+  transform: @mar;
+  -webkit-transform: @mar;
+}
+
 //字体样式
 .ft-family() {
-  font-family: @ft-family;
+  font-family: @font-family-YaHei;
 }
 
 .ft-style(@type:normal) {
@@ -227,9 +237,13 @@
       border: 1px solid @blue-2c97ff;
       color: @blue-2c97ff;
     }
+    &.blue-light {
+      border: 1px solid #1990fe;
+      color: #1990fe;
+    }
   }
   &.no-bd {
-    border: 0 none;
+    border: 0 none !important;
   }
 }
 

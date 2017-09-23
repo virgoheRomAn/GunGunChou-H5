@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-注册登录</title>
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/user.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header">
+        <div class="left">
+            <a href="javascript:;">
+                <i class="sprite icon-back"></i>
+            </a>
+        </div>
+        <div class="mid">
+            <label class="logo"><img src="img/logo.png"></label>
+        </div>
+    </div>
+    <div class="wrap height overflow">
+        <div class="form-bar">
+            <div class="form-nav">
+                <div class="fb-box-list clearfix">
+                    <a class="active" href="#loginBox">登录</a>
+                    <a href="#registerBox">注册</a>
+                    <label class="nav-line"></label>
+                </div>
+            </div>
+            <div class="form-cont">
+                <div class="form-box animated-left active" id="loginBox">
+                    <div class="form-list">
+                        <div class="item">
+                            <label class="clean">
+                                <i class="sprite icon-phone"></i>
+                                <input class="clean-input" type="number" maxlength="11" placeholder="输入手机号码" value="">
+                                <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                            </label>
+                        </div>
+                        <div class="item">
+                            <label class="clean">
+                                <i class="sprite icon-pad"></i>
+                                <input class="clean-input" type="password" placeholder="输入密码" value="">
+                                <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                            </label>
+                        </div>
+                        <div class="item code">
+                            <label class="clean">
+                                <i class="sprite icon-code"></i>
+                                <input class="clean-input" type="number" maxlength="6" placeholder="图形验证码" value="">
+                                <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                            </label>
+                            <a class="code-btn" href="javascript:;"><img src="img/code.png"></a>
+                        </div>
+                        <div class="form-btn">
+                            <a class="fb-btn no-bd big radius background blue" href="javascript:;">登录</a>
+                            <a class="fr fs-13 tc-user" href="forget.html">忘记密码</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-box animated-left" id="registerBox">
+                    <div class="form-list">
+                        <div class="form-step">
+                            <div class="step-tag step1">
+                                <label>
+                                    <em>1</em>
+                                    <span>验证手机</span>
+                                </label>
+                                <label>
+                                    <em>2</em>
+                                    <span>设置密码</span>
+                                </label>
+                                <label>
+                                    <em>3</em>
+                                    <span>完成注册</span>
+                                </label>
+                                <span class="step-line"></span>
+                            </div>
+                            <div class="step-cont active">
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-phone"></i>
+                                        <input class="clean-input verify-tel" type="number" maxlength="11" placeholder="输入手机号码" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="item code">
+                                    <label class="clean">
+                                        <i class="sprite icon-code"></i>
+                                        <input class="clean-input" type="number" maxlength="6" placeholder="图形验证码" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                    <a class="code-btn" href="javascript:;"><img src="img/code.png"></a>
+                                </div>
+                                <div class="form-btn">
+                                    <a class="fb-btn no-bd big radius background blue" href="javascript:;" id="nextBtn">下一步</a>
+                                </div>
+                            </div>
+                            <div class="step-cont">
+                                <div class="item code">
+                                    <label class="clean">
+                                        <i class="sprite icon-yzm"></i>
+                                        <input class="clean-input" type="number" maxlength="6" placeholder="手机验证码" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                    <a class="code-btn" href="javascript:;"><span id="countDown" class="fb-btn line blue-light small">获取验证码</span></a>
+                                </div>
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-pad"></i>
+                                        <input class="clean-input" id="loginPsd" type="password" placeholder="登录密码" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                    <div class="password-type">
+                                        <span>密码强度：</span>
+                                        <label class="type text">
+                                            <span class="r"><em>弱</em></span>
+                                            <span class="z"><em>中</em></span>
+                                            <span class="q"><em>强</em></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-pad"></i>
+                                        <input class="clean-input" id="againPsd" type="password" placeholder="确认密码" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-wel"></i>
+                                        <input class="clean-input" type="text" placeholder="邀请码（选填）" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="mt-10">
+                                    <label class="fb-check-box active">
+                                        <em>
+                                            <i class="sprite icon-checked"></i>
+                                            <input type="checkbox" checked="">
+                                        </em>
+                                        <span>我已同意并阅读<a class="tc-u-color" href="service-text.html">《服务条款协议》</a></span>
+                                    </label>
+                                </div>
+                                <div class="form-btn">
+                                    <a class="fb-btn no-bd big radius background blue" href="javascript:;" id="sureBtn">确定</a>
+                                </div>
+                            </div>
+                            <div class="step-cont">
+                                <div class="result-box">
+                                    <div class="tc-333 fs-18 tm-center mt-15">恭喜获得<em class="tc-ff3d3d">50</em>积分！</div>
+                                    <div class="tm-center fs-15">
+                                        <a class="fb-btn line blue-light  line-block small pl-30 pr-30 mt-10 mb-10"
+                                           href="index.html">回到首页</a>
+                                        <a class="d-block tc-u-color" href="integral.html">立即认证即可获得积分 >></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fast-login animated-left active">
+        <div class="title">
+            <p><span>其他方式登陆</span></p>
+        </div>
+        <div class="fb-box-list">
+            <ul class="clearfix">
+                <li>
+                    <a href="javascript:;"><i class="sprite icon-wx"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        //切换模式
+        $(".form-nav a").click(function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            var $fast = $(".fast-login");
+            var line = $(".nav-line");
+            var id = $(this).attr("href");
+            if ($(this).hasClass("active")) return false;
+            $(this).addClass("active").siblings("a").removeClass("active");
+            if (!$(id).hasClass("active")) {
+                $(id).addClass("active").siblings().removeClass("active");
+            }
+            if (id == "#registerBox") {
+                $fast.removeClass("active");
+                line.css({"left": "163px"}).addClass("active");
+                line.animate({"width": "56px"}, 300);
+            } else {
+                $fast.addClass("active");
+                line.css({"left": "17px"}).removeClass("active");
+                line.animate({"width": "56px"}, 300);
+            }
+        });
+
+        //选择协议
+        formChecked(".fb-check-box");
+
+        //注册流程
+        $("#nextBtn").click(function () {
+            var boxOpt = {isVertical: false};
+            var $step_num = $(".step-tag");
+            var $step = $(".step-cont");
+            var tel = $(".verify-tel");
+            var val = tel.val();
+            if (FB.testForm.phone(val) == 0) {
+                $.jAlert.tips("手机号不能为空", boxOpt);
+            } else if (FB.testForm.phone(val) == 3) {
+                $.jAlert.tips("手机号格式错误", boxOpt);
+            } else if (FB.testForm.phone(val) == 2) {
+                $step_num.addClass("step2");
+                $step.eq(1).addClass("active").siblings().removeClass("active");
+                //验证码倒计时开始
+                $("#countDown").click();
+            }
+        });
+
+        //绑定倒计时
+        var countTime = "";
+        if (countTime) countTime.stopTimeFun();
+        $(document).on("click", "#countDown", function () {
+            if ($(this).hasClass("active")) return false;
+            var time = 120;
+            countTime = new FB.countDown(this, time, ["获取验证码", " 秒后重新获取"], function () {
+                console.log("倒计时结束")
+            });
+        });
+
+        //密码验证
+        verifyPwd("#loginPsd", "#againPsd");
+
+        //清除文字
+        $(".clean-input").focus(function () {
+            $(this).next().show();
+        }).blur(function () {
+            if(!$(this).val()) {
+                $(this).next().hide();
+            }
+        });
+        $(".clean-btn").each(function () {
+            clearText(this, $(this).prev());
+        });
+
+        //确定
+        $("#sureBtn").click(function(){
+            if($(".error").length==0){
+                var $step_num = $(".step-tag");
+                var $step = $(".step-cont");
+                $step_num.addClass("step3");
+                $step.eq(2).addClass("active").siblings().removeClass("active");
+            }
+        });
+    })
+</script>
+</body>
+</html>

@@ -554,9 +554,9 @@ function showBigImg(option) {
     self.showFun();
 }
 
-//单选按钮组
-function selectRadio(ele) {
-    var _ele = ele || ".fb-radio";
+//表单按钮组
+function formChecked(ele, callback) {
+    var _ele = ele || ".fb-radio-box";
     $(_ele).on("click", function (e) {
         e.stopPropagation();
         var type = $(this).find("input").prop("type");
@@ -572,66 +572,23 @@ function selectRadio(ele) {
                     $("input[name='" + $name + "']").prop("checked", false).parents(_ele).removeClass("active");
                     $input.prop("checked", true).parents(".fb-radio").addClass("active");
                 }
-                $(_ele).find("input").click(function (e) {
-                    e.stopPropagation();
-                });
                 break;
             case "checkbox":
-                if ($(this).hasClass(_ele.split(".")[1])) {
-                    $(this).toggleClass("active");
-                    if ($(this).hasClass("active")) {
-                        $(this).find("input").prop("checked", true);
-                    } else {
-                        $(this).find("input").prop("checked", false);
-                    }
+                var that = this;
+                $(that).toggleClass("active");
+                if ($(that).hasClass("active")) {
+                    $(that).find("input").prop("checked", true);
+                } else {
+                    $(that).find("input").prop("checked", false);
                 }
-                $(_ele).find("span").click(function (e) {
-                    e.stopPropagation();
-                });
                 break;
         }
-    });
-}
-
-//选择框
-function selectCheckbox() {
-    $(document).on("click", ".edit-box.active,.buy-intro-money", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        $(this).find(".ft-radio").click();
+        if (callback) callback.call($(_ele)[0], $(_ele).find("input").prop("checked"), $(_ele).hasClass("active"));
     });
 
-    $(document).on("click", ".ft-radio input", function (e) {
+    $(_ele).find("span").click(function (e) {
         e.stopPropagation();
     });
-    $(document).on("click", ".ft-radio", function (e) {
-        e.stopPropagation();
-        $(this).toggleClass("active");
-        var click_type = $(this).find("input").data("select") || "normal";
-        var input_type = $(this).find("input").attr("type");
-        var input_name = $(this).find("input").attr("name");
-        var allNumber = $(".ft-radio input.normal").length;
-        var selectedNumber = $(".ft-radio.active input.normal").length;
-        if (input_type == "checkbox") {
-            if (click_type == "all") {
-                selectAll("input[name='" + input_name + "']", $(this).hasClass("active"));
-            } else {
-                if (selectedNumber == allNumber) {
-                    $("#allCheckbox").addClass("active");
-                } else {
-                    $("#allCheckbox").removeClass("active");
-                }
-            }
-        }
-    });
-
-    function selectAll(ele, type) {
-        if (type) {
-            $(ele).parents(".ft-radio").addClass("active");
-        } else {
-            $(ele).parents(".ft-radio").removeClass("active");
-        }
-    }
 }
 
 //手风琴
@@ -831,5 +788,109 @@ function selectAddressFun(option) {
             $tips.show();
             scrollTips.scrollToElement(scrollTips.element, topAry[_i] - 51);
         });
+    }
+}
+
+//验证密码
+function verifyPwd(ele, sureEle) {
+    var opt = {}, _caps = false;
+    var val = $(ele).val(), psdType;
+    var $box = $(ele).parents(".item"),
+        $psdType = $(".password-type>.type");
+    var tips = "<div class='form-tips'></div>",
+        pwdTip = "<div class='form-tips-pwd'></div>";
+    $box.find("label:eq(0)").after(tips + pwdTip);
+    var $tip = $(ele).parents(".item").find(".form-tips"),
+        $pwdTip = $(ele).parents(".item").find(".form-tips-pwd");
+
+    if (sureEle) {
+        $(sureEle).parents(".item>label:eq(0)").after(tips);
+    }
+    //验证密码
+    $(ele).blur(function () {
+        val = $(this).val();
+        psdType = FB.testForm.password(val);
+        if (!psdType.type) {
+            $box.addClass("error");
+            $tip.empty().html("<label><b class='fb-arrow-dir top'></b>" + psdType.text + "</label>").show();
+        } else {
+            $box.removeClass("error");
+            $tip.empty().hide();
+        }
+    }).focus(function () {
+        $(this).parent().removeClass("error waring success");
+        $tip.empty().hide();
+        val = $(this).val();
+        psdType = FB.testForm.password(val, {isShift: true});
+        opt = psdType.options;
+        if (_caps) {
+            $pwdTip.empty().html("<label><b class='fb-arrow-dir left'></b>" + opt.capsText + "</label>");
+        } else {
+            $pwdTip.empty();
+        }
+    }).keyup(function () {
+        val = $(this).val();
+        psdType = FB.testForm.password(val);
+        if (psdType.type == 1) {
+            $psdType.attr("class", "type type-r");
+        } else if (psdType.type == 2) {
+            $psdType.attr("class", "type type-z");
+        } else if (psdType.type == 3) {
+            $psdType.attr("class", "type type-q");
+        } else {
+            $psdType.attr("class", "type text");
+        }
+    });
+
+    //确认密码
+    if (sureEle) {
+        $(sureEle).blur(function () {
+            val = $(this).val();
+            var pwdVal = $(ele).val();
+            if (val !== pwdVal) {
+                $(sureEle).parents(".item>label:eq(0)").addClass("error");
+                $(sureEle).parents(".item").find(".form-tips").empty().html("<label><b class='fb-arrow-dir top'></b>两次密码不一致</label>").show();
+            } else {
+                $(sureEle).parents(".item>label:eq(0)").removeClass("error");
+                $(sureEle).parents(".item").find(".form-tips").empty().hide();
+            }
+        }).focus(function () {
+            $(sureEle).parents(".item>label:eq(0)").removeClass("error");
+            $(sureEle).parents(".item").find(".form-tips").empty().hide();
+        });
+    }
+
+    //判断大写按键
+    $(document).keydown(function (e) {
+        var evt = e || window.event;
+        var keyCode = evt.keyCode || evt.which;
+        evt.stopPropagation();
+        _caps = keyCode == 20;
+    });
+}
+
+//清除文字
+function clearText(tag, clearBox, type) {
+    $(tag).click(function () {
+        if (clearBox[0].nodeName.toLowerCase() == "input" || clearBox[0].nodeName.toLowerCase() == "textarea") {
+            clearBox.val("");
+        } else {
+            clearBox.html("");
+        }
+        if (!type) {
+            clearBox.keyup();
+            clearBox.blur();
+            $(this).hide();
+        }
+    });
+    if (!type) {
+        $(tag)[0].onmousedown = function (e) {
+            var event = e || window.event;
+            if (document.all) {
+                event.returnValue = false;
+            } else {
+                event.preventDefault();
+            }
+        };
     }
 }
