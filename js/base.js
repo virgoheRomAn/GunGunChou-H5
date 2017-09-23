@@ -425,7 +425,7 @@ function showBigImg(option) {
         swiperEle: null,
         clickEle: "",
         animateEle: ".product-big",
-        closeEle: ".fb-close-btn",
+        closeEle: ".fb-disk-close",
         numEle: "#bannerNum",
         allNum: null,
         showNum: "#productLength",

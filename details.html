@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-详情</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header">
+        <div class="left">
+            <a href="javascript:;">
+                <i class="sprite icon-back"></i>
+            </a>
+        </div>
+        <div class="mid">
+            <label class="text"><span>标书详情</span></label>
+        </div>
+    </div>
+    <div class="wrap height overflow background gray">
+        <div class="overflow-box">
+            <div class="banner">
+                <div class="swiper-container" id="banner">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide ">
+                            <a href="#">
+                                <img class="swiper-lazy" data-src="img/banner1.jpg"
+                                     src="img/banner-def.jpg">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img class="swiper-lazy" data-src="img/banner1.jpg"
+                                     src="img/banner-def.jpg">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="detail-cont">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--显示产品大图-->
+<div class="fb-pop-disk block black product-big animated-left">
+    <div class="fb-pop-box top">
+        <div class="fb-disk-hd no-bd biger-pad">
+            <span class="fb-disk-title" id="productLength"><i>1</i> of <i>12</i></span>
+            <a class="fb-disk-close">&times</a>
+        </div>
+        <div class="ft-disk-bd">
+            <div class="product-big-list">
+                <div class="swiper-container" id="productBig">
+                    <div class="swiper-wrapper"></div>
+                    <div class='swiper-loading'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        //轮播图
+        var banner=FB.newSwiper("#banner", 1, {
+            autoplay: 3000,
+            pagination: ".swiper-pagination"
+        });
+
+        //显示产品大图
+        $(document).on("click", "#banner", function (e) {
+            var that = this;
+            e.stopPropagation();
+            showBigImg({
+                swiperEle: banner,
+                clickEle: that,
+                allNum: banner.bullets.length,
+                animateEle: ".product-big"
+            })
+        });
+    })
+</script>
+</body>
+</html>

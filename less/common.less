@@ -132,6 +132,18 @@ iframe, img {
   z-index: 30;
 }
 
+.relative {
+  .p-rel !important;;
+}
+
+.absolute {
+  .p-abs !important;
+}
+
+.fixed {
+  .p-fix !important;;
+}
+
 .fl {
   float: left;
 }
@@ -201,6 +213,7 @@ iframe, img {
 
 .overflow {
   .layer-box;
+  z-index: 30;
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
@@ -470,6 +483,23 @@ iframe, img {
   .fn-pos-tl(0, 0);
   .d-none;
   background: rgba(0, 0, 0, 0.7);
+  &.black {
+    background: rgba(0, 0, 0, 0.9);
+    .fb-pop-box {
+      background: transparent;
+      .fb-disk-hd {
+        .fb-disk-title {
+          color: @white;
+        }
+      }
+      .fb-disk-close {
+        color: @white;
+      }
+    }
+  }
+  &.block {
+    .d-block;
+  }
   .fb-pop-box {
     .layer-box-height;
     .p-abs;
@@ -505,6 +535,13 @@ iframe, img {
       &.biger-pad {
         padding: 0 20px;
       }
+      .fb-disk-title {
+        .layer-box-height;
+        color: @g-333;
+        text-align: center;
+        line-height: 40px;
+        font-size: @fs-14;
+      }
     }
     .fb-disk-bd {
       .layer-box-height;
@@ -520,10 +557,10 @@ iframe, img {
     }
     .fb-disk-close {
       .p-abs;
-      .fn-pos-tl(0, 0);
+      .fn-pos-tr(0, 0);
       width: 40px;
       height: 40px;
-      line-height: 40px;
+      line-height: 36px;
       text-align: center;
       font-size: 2.6rem;
       color: @g-999;

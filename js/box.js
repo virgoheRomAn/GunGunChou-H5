@@ -256,8 +256,8 @@
                 $.jAlert.init(text, icon ? icon : _IMG_["alert"].src, obj);
             },
             loading: function (text, icon, obj) {
-                obj.type = 3;
-                $.jAlert.init(text, icon ? icon : _IMG_["load"].src, obj);
+                var new_obj = $.extend({}, obj, {type: 3});
+                $.jAlert.init(text, icon ? icon : _IMG_["load"].src, new_obj);
             }
         },
         /**
