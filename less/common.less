@@ -295,6 +295,9 @@ iframe, img {
     font-size: @fs-14;
     color: @g-333;
     padding: 0 20px;
+    &.no-bd {
+      border-bottom: 0 none;
+    }
   }
   .m-cont {
     .layer-box;
@@ -366,6 +369,13 @@ iframe, img {
   }
   &.before-text {
     padding-left: 35px;
+    &.pad-small {
+      padding-left: 26px;
+      em {
+        font-size: @fs-14;
+        width: 30px;
+      }
+    }
     em {
       .p-abs;
       left: 0;
@@ -430,7 +440,7 @@ iframe, img {
       border: 0 none;
       font-size: @fs-14;
       background: transparent;
-      margin-top: 10px;
+      margin-top: 9px;
     }
   }
 }
@@ -473,6 +483,69 @@ iframe, img {
       margin: 0;
       -webkit-appearance: checkbox;
     }
+  }
+}
+
+/*菜单切换*/
+.fb-tab-bar {
+  .layer-box;
+  .fb-tab-menu {
+    @h: 42px;
+    .layer-box;
+    height: @h;
+    li {
+      .text-middle(@h);
+      text-align: center;
+      a {
+        .d-block;
+        border-bottom: 2px solid #c4c4c4;
+        font-size: @fs-12;
+        color: @g-333;
+        &.active {
+          color: @blue-2c97ff;
+          border-bottom: 2px solid @blue-2c97ff;
+        }
+        &.current {
+          color: @blue-2c97ff;
+        }
+      }
+    }
+    .tab-line {
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      border-bottom: 2px solid @blue-2c97ff;
+      display: block;
+      width: 20%;
+      .fn-transition(left 0.3s ease);
+    }
+  }
+  .swiper-container {
+    .swiper-loading {
+      background-color: rgba(255, 255, 255, 0.5);
+      background-image: url("@{img}/ggc-loading.gif");
+      background-size: 120px 120px;
+    }
+    img {
+      .layer-box;
+    }
+  }
+}
+
+//置顶
+.go-top {
+  z-index: 101;
+  display: none;
+  width: 33px;
+  height: 33px;
+  top: auto;
+  left: auto;
+  right: 10px;
+  bottom: 120px;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -637,6 +710,12 @@ iframe, img {
     }
     &.blue {
       @color: #03bcff;
+      background: @color;
+      border: 1px solid @color;
+      color: @white;
+    }
+    &.blue-dark {
+      @color: #2c97ff;
       background: @color;
       border: 1px solid @color;
       color: @white;

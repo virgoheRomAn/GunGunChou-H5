@@ -3,7 +3,7 @@
     $(ele).each(function () {
         FB.dayTimeDown(this);
     });
-}(".ft-cutdown"));
+}(".time-down"));
 
 //窗口改变
 function resizeInit(callback) {
@@ -26,6 +26,7 @@ function setProgress(ele, start, end) {
             },
             number: $(that).find(".meter").text().split("%")[0],
             time: 1000,
+            textMove: true,
             startFun: function (opt) {
                 if (start) start.call(this, opt);
             },

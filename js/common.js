@@ -444,7 +444,7 @@ FB.dayTimeDown = function (tags, time, Fun) {
         hourEle = ".time-hour";
         minEle = ".time-minute";
         secEle = ".time-second";
-        loadEle = ".loading";
+        loadEle = ".time-loading";
     } else {
         boxEle = $(tags.boxEle);
         dayEle = tags.dayEle;
@@ -472,18 +472,29 @@ FB.dayTimeDown = function (tags, time, Fun) {
     var int_day, int_hour, int_minute, int_second;
     var _time;
 
-    boxEle.find(loadEle).show();
+    if (loadEle) {
+        boxEle.find(loadEle).show();
+    } else {
+        //初始值
+        int_day = timeCount(countTime).int_day;
+        int_hour = timeCount(countTime).int_hour;
+        int_minute = timeCount(countTime).int_minute;
+        int_second = timeCount(countTime).int_second;
+        showTime(FB.padZero(int_day, 2) + "<em>" + dayFormat + "</em>", FB.padZero(int_hour % 24, 2) + "<em>" + hourFormat + "</em>", FB.padZero(int_minute, 2) + "<em>" + minFormat + "</em>", FB.padZero(int_second, 2) + "<em>" + secFormat + "</em>");
+    }
 
     _time = setInterval(function () {
-        if (boxEle.find(loadEle).css("display") != "none") {
-            boxEle.find(loadEle).hide();
+        if (loadEle) {
+            if (boxEle.find(loadEle).css("display") != "none") {
+                boxEle.find(loadEle).hide();
+            }
         }
         countTime--;
         if (countTime > 0) {
-            int_day = Math.floor(countTime / 60 / 60 / 24);
-            int_hour = Math.floor(countTime / (60 * 60));
-            int_minute = Math.floor(countTime / 60) - (int_hour * 60);
-            int_second = Math.floor(countTime) - (int_hour * 60 * 60) - (int_minute * 60);
+            int_day = timeCount(countTime).int_day;
+            int_hour = timeCount(countTime).int_hour;
+            int_minute = timeCount(countTime).int_minute;
+            int_second = timeCount(countTime).int_second;
         } else {
             int_day = 0;
             int_hour = 0;
@@ -492,11 +503,25 @@ FB.dayTimeDown = function (tags, time, Fun) {
             if (Fun) Fun.call(boxEle[0]);
             clearInterval(_time);
         }
-        if (dayEle) boxEle.find(dayEle).html(FB.padZero(int_day, 2) + "<em>" + dayFormat + "</em>");
-        if (hourEle) boxEle.find(hourEle).html(FB.padZero(int_hour % 24, 2) + "<em>" + hourFormat + "</em>");
-        if (minEle) boxEle.find(minEle).html(FB.padZero(int_minute, 2) + "<em>" + minFormat + "</em>");
-        if (secEle) boxEle.find(secEle).html(FB.padZero(int_second, 2) + "<em>" + secFormat + "</em>");
+        showTime(FB.padZero(int_day, 2) + "<em>" + dayFormat + "</em>", FB.padZero(int_hour % 24, 2) + "<em>" + hourFormat + "</em>", FB.padZero(int_minute, 2) + "<em>" + minFormat + "</em>", FB.padZero(int_second, 2) + "<em>" + secFormat + "</em>");
     }, 1000);
+
+    function showTime(day, hour, min, sec) {
+        if (dayEle) boxEle.find(dayEle).html(day);
+        if (hourEle) boxEle.find(hourEle).html(hour);
+        if (minEle) boxEle.find(minEle).html(min);
+        if (secEle) boxEle.find(secEle).html(sec);
+    }
+
+    function timeCount(time) {
+        var timeObj = {};
+        timeObj.int_day = Math.floor(time / 60 / 60 / 24);
+        timeObj.int_hour = Math.floor(time / (60 * 60));
+        timeObj.int_minute = Math.floor(time / 60) - (int_hour * 60);
+        timeObj.int_second = Math.floor(time) - (int_hour * 60 * 60) - (int_minute * 60);
+        return timeObj;
+    }
+
     return _time;
 };
 /**

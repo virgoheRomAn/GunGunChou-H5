@@ -179,7 +179,7 @@
 
 .font-size(@n, @i: 8) when (@i =< @n) {
   .fs-@{i} {
-    font-size: unit(@i/10, @rem);
+    font-size: unit(@i/10, @rem) !important;
   }
   .font-size(@n, (@i+1));
 }
