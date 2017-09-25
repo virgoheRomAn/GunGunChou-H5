@@ -24,7 +24,7 @@
       height: 100%;
       i {
         .p-abs;
-        .fn-pos-tl(50%, 20px);
+        .fn-pos-tl(50%, 10px);
       }
       em {
         .p-abs;
@@ -70,7 +70,18 @@
     a {
       i {
         left: auto;
-        right: 20px;
+        right: 10px;
+      }
+    }
+    &.two {
+      a {
+        width: 50%;
+        .fl;
+        &:first-of-type{
+          i{
+            right: 15px;
+          }
+        }
       }
     }
   }
@@ -102,6 +113,31 @@
   .layer-box;
   background: @white;
   padding: 20px 0 15px;
+  &.small {
+    .fb-box-list li {
+      margin-bottom: 0;
+      a em {
+        height: 36px;
+        line-height: 36px;
+        margin-bottom: 0;
+      }
+      &:nth-child(2) a em {
+        img {
+          width: 26px;
+        }
+      }
+      &:nth-child(3) a em {
+        img {
+          width: 30px;
+        }
+      }
+      &:nth-child(4) a em {
+        img {
+          width: 26px;
+        }
+      }
+    }
+  }
   .fb-box-list {
     li {
       a {
@@ -589,6 +625,19 @@
       font-weight: normal;
     }
   }
+  &.line{
+    >label.title{
+      .text-middle(36px);
+      font-size: @fs-14;
+      color: @g-333;
+      background: transparent;
+      border-bottom: 1px solid #c4c4c4;
+      padding: 0;
+      a{
+        color: @g-333;
+      }
+    }
+  }
   > label {
     .layer-box;
     &.title {
@@ -876,28 +925,35 @@
   width: 22px;
   height: 22px;
   background-position: 0 -27px;
-  margin: -11px 0 0 -11px;
+  margin: -11px 0 0 0;
 }
 
 .icon-help {
   width: 24px;
   height: 24px;
   background-position: 0 0;
-  margin: -12px 0 0 -12px;
+  margin: -12px 0 0 0;
 }
 
 .icon-filtrate {
   width: 24px;
   height: 24px;
   background-position: 0 -54px;
-  margin: -12px 0 0 -12px;
+  margin: -12px 0 0 0;
 }
 
 .icon-back {
   width: 16px;
   height: 22px;
   background-position: 0 -163px;
-  margin: -11px 0 0 -8px;
+  margin: -11px 0 0 0;
+}
+
+.icon-setting {
+  width: 24px;
+  height: 24px;
+  background-position: -31px -25px;
+  margin: -12px 0 0 0;
 }
 
 .icon-search {

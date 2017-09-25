@@ -76,7 +76,7 @@
             }
           }
         }
-        &.tips{
+        &.tips {
           .layer-box;
           text-align: center;
           color: @red-ff3d3d;
@@ -406,6 +406,101 @@
   }
 }
 
+//个人中心
+.p-banner {
+  padding: 10px 15px;
+  background: linear-gradient(top, #51e1ff 15%, #3bb1ff 81%);
+  background: -webkit-linear-gradient(top, #51e1ff 15%, #3bb1ff 81%);
+  > label, > a, > span {
+    .d-block;
+    text-align: center;
+    color: @white;
+  }
+  > label {
+    .set-layout("block", 60px, 60px);
+    margin: auto;
+    img {
+      .layer-box-height
+    }
+  }
+  > span {
+    font-size: @fs-16;
+    margin: 5px 0;
+  }
+  > a {
+    font-size: @fs-12;
+  }
+}
+
+.p-manager {
+  padding: 0 20px;
+  margin-top: 10px;
+  .manager-intro {
+    .layer-box;
+    padding: 0 0 0 56px;
+    .img {
+      .set-layout("block", 46px, 46px, "absolute");
+      .fn-pos-tl(0, 0);
+      img {
+        .layer-box-height;
+      }
+    }
+    .cont {
+      .layer-box;
+      a {
+        .p-rel;
+        .d-block;
+        .text-middle(24px);
+        font-size: @fs-13;
+        color: @blue-2c97ff;
+        padding-left: 20px;
+        i {
+          .p-abs;
+          top: 50%;
+          left: 0;
+          margin-top: -8px;
+        }
+        &:nth-child(1) {
+          color: @g-333;
+        }
+      }
+    }
+  }
+}
+
+.p-list {
+  ul > li {
+    padding: 0 15px;
+    margin: 5px 0;
+  }
+  li > a {
+    .layer-box;
+    text-align: center;
+    color: @g-666;
+    font-size: @fs-15;
+    em, span {
+      .d-block
+    }
+    em {
+      color: #fd6d6d;
+      font-size: @fs-18;
+      font-weight: bold;
+      .text-middle(28px);
+      i {
+        .d-in-block;
+        margin-right: 5px;
+        vertical-align: middle;
+        &.icon-data1 {
+          margin-top: -2px;
+        }
+        &.icon-data4 {
+          margin-top: -3px;
+        }
+      }
+    }
+  }
+}
+
 //图标
 .icon-phone {
   width: 20px;
@@ -462,4 +557,40 @@
   width: 14px;
   height: 10px;
   background-position: -130px -62px;
+}
+
+.icon-user {
+  width: 15px;
+  height: 15px;
+  background-position: -130px -76px;
+}
+
+.icon-user-phone {
+  width: 15px;
+  height: 15px;
+  background-position: -130px -95px;
+}
+
+.icon-data1 {
+  width: 20px;
+  height: 21px;
+  background-position: -69px -123px;
+}
+
+.icon-data2 {
+  width: 20px;
+  height: 20px;
+  background-position: -69px -149px;
+}
+
+.icon-data3 {
+  width: 20px;
+  height: 20px;
+  background-position: -69px -172px;
+}
+
+.icon-data4 {
+  width: 20px;
+  height: 20px;
+  background-position: -69px -196px;
 }

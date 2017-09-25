@@ -287,6 +287,9 @@ iframe, img {
 /*模块*/
 .fb-module {
   .layer-box;
+  &.white{
+    background: @white;
+  }
   .m-title {
     .layer-box;
     .text-middle(44px);
@@ -304,6 +307,12 @@ iframe, img {
     padding: 0 20px;
     &.pad {
       padding: 10px 20px;
+    }
+    &.no-pad{
+      padding: 0;
+    }
+    &.top-pad{
+      padding: 10px 0;
     }
   }
 }
