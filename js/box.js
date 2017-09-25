@@ -186,16 +186,23 @@
                     ';
                 $(document.body).append(html);
 
+                //变量
+                var $box = $(".j-alert-box"),
+                    $cont = $(".j-alert-cont"),
+                    $intro = $(".j-alert-intro"),
+                    $icon = $(".j-alert-icon"),
+                    $text = $(".j-alert-text");
+
                 //添加样式
                 if (obj && obj.className) {
-                    $(".j-alert-cont").addClass(obj.className);
+                    $cont.addClass(obj.className);
                 }
 
-                $(".j-alert-icon").css(iconCSS);
-                $(".j-alert-text").css(textCSS);
+                $icon.css(iconCSS);
+                $text.css(textCSS);
                 //重新计算
                 if (!isFull) {
-                    var $countEle = $(".j-alert-cont");
+                    var $countEle = $cont;
                     $countEle.css("padding", "0");
                     var _newHeight = $countEle.outerHeight(true);
                     var _newWidth = $countEle.outerWidth(true);
@@ -223,7 +230,7 @@
                     if (!$body.hasClass("isHide")) {
                         $body.addClass("isHide");
                     }
-                    var $fullEle = $(".j-alert-intro");
+                    var $fullEle = $intro;
                     $fullEle.parents(".j-alert-cont").css("width", "auto");
                     var fullWidth = $fullEle.css("width", "auto").outerWidth(true);
                     fullWidth = fullWidth >= 200 ? 200 : fullWidth;
@@ -231,7 +238,7 @@
                     $fullEle.removeAttr("style");
                     $fullEle.parents(".j-alert-cont").removeAttr("style");
                     if (iconCSS.height && parseInt(iconCSS.height) != 30) {
-                        $(".j-alert-icon").css("margin-top", "-" + parseInt(iconCSS.height) / 2 + "px");
+                        $icon.css("margin-top", "-" + parseInt(iconCSS.height) / 2 + "px");
                     }
                     if (iconCSS.width && parseInt(iconCSS.width) != 30) {
                         $fullEle.css("padding-left", "" + (parseInt(iconCSS.width) + 5) + "px");
@@ -239,9 +246,16 @@
                     }
                     _setBoxLayout("#jDisk .j-alert-intro", fullWidth, fullHeight);
                 }
-                if (obj && obj.showCallBack) obj.showCallBack.call($("#jDisk")[0]);
+                if (obj && obj.showCallBack) obj.showCallBack.call($box[0], obj);
                 //关闭
-                $.jClose(obj, opts);
+                $.jClose({
+                    ele: obj ? obj.ele ? obj.ele : $box : $box,
+                    time: obj ? obj.time ? parseInt(obj.time) : 1000 : 1000,
+                    type: obj ? obj.type ? parseInt(obj.type) : 1 : 1,
+                    callback: obj ? obj.callback ? obj.callback : null : null
+                });
+
+                return $box;
             },
             tips: function (text, obj) {
                 $.jAlert.init(text, "", obj);
@@ -257,7 +271,7 @@
             },
             loading: function (text, icon, obj) {
                 var new_obj = $.extend({}, obj, {type: 3});
-                $.jAlert.init(text, icon ? icon : _IMG_["load"].src, new_obj);
+                return $.jAlert.init(text, icon ? icon : _IMG_["load"].src, new_obj);
             }
         },
         /**
@@ -287,7 +301,7 @@
             var intro = (typeof textObj).toString().toLowerCase() == "string" ? textObj : textObj.intro;
             var title = textObj ? textObj.title : "";
             var intro_cls = textObj.title ? "j-intro-normal" : "j-intro-big";
-            var _html = "", btnStr = "", titleStr = "", closeStr = "";
+            var _html = "", btnStr = "", titleStr = "";
 
             //判断按钮形式
             var btn_cls = _type.toString().toLowerCase() == "v" ? "j-confirm-v" : "j-confirm-h";
@@ -301,10 +315,10 @@
 
             //判断是否含有标题
             var title_cls = "";
-            closeStr = textObj.close ? "<a class='j-close' href='javascript:;'>&times</a>" : "";
+            var closeStr = textObj.close ? "<a class='j-close' href='javascript:;'>&times</a>" : "";
             if (textObj.title) {
                 title_cls = "j-confirm-hasTitle";
-                titleStr += '<label class="j-confirm-title">' + title + closeStr + '</label>';
+                titleStr += '<label class="j-confirm-title"><span>' + title + '</span>' + closeStr + '</label>';
             } else {
                 title_cls = "j-confirm-noTitle";
                 titleStr = closeStr;
@@ -323,6 +337,7 @@
             $(document.body).append(_html);
 
             //添加样式
+            var $box = $(".j-confirm-box");
             var textBar = $(".j-confirm-text"), btnBar = $(".j-confirm-btn"), titleBar = $(".j-confirm-title"),
                 btnBox = $(".j-btn");
             //按钮加样式-首先读取按钮组中设置的样式，
@@ -378,7 +393,8 @@
                 if (btnAry[i].callback) {
                     $(this).click(function () {
                         $.jClose({
-                            type: 2,
+                            ele: $box,
+                            type: btnAry[i].type || 2,
                             time: 300,
                             callback: btnAry[i].callback
                         });
@@ -386,6 +402,7 @@
                 } else if (callbacks && Object.prototype.toString.call(callbacks) == '[object Array]') {
                     $(this).click(function () {
                         $.jClose({
+                            ele: $(".j-confirm-box"),
                             type: 2,
                             time: 300,
                             callback: callbacks[i].call(this)
@@ -394,6 +411,7 @@
                 } else {
                     $(this).click(function () {
                         $.jClose({
+                            ele: $(".j-confirm-box"),
                             type: 2,
                             time: 300,
                             callback: function () {
@@ -407,10 +425,9 @@
         /**
          * 关闭弹窗
          * @param opt {type,time,callback}
-         * @param opts {opts}
          * @returns {boolean}
          */
-        jClose: function (opt, opts) {
+        jClose: function (opt) {
             var $box = $("#jDisk");
             var _time = opt ? (!opt.time ? 1000 : opt.time) : 1000;
             var _type = opt ? (!opt.type ? 1 : opt.type) : 1;
@@ -473,7 +490,8 @@
             .j-confirm-text{display: table; margin: 0; padding: 15px; width: 100%;}\
             .j-confirm-text.j-confirm-hasTitle{padding-top: 0;}\
             .j-confirm-title{position: relative; display: block; width: 100%; margin: 15px 0 5px 0; padding: 0; font-weight: bold; font-size: 14px; text-align: center; color: #3c3c3c;}\
-            .j-close{position: absolute; top: 50%; right: 5px; display: block; width: 30px; height: 30px; line-height: 26px; text-align: center; font-size: 26px; color: #999999; margin-top: -15px; font-weight: normal;}\
+            .j-confirm-title.j-text-hide span{visibility:hidden}\
+            .j-close{position: absolute; top: 50%; right: 7px; display: block; width: 30px; height: 30px; line-height: 30px; text-align: center; font-size: 26px; color: #999999; margin-top: -15px; font-weight: normal; font-family:\"宋体\", arial, helvetica, sans-serif}\
             .j-confirm-text >div{display: table-cell; width: 100%; font-weight: normal; vertical-align: middle; font-size: 12px; color: #3c3c3c;}\
             .j-confirm-text >div.j-intro-big{font-weight: bold; font-size: 14px;}\
             .j-confirm-btn{width: 100%; overflow: hidden;}\

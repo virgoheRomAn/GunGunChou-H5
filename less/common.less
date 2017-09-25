@@ -475,7 +475,7 @@ iframe, img {
       .d-none;
     }
     & > input[type="checkbox"] {
-      .layer-box;
+      .layer-box-height;
       .p-abs;
       .fn-pos-tl(0, 0);
       opacity: 0;
@@ -586,6 +586,9 @@ iframe, img {
     }
     &.height {
       height: 80%;
+      &.small{
+        height: 260px;
+      }
     }
     &.right {
       left: auto;
@@ -614,10 +617,25 @@ iframe, img {
         text-align: center;
         line-height: 40px;
         font-size: @fs-14;
+        &.big{
+          font-size: @fs-15;
+        }
+        &.blue{
+          color: @blue-2c97ff;
+        }
+        &.blod{
+          font-weight: bold;
+        }
       }
     }
     .fb-disk-bd {
       .layer-box-height;
+      &.bigger-pad {
+        padding: 0 20px;
+      }
+      &.gray {
+        background: #f4f4f4;
+      }
       &.bottom {
         padding-bottom: 46px;
       }
@@ -693,6 +711,9 @@ iframe, img {
     background: transparent;
     font-size: @fs-16;
     .border-radius(5px);
+    &.radius {
+      .border-radius(20px);
+    }
     &.no-br {
       .border-radius(0);
     }
@@ -720,6 +741,13 @@ iframe, img {
       border: 1px solid @color;
       color: @white;
     }
+    &.blue-bigger {
+      @color: #0386ff;
+      background: @color;
+      border: 1px solid @color;
+      color: @white;
+      font-size: 1.8rem;
+    }
   }
 }
 
@@ -735,19 +763,19 @@ iframe, img {
 
 /*圆角*/
 .fb-radius-3 {
-  .border-radius(3px);
+  .border-radius(3px) !important;
 }
 
 .fb-radius-5 {
-  .border-radius(5px);
+  .border-radius(5px) !important;
 }
 
 .fb-radius-10 {
-  .border-radius(10px);
+  .border-radius(10px) !important;
 }
 
 .fb-radius-50 {
-  .border-radius(50%);
+  .border-radius(50%) !important;
 }
 
 /*手势*/

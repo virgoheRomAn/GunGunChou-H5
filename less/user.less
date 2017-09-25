@@ -48,6 +48,43 @@
       padding: 0 20px;
       background: @white;
     }
+    .form-title {
+      .layer-box;
+      > label {
+        .layer-box;
+        &.title {
+          .text-middle(46px);
+          background: @blue-2c97ff;
+          color: @white;
+          font-size: @fs-15;
+          font-weight: bold;
+          padding: 0 20px;
+          text-align: center;
+          a {
+            .d-none;
+            .p-abs;
+            .fn-pos-tr(0, 20px);
+            width: 60px;
+            .text-middle(46px);
+            font-size: @fs-12;
+            color: @white;
+            text-align: right;
+          }
+          &.has-link {
+            a {
+              .d-block;
+            }
+          }
+        }
+        &.tips{
+          .layer-box;
+          text-align: center;
+          color: @red-ff3d3d;
+          font-weight: bold;
+          margin-top: 20px;
+        }
+      }
+    }
   }
 }
 

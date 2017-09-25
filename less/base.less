@@ -357,10 +357,10 @@
                 img {
                   .p-abs;
                   top: 50%;
-                  margin: -10px 0 0 -25px;
+                  margin: -7px 0 0 -19px;
                   display: inline-block;
-                  width: 20px;
-                  height: 20px;
+                  width: 14px;
+                  height: 14px;
                 }
               }
               em {
@@ -554,8 +554,8 @@
             float: right;
           }
         }
-        .evaluate-infor{
-          label.start-box{
+        .evaluate-infor {
+          label.start-box {
             .d-block;
             margin: 10px 0;
           }
@@ -581,6 +581,61 @@
   }
 }
 
+//页面title
+.page-title {
+  .layer-box;
+  &.normal {
+    > label.title {
+      font-weight: normal;
+    }
+  }
+  > label {
+    .layer-box;
+    &.title {
+      .text-middle(46px);
+      background: @blue-2c97ff;
+      color: @white;
+      font-size: @fs-15;
+      font-weight: bold;
+      padding: 0 20px;
+      &.left {
+        text-align: left;
+        a {
+          .fr;
+          font-size: @fs-14;
+        }
+      }
+      &.center {
+        text-align: center;
+        a {
+          .p-abs;
+          .fn-pos-tr(0, 20px);
+          width: 60px;
+          .text-middle(46px);
+          text-align: right;
+        }
+      }
+      &.has-link {
+        a {
+          .d-block;
+        }
+      }
+      a {
+        .d-none;
+        color: @white;
+        font-size: @fs-12;
+      }
+    }
+    &.tips {
+      .layer-box;
+      text-align: center;
+      color: @red-ff3d3d;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  }
+}
+
 //评价等级
 .start-box {
   display: inline-block;
@@ -589,6 +644,34 @@
     display: inline-block;
     margin-right: 5px;
     .cursor-pointer;
+  }
+}
+
+//认筹
+.crowd-bar {
+  .layer-box;
+  padding: 0 20px;
+  .select {
+    margin: 10px 0;
+  }
+  .intro {
+    margin-top: 20px;
+    font-size: @fs-14;
+    color: @g-333;
+    > label {
+      .d-block;
+      margin: 10px 0;
+      span {
+        .d-in-block;
+        width: 100px;
+      }
+    }
+  }
+  & + .pay-btn {
+    .layer-box;
+    .p-abs;
+    .fn-pos-bl(30px, 0);
+    padding: 0 20px;
   }
 }
 
@@ -637,7 +720,7 @@
 //标记
 .tag {
   .set-layout("block", 6px, 6px);
-  .fb-radius-50;
+  .border-radius(50%);
   &.text {
     .set-layout("block", 50px, 24px);
     line-height: 22px;
@@ -697,6 +780,9 @@
       .border-radius(22px);
     }
   }
+  .pay-box {
+    background: @white;
+  }
 }
 
 //优惠券
@@ -706,6 +792,7 @@
     .layer-box;
     margin-top: 10px;
     .border-radius(5px);
+    padding-left: 70px;
     & > .tag {
       .p-abs;
       top: 50%;
@@ -718,12 +805,13 @@
       }
     }
     & > .fl {
-      width: 32%;
+      .p-abs;
+      .fn-pos-tl(0, 0);
+      width: 70px;
       font-size: 3.0rem;
       color: @white;
       font-weight: bold;
       padding: 10px 0;
-      .border-right(1px dashed @white);
       span, em {
         .layer-box;
         padding-left: 15px;
@@ -738,8 +826,20 @@
       }
     }
     & > .fr {
-      width: 68%;
+      .p-rel;
+      .d-block;
+      width: 100%;
+      .border-left(1px dashed @white);
       padding: 12px 14px 4px 10px;
+      &.pad {
+        padding: 12px 84px 4px 10px;
+        a.fb-btn {
+          width: 65px;
+          .p-abs;
+          .fn-pos-tr(50%, 14px);
+          margin-top: -16px;
+        }
+      }
       label {
         position: relative;
         display: block;

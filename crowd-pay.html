@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-认筹支付</title>
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/user.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header">
+        <div class="left">
+            <a href="javascript:;">
+                <i class="sprite icon-back"></i>
+            </a>
+        </div>
+        <div class="mid">
+            <label class="text"><span>确认支付</span></label>
+        </div>
+    </div>
+    <div class="wrap height overflow">
+        <div class="page-title normal">
+            <label class="title left has-link">增益券<a id="coupon" href="javascript:;">一张可用 ></a></label>
+        </div>
+        <div class="crowd-bar">
+            <div class="select">
+                <label class="fb-check-box">
+                    <em>
+                        <i class="sprite icon-checked"></i>
+                        <input type="checkbox">
+                    </em>
+                    <span>积分抵扣<span class="fs-12 tc-999 ml-10">我的积分: 8000</span></span>
+                </label>
+                <div class="select-cont clearfix d-none">
+                    <label class="user-form mt-10">
+                        <input type="text" placeholder="每100积分抵扣1元，本次最多可用5000积分" value="">
+                    </label>
+                    <a class="fb-btn background blue-dark line-block no-bd fr pl-30 pr-30 mt-10 fb-radius-3"
+                       href="javascript:;">使用</a>
+                </div>
+            </div>
+            <div class="intro">
+                <label class="d-block"><span>积分抵扣金额：</span><em class="tc-ff3d3d">1.00元</em></label>
+                <label class="d-block"><span>认筹余额：</span><em class="tc-ff3d3d">1000.00元</em></label>
+                <label class="d-block"><span>实际支付金额：</span><em class="tc-ff3d3d">5500.00元</em></label>
+            </div>
+        </div>
+        <div class="pay-btn">
+            <a class="fb-btn no-bd big radius background blue-bigger" href="javascript:;" id="sureBtn">确认支付</a>
+        </div>
+    </div>
+</div>
+
+<!--弹出优惠券-->
+<div class="fb-pop-disk coupon-pop-disk">
+    <div class="fb-pop-box coupon-pop-box height small bottom top animated-bottom">
+        <div class="fb-disk-hd bigger-pad">
+            <span class="fb-disk-title big blue blod">增益券</span>
+            <a class="fb-disk-close">&times</a>
+        </div>
+        <div class="fb-disk-bd bigger-pad gray">
+            <div class="wrap height overflow">
+                <div class="coupon-bar mb-10">
+                    <div class="item clearfix red">
+                        <i class="tag gray big"></i>
+                        <i class="tag gray big"></i>
+                        <div class="fl">
+                            <span>2.5</span>
+                            <em>%</em>
+                        </div>
+                        <div class="fr pad">
+                            <label class="tm-bold">单比认筹金额满2000使用</label>
+                            <label>该增益券全平台通用， 投标增加年化收益率</label>
+                            <a class="fb-btn line white small tc-fff" href="javascript:;">立即使用</a>
+                        </div>
+                    </div>
+                    <div class="coupon-time">有效期：2017-12-30至2018-01-12</div>
+                    <div class="item clearfix red">
+                        <i class="tag gray big"></i>
+                        <i class="tag gray big"></i>
+                        <div class="fl">
+                            <span>1.5</span>
+                            <em>%</em>
+                        </div>
+                        <div class="fr pad">
+                            <label class="tm-bold">单比认筹金额满2000使用</label>
+                            <label>该增益券全平台通用， 投标增加年化收益率</label>
+                            <a class="fb-btn line white small tc-fff" href="javascript:;">立即使用</a>
+                        </div>
+                    </div>
+                    <div class="coupon-time">有效期：2017-12-30至2018-01-12</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/template" id="payBox">
+    <div class="pay-password">
+        <span class="d-block tc-333 tm-bold tm-left fs-13 mb-10">支付密码：</span>
+        <label class="d-block user-form">
+            <input type="password" placeholder="输入支付宝密码" id="payPsd">
+        </label>
+        <a href="forget-pay.html" class="fr tc-user mt-10">忘记支付密码</a>
+    </div>
+</script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        //判断是否需要验证手机
+        var verifyPhone = true;
+        if (!verifyPhone) {
+            $.jAlert.waring("请先验证手机！", null, {
+                time: 2000,
+                callback: function () {
+                    window.location.href = "verify-phone.html";
+                }
+            });
+        }
+
+        //选择协议
+        formChecked(".fb-check-box", function () {
+            $(".select-cont").toggle();
+        });
+
+        //弹出与增益券
+        var coupon = popLeftMenu({
+            isDiskClose: false,
+            clickEle: "#coupon",
+            diskEle: ".coupon-pop-disk",
+            animateEle: ".coupon-pop-box"
+        });
+
+        //确认支付
+        $("#sureBtn").click(function () {
+            $.jConfirm({
+                title: "输入支付密码",
+                intro: $("#payBox").html(),
+                close: true
+            }, [
+                {
+                    text: "支付",
+                    cls: "coupon-btn",
+                    type: 3,
+                    callback: function () {
+                        var val = $("#payPsd").val();
+                        if (val == "") {
+                            $.jAlert.error("密码不能为空!");
+                        } else {
+                            var loading = $.jAlert.loading("正在支付中...");
+                            setTimeout(function () {
+                                $.jClose({
+                                    ele: loading, type: 2, time: 1000, callback: function () {
+                                        $.jAlert.success("支付成功！", null, {
+                                            callback: function () {
+                                                window.location.reload();
+                                            }
+                                        })
+                                    }
+                                })
+                            }, 1000);
+                        }
+                    }
+                }
+            ], "V", null, {
+                width: "290px",
+                cls: {
+                    boxCls: "coupon-box pay-box",
+                    titleCls: "j-text-hide coupon-title",
+                    tipsBarCls: "coupon-tips"
+                }
+            });
+        });
+    })
+</script>
+</body>
+</html>

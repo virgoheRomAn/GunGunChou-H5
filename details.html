@@ -123,7 +123,7 @@
                                 <em>￥</em>
                                 <input type="number" placeholder="请输入众筹金额" value="">
                             </label>
-                            <a class="fb-btn background blue-dark no-bd" href="javascript:;" id="money">立即认筹</a>
+                            <a class="fb-btn background blue-dark no-bd" href="crowd-pay.html">立即认筹</a>
                         </div>
                         <div class="de-account">
                             <label>账户余额：<i class="tc-ff3d3d">￥0.00</i></label>
@@ -300,7 +300,8 @@
                                                 </label>
                                             </div>
                                             <div class="evaluate-btn clearfix">
-                                                <a class="fb-btn background blue-dark line-block small no-bd fr fs-14" href="javascript:;">提交评价</a>
+                                                <a class="fb-btn background blue-dark line-block small no-bd fr fs-14"
+                                                   href="javascript:;">提交评价</a>
                                             </div>
                                         </div>
                                         <div class="evaluate-list">
@@ -365,7 +366,7 @@
 <!--显示产品大图-->
 <div class="fb-pop-disk block black product-big animated-left">
     <div class="fb-pop-box top">
-        <div class="fb-disk-hd no-bd biger-pad">
+        <div class="fb-disk-hd no-bd bigger-pad">
             <span class="fb-disk-title" id="productLength"><i>1</i> of <i>12</i></span>
             <a class="fb-disk-close">&times</a>
         </div>
@@ -425,10 +426,12 @@
                 var $container = s.container;
                 var $active = $container.find(".swiper-slide-active");
                 var $loading = $active.find(".swiper-loading");
-                $container.height($active.find(".product-information").outerHeight(true));
                 $loading.hide();
+                //如果内容是异步加载
+                //加载完成之后记得给$container添加高度
+                $container.height($active.find(".product-information").outerHeight(true));
             },
-            onSlideChangeStart:function (s) {
+            onSlideChangeStart: function (s) {
                 var $container = s.container;
                 var $active = $container.find(".swiper-slide-active");
 

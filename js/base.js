@@ -130,10 +130,12 @@ function popLeftMenu(option) {
     var defaults = {
         clickEle: "",
         diskEle: "",
+        closeEle: ".fb-disk-close",
         animateEle: "",
         isSwiper: false,
         swiperID: "",
         isShowEle: true,
+        isDiskClose: true,
         clickCallback: "",
         openCallback: "",
         closeCallback: ""
@@ -143,6 +145,7 @@ function popLeftMenu(option) {
         mySwiper,
         $clickEle = $(opt.clickEle),
         $diskEle = $(opt.diskEle),
+        $closeEle = $(opt.closeEle),
         $animateEle = $(opt.animateEle);
 
     self.openFun = function () {
@@ -182,7 +185,9 @@ function popLeftMenu(option) {
 
     $clickEle.on("click", self.openFun);
 
-    $diskEle.on("click", self.closeFun);
+    if (opt.isDiskClose) $diskEle.on("click", self.closeFun);
+
+    if (opt.closeEle) $closeEle.on("click", self.closeFun);
 
     $animateEle.click(function (e) {
         FB.propagationFun(e);
