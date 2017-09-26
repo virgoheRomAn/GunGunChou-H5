@@ -394,6 +394,27 @@
     }
   }
 
+  .item-text {
+    .layer-box;
+    .text-middle(48px);
+    padding-left: 90px;
+    > span {
+      .layer-box;
+      font-size: @fs-13;
+      &.t {
+        .p-abs;
+        .fn-pos-tl(50%, 0);
+        width: 85px;
+        .text-middle(30px);
+        margin-top: -15px;
+        color: @g-333;
+      }
+      &.c {
+        color: @g-666;
+      }
+    }
+  }
+
   .form-btn {
     margin-top: 30px;
     margin-bottom: 15px;
@@ -527,6 +548,13 @@
   width: 22px;
   height: 16px;
   background-position: -30px -78px;
+  margin: -9px 0 0 0;
+}
+
+.icon-bank {
+  width: 22px;
+  height: 18px;
+  background-position: -30px -121px;
   margin: -9px 0 0 0;
 }
 

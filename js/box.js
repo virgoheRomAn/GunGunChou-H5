@@ -156,7 +156,7 @@
                 var w = opts.w = obj ? obj.width ? parseInt(obj.width) : 150 : 150;
                 var h = opts.h = obj ? obj.height ? parseInt(obj.height) : 50 : 50;
                 var ani = opts.ani = obj ? obj.animate ? obj.animate : "j-alert-ani" : "j-alert-ani";
-                var iconType = opts.iconType = obj ? obj.iconType ? obj.iconType : "H" : "H";
+                var iconType = opts.iconType = obj ? obj.iconType ? obj.iconType : "V" : "V";
                 var isFull = opts.isFull = obj ? obj.isFull ? obj.isFull : false : false;
                 var iconCSS = opts.iconCSS = obj ? obj.iconCSS ? obj.iconCSS : "" : "";
                 var textCSS = opts.textCSS = obj ? obj.textCSS ? obj.textCSS : "" : "";

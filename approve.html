@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-认证资料</title>
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/user.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header">
+        <div class="left">
+            <a href="javascript:;">
+                <i class="sprite icon-back"></i>
+            </a>
+        </div>
+        <div class="mid">
+            <label class="text"><span>完善资料</span></label>
+        </div>
+        <div class="right">
+            <a href="javascript:;">
+                <i class="sprite icon-close"></i>
+            </a>
+        </div>
+    </div>
+    <div class="wrap height overflow">
+        <div class="form-bar">
+            <div class="form-cont">
+                <div class="form-box relative mt-20">
+                    <div class="form-list">
+                        <div class="form-step">
+                            <!--全部认证-->
+                            <div class="step-cont">
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-user-name"></i>
+                                        <input class="clean-input" type="text" placeholder="请输入姓名" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-identity"></i>
+                                        <input class="clean-input" type="text" maxlength="19" placeholder="请输入身份证号码"
+                                               value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-bank"></i>
+                                        <input class="clean-input" type="text" maxlength="19" placeholder="请输入用于体现的银行卡"
+                                               value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-phone"></i>
+                                        <input class="clean-input verify-tel" type="number" maxlength="11"
+                                               placeholder="请输入银行预留的手机号码" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="item mt-25">
+                                    <label class="clean">
+                                        <i class="sprite icon-pad"></i>
+                                        <input class="clean-input" id="loginPsd" type="password"
+                                               placeholder="新密码（数字、字母和特殊符号任意两种组合）" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                    <div class="password-type">
+                                        <span>密码强度：</span>
+                                        <label class="type text">
+                                            <span class="r"><em>弱</em></span>
+                                            <span class="z"><em>中</em></span>
+                                            <span class="q"><em>强</em></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-pad"></i>
+                                        <input class="clean-input" id="againPsd" type="password" placeholder="确认密码"
+                                               value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="form-btn">
+                                    <a class="fb-btn no-bd big radius background blue" href="javascript:;" id="sureBtn">确定提交</a>
+                                </div>
+                            </div>
+                            <!--认证部分-->
+                            <div class="step-cont active">
+                                <div class="item-text">
+                                    <span class="t">真实姓名：</span>
+                                    <span class="c">赵*构</span>
+                                </div>
+                                <div class="item-text">
+                                    <span class="t">身份证号码：</span>
+                                    <span class="c">443152835****4647</span>
+                                </div>
+                                <div class="item-text">
+                                    <span class="t">体现银行：</span>
+                                    <span class="c">重庆农村商业银行</span>
+                                </div>
+                                <div class="approve-type d-none">
+                                    <div class="item-text">
+                                        <span class="t">银行卡号：</span>
+                                        <span class="c">6011257838****578</span>
+                                    </div>
+                                    <div class="item-text">
+                                        <span class="t">手机号码：</span>
+                                        <span class="c">136****2957</span>
+                                    </div>
+                                    <div class="form-btn">
+                                        <a class="fb-btn no-bd big radius background blue" href="javascript:;"
+                                           id="againBtn">重新认证</a>
+                                    </div>
+                                </div>
+                                <div class="approve-type d-block">
+                                    <div class="item">
+                                        <label class="clean">
+                                            <i class="sprite icon-bank"></i>
+                                            <input class="clean-input" type="text" maxlength="19"
+                                                   placeholder="请输入用于体现的银行卡"
+                                                   value="">
+                                            <a class="clean-btn" href="javascript:;"><i
+                                                    class="sprite icon-clean"></i></a>
+                                        </label>
+                                    </div>
+                                    <div class="item">
+                                        <label class="clean">
+                                            <i class="sprite icon-phone"></i>
+                                            <input class="clean-input verify-tel" type="number" maxlength="11"
+                                                   placeholder="请输入银行预留的手机号码" value="">
+                                            <a class="clean-btn" href="javascript:;"><i
+                                                    class="sprite icon-clean"></i></a>
+                                        </label>
+                                    </div>
+                                    <div class="form-btn">
+                                        <a class="fb-btn no-bd big radius background blue" href="javascript:;"
+                                           id="submitBtn">提交认证</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        //清除文字
+        $(".clean-input").focus(function () {
+            $(this).next().show();
+        }).blur(function () {
+            if (!$(this).val()) {
+                $(this).next().hide();
+            }
+        });
+        $(".clean-btn").each(function () {
+            clearText(this, $(this).prev());
+        });
+
+        //确定
+        $("#submitBtn").click(function () {
+            var $type = $(".approve-type");
+            var loading = $.jAlert.loading("资料认证中...");
+            setTimeout(function () {
+                $.jClose({
+                    ele: loading, type: 2, time: 1000, callback: function () {
+                        $.jAlert.success("认证成功！", null, {
+                            callback: function () {
+                                $type.eq(0).removeClass("d-none").addClass("d-block");
+                                $type.eq(1).removeClass("d-block").addClass("d-none");
+                            }
+                        })
+                    }
+                })
+            }, 1000);
+        });
+
+        //重新认证
+        $("#againBtn").click(function () {
+            var $type = $(".approve-type");
+            $type.eq(1).removeClass("d-none").addClass("d-block");
+            $type.eq(0).removeClass("d-block").addClass("d-none");
+        });
+    })
+</script>
+</body>
+</html>
