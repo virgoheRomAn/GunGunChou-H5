@@ -738,6 +738,60 @@
   }
 }
 
+//我的钱包
+.wallet-bar {
+  .layer-box;
+  .wallet-account {
+    .layer-box;
+    padding: 35px 0;
+    text-align: center;
+    font-weight: bold;
+    > span, > label {
+      .layer-box;
+    }
+    > span {
+      font-size: @fs-18;
+    }
+    > label {
+      font-size: 3.0rem;
+      color: @red-ff3d3d;
+    }
+  }
+  .wallet-money {
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    padding: 10px 0;
+    li{
+      margin-bottom: 0;
+    }
+    label {
+      .layer-box;
+      text-align: center;
+      font-size: @fs-15;
+      &:after {
+        content: "";
+        border-right: 1px solid #e4e4e4;
+        .p-abs;
+        .fn-pos-tr(50%, 0);
+        .d-block;
+        height: 34px;
+        margin-top: -17px;
+      }
+      span {
+        .layer-box;
+        color: @g-333;
+        margin-bottom: -2px;
+      }
+      em {
+        .layer-box;
+        margin-top: -2px;
+        color: @g-666;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 //评价等级
 .start-box {
   display: inline-block;
