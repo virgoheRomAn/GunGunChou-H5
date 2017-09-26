@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-文本信息详情</title>
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/user.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header">
+        <div class="left">
+            <a href="javascript:;">
+                <i class="sprite icon-back"></i>
+            </a>
+        </div>
+        <div class="mid">
+            <label class="text"><span>文本信息详情</span></label>
+        </div>
+        <div class="right">
+            <a href="javascript:;">
+                <i class="sprite icon-close"></i>
+            </a>
+        </div>
+    </div>
+    <div class="wrap height overflow">
+        <div class="form-bar">
+            <div class="form-cont">
+                <div class="text-information">
+                    <p>
+                        滚滚理财由来自券商、基金、银行等大型金融机构的
+                        专业人士创建和运营，在小额信贷、资产管理等领域
+                        具有丰富实战经验。核心创始团队拥有北京大学、香
+                        港大学等国际知名学府的金融学、经济学硕士学位。
+                    </p>
+
+                    <p>
+                        我们来自五湖四海，但共同的目标孕育着同一个理想，
+                        我们是企业的先头兵，我们是披荆斩棘的勇士，我们
+                        相信，付出就会有收获。年轻的心在一起相聚，不离
+                        不弃，团结一致，斩破风浪，勇敢起航，因为我们是
+                        山东中迅潍坊商务部。一个销售团队的成功：小型企
+                        业靠老板，中型企业靠管理，大型企业靠文化。所以
+                        当我们能越来越多地搞好销售回款和团队规模化的同
+                        时，能让大家有同一种气质，让团队有归属，有员工
+                        有信仰，是我们每位销售管理者都关心的事。这就是
+                        不断创新我们的文化。
+                    </p>
+
+                    <p>
+                        技术团队主要提供网站建设与制作、互联网应用系统
+                        及软件系统的开发和服务。拥有丰富的网站建设和互
+                        联网应用系统开发管理经验、成熟的应用系统解决方
+                        案、优秀的网站开发工程师团队及专业的网站设计师
+                        团队。产品研发团队中拥有多位行业尖端技术工程师，
+                        技术骨干在阿里和百度等知名企业研究iOS系统和
+                        Android系统多年,凭借一支专业技术团队和一支有
+                        多年电商营销经验的管理团队，已与众多企业客户建
+                        立了合作，并积累了广泛的为消费者服务的运营经验。
+                    </p>
+
+                    <p>
+                        我们一直秉承“产品是有形的服务，服务是无形的产
+                        品”为服务理念，始终坚持“一切为了用户的利益“
+                        为服务宗旨，凭借扎实的专业产品知识，服务着每一
+                        个百度推广用户。售后顾问为企业量身定做百度推广
+                        方案，按照企业的业务需求及特点出谋划策，让用户
+                        达到最理想的百度推广效果。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        //密码验证
+        verifyPwd("#loginPsd", "#againPsd");
+
+        //清除文字
+        $(".clean-input").focus(function () {
+            $(this).next().show();
+        }).blur(function () {
+            if (!$(this).val()) {
+                $(this).next().hide();
+            }
+        });
+        $(".clean-btn").each(function () {
+            clearText(this, $(this).prev());
+        });
+    })
+</script>
+</body>
+</html>

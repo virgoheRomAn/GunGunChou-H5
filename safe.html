@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-安全保障</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/user.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header">
+        <div class="left">
+            <a href="javascript:;">
+                <i class="sprite icon-back"></i>
+            </a>
+        </div>
+        <div class="mid">
+            <label class="text"><span>安全保障</span></label>
+        </div>
+    </div>
+    <div class="wrap height overflow background g-f5">
+        <div class="overflow-box">
+            <div class="setting-bar">
+                <div class="fb-menu-dir small mt-10">
+                    <ul>
+                        <li>
+                            <a href="information.html">
+                                <span>法律相关</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="information.html">
+                                <span>风投背书</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="information.html">
+                                <span>资金保障</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+
+        //switch开关
+        $(".fb-switch").click(function (e) {
+            $(this).toggleClass("active");
+        });
+
+        $(".fb-switch .box>input").click(function (e) {
+            e.stopPropagation();
+        })
+    })
+</script>
+</body>
+</html>

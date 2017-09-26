@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-忘记支付密码</title>
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/user.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header">
+        <div class="left">
+            <a href="javascript:;">
+                <i class="sprite icon-back"></i>
+            </a>
+        </div>
+        <div class="mid">
+            <label class="text"><span>忘记支付密码</span></label>
+        </div>
+        <div class="right">
+            <a href="javascript:;">
+                <i class="sprite icon-close"></i>
+            </a>
+        </div>
+    </div>
+    <div class="wrap height overflow">
+        <div class="form-bar">
+            <div class="form-cont">
+                <div class="form-box relative">
+                    <div class="page-title left">
+                        <label class="tips">请输入手机号码，找回支付密码！</label>
+                    </div>
+                    <div class="form-list">
+                        <div class="form-step">
+                            <div class="step-cont active">
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-user-name"></i>
+                                        <input class="clean-input" type="text" placeholder="请输入姓名" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-identity"></i>
+                                        <input class="clean-input" type="text" maxlength="19" placeholder="请输入身份证号码" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-phone"></i>
+                                        <input class="clean-input verify-tel" type="number" maxlength="11" placeholder="输入手机号码" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="item code">
+                                    <label class="clean">
+                                        <i class="sprite icon-code"></i>
+                                        <input class="clean-input" type="number" maxlength="6" placeholder="图形验证码" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                    <a class="code-btn" href="javascript:;"><img src="img/code.png"></a>
+                                </div>
+                                <div class="item code">
+                                    <label class="clean">
+                                        <i class="sprite icon-yzm"></i>
+                                        <input class="clean-input" type="number" maxlength="6" placeholder="手机验证码" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                    <a class="code-btn" href="javascript:;"><span id="countDown" class="fb-btn line blue-light small">获取验证码</span></a>
+                                </div>
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-pad"></i>
+                                        <input class="clean-input" id="loginPsd" type="password" placeholder="新密码（数字、字母和特殊符号任意两种组合）" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                    <div class="password-type">
+                                        <span>密码强度：</span>
+                                        <label class="type text">
+                                            <span class="r"><em>弱</em></span>
+                                            <span class="z"><em>中</em></span>
+                                            <span class="q"><em>强</em></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <label class="clean">
+                                        <i class="sprite icon-pad"></i>
+                                        <input class="clean-input" id="againPsd" type="password" placeholder="确认密码" value="">
+                                        <a class="clean-btn" href="javascript:;"><i class="sprite icon-clean"></i></a>
+                                    </label>
+                                </div>
+                                <div class="form-btn">
+                                    <a class="fb-btn no-bd big radius background blue" href="javascript:;" id="sureBtn">确定</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        //绑定倒计时
+        var countTime = "";
+        if (countTime) countTime.stopTimeFun();
+        $(document).on("click", "#countDown", function () {
+            if ($(this).hasClass("active")) return false;
+            var time = 120;
+            countTime = new FB.countDown(this, time, ["获取验证码", " 秒后重新获取"], function () {
+                console.log("倒计时结束")
+            });
+        });
+
+        //密码验证
+        verifyPwd("#loginPsd", "#againPsd");
+
+        //清除文字
+        $(".clean-input").focus(function () {
+            $(this).next().show();
+        }).blur(function () {
+            if(!$(this).val()) {
+                $(this).next().hide();
+            }
+        });
+        $(".clean-btn").each(function () {
+            clearText(this, $(this).prev());
+        });
+
+        //确定
+        $("#sureBtn").click(function(){
+            var tel = $(".verify-tel");
+            var val = tel.val();
+            if (FB.testForm.phone(val) == 0) {
+                $.jAlert.tips("手机号不能为空");
+            } else if (FB.testForm.phone(val) == 3) {
+                $.jAlert.tips("手机号格式错误");
+            } else if (FB.testForm.phone(val) == 2) {
+                $.jAlert.loading("测试：设置成功，跳转中...",);
+            }
+        });
+    })
+</script>
+</body>
+</html>

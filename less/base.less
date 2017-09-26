@@ -639,6 +639,12 @@
       }
     }
   }
+  &.left {
+    > label.tips {
+      margin: 15px 0;
+      text-align: left;
+    }
+  }
   > label {
     .layer-box;
     &.title {
@@ -683,6 +689,37 @@
       font-weight: bold;
       margin-top: 20px;
     }
+  }
+}
+
+//页面文本详情
+.text-information {
+  .layer-box;
+  padding: 0 20px;
+  p {
+    font-size: @fs-12;
+    color: @g-666;
+    margin: 15px 0 15px 0;
+  }
+}
+
+//关于我们
+.about-banner {
+  .layer-box;
+  padding: 30px 0 20px 0;
+  text-align: center;
+  > label {
+    .set-layout("block", 60px, 60px);
+    margin: auto;
+    img {
+      .layer-box-height;
+    }
+  }
+  > span {
+    .d-block;
+    margin-top: 15px;
+    color: @g-666;
+    font-size: @fs-15;
   }
 }
 
@@ -948,6 +985,13 @@
   height: 22px;
   background-position: 0 -163px;
   margin: -11px 0 0 0;
+}
+
+.icon-close {
+  width: 18px;
+  height: 18px;
+  background-position: -30px -53px;
+  margin: -9px 0 0 0;
 }
 
 .icon-setting {

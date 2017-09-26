@@ -44,7 +44,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="change-phonehtml">
+                            <a href="change-phone.html">
                                 <i class="sprite icon-setting3"></i>
                                 <span>手机绑定更改</span>
                             </a>
@@ -64,6 +64,14 @@
                             <a class="right" href="javascript:;">
                                 <i class="sprite icon-setting5"></i>
                                 <span>指纹支付开通</span>
+                                <div class="fb-switch radius">
+                                    <label class="box">
+                                        <span class="on">开</span>
+                                        <span class="btn"><em class="radius"></em></span>
+                                        <span class="off">关</span>
+                                        <input type="checkbox">
+                                    </label>
+                                </div>
                             </a>
                         </li>
                     </ul>
@@ -71,7 +79,7 @@
                 <div class="fb-menu-dir mt-10">
                     <ul>
                         <li>
-                            <a href="login-pad.html">
+                            <a href="opinion.html">
                                 <i class="sprite icon-setting6"></i>
                                 <span>意见反馈</span>
                             </a>
@@ -109,6 +117,15 @@
 <script src="js/base.js"></script>
 <script>
     $(function () {
+
+        //switch开关
+        $(".fb-switch").click(function (e) {
+            $(this).toggleClass("active");
+        });
+
+        $(".fb-switch .box>input").click(function (e) {
+            e.stopPropagation();
+        })
     })
 </script>
 </body>

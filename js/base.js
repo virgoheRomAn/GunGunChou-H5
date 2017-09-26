@@ -854,14 +854,14 @@ function verifyPwd(ele, sureEle) {
             val = $(this).val();
             var pwdVal = $(ele).val();
             if (val !== pwdVal) {
-                $(sureEle).parents(".item>label:eq(0)").addClass("error");
+                $(sureEle).parents(".item").addClass("error");
                 $(sureEle).parents(".item").find(".form-tips").empty().html("<label><b class='fb-arrow-dir top'></b>两次密码不一致</label>").show();
             } else {
-                $(sureEle).parents(".item>label:eq(0)").removeClass("error");
+                $(sureEle).parents(".item").removeClass("error");
                 $(sureEle).parents(".item").find(".form-tips").empty().hide();
             }
         }).focus(function () {
-            $(sureEle).parents(".item>label:eq(0)").removeClass("error");
+            $(sureEle).parents(".item").removeClass("error");
             $(sureEle).parents(".item").find(".form-tips").empty().hide();
         });
     }

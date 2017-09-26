@@ -325,6 +325,10 @@ iframe, img {
     margin: 20px 0;
     padding: 10px;
     background: @white;
+    &.small {
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
   }
 }
 
@@ -368,6 +372,12 @@ iframe, img {
   background: @white;
   &.line-block {
     display: inline-block;
+  }
+  &.no-br {
+    .border-radius(0);
+  }
+  &.height {
+    height: auto;
   }
   &.radius {
     .border-radius(15px);
@@ -452,6 +462,16 @@ iframe, img {
       margin-top: 9px;
     }
   }
+  textarea {
+    .layer-box;
+    background: transparent;
+    border: 0 none;
+    font-size: @fs-14;
+    line-height: 20px;
+    height: 120px;
+    padding: 5px 0;
+    resize: none;
+  }
 }
 
 /*表单-复选框*/
@@ -491,6 +511,54 @@ iframe, img {
       .cursor-pointer;
       margin: 0;
       -webkit-appearance: checkbox;
+    }
+  }
+}
+
+/*表单-switch开关*/
+.fb-switch {
+  .set-layout("block", 49px, 24px);
+  overflow: hidden;
+  background: @g-999;
+  .border-radius(3px);
+  padding: 2px;
+  .fn-transition(all 0.3s ease);
+  &.active {
+    background: @blue-2c97ff;
+    label.box {
+      left: 25px;
+    }
+  }
+  &.radius {
+    .border-radius(15px);
+  }
+  label.box {
+    .layer-box-height;
+    left: 0;
+    width: 70px;
+    .fn-transition(all 0.3s ease);
+    span {
+      .set-layout("block", 25px, 100%);
+      z-index: 100;
+      .fl;
+      &.btn {
+        .set-layout("block", 20px, 20px);
+        .border-radius(50%);
+        background: @white;
+      }
+      &.on, &.off {
+        color: @white;
+        line-height: 20px;
+        font-size: @fs-12;
+        text-align: center;
+      }
+    }
+    input[type="checkbox"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
     }
   }
 }
@@ -546,6 +614,16 @@ iframe, img {
   .layer-box;
   padding-left: 20px;
   background: @white;
+  &.border {
+    border-bottom: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
+  }
+  &.small {
+    padding-left: 0;
+    li a {
+      padding-left: 20px;
+    }
+  }
   li {
     .layer-box;
     padding-right: 20px;
@@ -562,8 +640,14 @@ iframe, img {
       font-size: @fs-14;
       color: @g-333;
       &.right {
+        padding-right: 55px;
         &:after {
           content: normal;
+        }
+        .fb-switch {
+          .p-abs;
+          .fn-pos-tr(50%, 0);
+          margin-top: -12px;
         }
       }
       &:after {
@@ -778,7 +862,7 @@ iframe, img {
     font-size: @fs-16;
     .border-radius(5px);
     &.radius {
-      .border-radius(20px);
+      .border-radius(30px);
     }
     &.no-br {
       .border-radius(0);
