@@ -287,7 +287,7 @@ iframe, img {
 /*模块*/
 .fb-module {
   .layer-box;
-  &.white{
+  &.white {
     background: @white;
   }
   .m-title {
@@ -308,10 +308,10 @@ iframe, img {
     &.pad {
       padding: 10px 20px;
     }
-    &.no-pad{
+    &.no-pad {
       padding: 0;
     }
-    &.top-pad{
+    &.top-pad {
       padding: 10px 0;
     }
   }
@@ -541,6 +541,63 @@ iframe, img {
   }
 }
 
+/*快捷菜单*/
+.fb-menu-dir {
+  .layer-box;
+  padding-left: 20px;
+  background: @white;
+  li {
+    .layer-box;
+    padding-right: 20px;
+    border-bottom: 1px solid #e4e4e4;
+    &:last-child {
+      border-bottom: 0 none;
+    }
+    a {
+      .p-rel;
+      .d-block;
+      .text-middle(50px);
+      padding-left: 44px;
+      padding-right: 20px;
+      font-size: @fs-14;
+      color: @g-333;
+      &.right {
+        &:after {
+          content: normal;
+        }
+      }
+      &:after {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 16px;
+        background: url("@{img}/sprite.png") no-repeat -150px -48px;
+        background-size: 300px 300px;
+        .p-abs;
+        .fn-pos-tr(50%, 0);
+        margin-top: -7px;
+      }
+      i {
+        .p-abs;
+        .fn-pos-tl(50%, 5px);
+        margin-top: -15px;
+      }
+      span {
+        .fl;
+      }
+      label {
+        .fr;
+        color: @blue-2c97ff;
+      }
+    }
+  }
+  + .fb-menu-btn {
+    a.fb-btn {
+      .text-middle(50px);
+    }
+  }
+}
+
 //置顶
 .go-top {
   z-index: 101;
@@ -595,7 +652,7 @@ iframe, img {
     }
     &.height {
       height: 80%;
-      &.small{
+      &.small {
         height: 260px;
       }
     }
@@ -626,13 +683,13 @@ iframe, img {
         text-align: center;
         line-height: 40px;
         font-size: @fs-14;
-        &.big{
+        &.big {
           font-size: @fs-15;
         }
-        &.blue{
+        &.blue {
           color: @blue-2c97ff;
         }
-        &.blod{
+        &.blod {
           font-weight: bold;
         }
       }
@@ -725,6 +782,12 @@ iframe, img {
     }
     &.no-br {
       .border-radius(0);
+    }
+    &.white {
+      @color: @white;
+      background: @color;
+      border: 1px solid @color;
+      color: @red-ff3d3d;
     }
     &.red {
       @color: @error-color;
