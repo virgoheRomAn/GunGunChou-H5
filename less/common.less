@@ -369,22 +369,94 @@ iframe, img {
   }
 }
 
+/*手风琴*/
+.fb-slide-list {
+  .layer-box;
+  dl {
+    .layer-box;
+    dt {
+      .p-rel;
+      .text-middle(42px);
+      font-size: 1.4rem;
+      a {
+        .layer-box-height;
+        color: @g-333;
+        i {
+          .p-abs;
+          top: 50%;
+          right: 0;
+          margin-top: -6px;
+          transition: transform 0.2s linear;
+          -webkit-transition: -webkit-transform 0.2s linear;
+        }
+        &.active {
+          i {
+            transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+          }
+        }
+      }
+    }
+    dd {
+      margin: 0 0 0 10px;
+      display: none;
+      &.active {
+        display: block;
+      }
+      a {
+        .layer-box;
+        font-size: @fs-14;
+        line-height: 22px;
+        padding: 5px 0;
+        color: @g-666;
+        label {
+          .layer-box;
+          padding-left: 12px;
+          em {
+            .p-abs;
+            top: 0;
+            left: 0;
+            .d-block;
+            height: 20px;
+            line-height: 18px;
+            color: @g-666;
+            font-size: 2.0rem;
+            font-weight: bold;
+          }
+        }
+        label.has-tag {
+          &:before {
+            content: "";
+            .set-layout("block", 5px, 5px);
+            .border-radius(50%);
+            background: @g-666;
+            .p-abs;
+            top: 50%;
+            left: -12px;
+            margin-top: -3px;
+          }
+        }
+      }
+    }
+  }
+}
+
 /*列表*/
 .fb-list {
   .layer-box;
   &.pad {
     padding: 0 20px;
-    .item {
+    > .item {
       margin: 0;
       padding: 10px 0;
     }
   }
   &.border {
-    .item {
+    > .item {
       border-bottom: 1px solid #e4e4e4;
     }
   }
-  .item {
+  > .item {
     .layer-box;
     margin: 20px 0;
     padding: 10px;
@@ -686,9 +758,16 @@ iframe, img {
 .fb-tab-bar {
   .layer-box;
   .fb-tab-menu {
-    @h: 42px;
+    @h: 44px;
     .layer-box;
     height: @h;
+    //小红点
+    .tag {
+      .p-rel;
+      top: -8px;
+      left: 4px;
+      .d-in-block;
+    }
     &.big {
       li a {
         font-size: @fs-15;
@@ -698,6 +777,7 @@ iframe, img {
       .text-middle(@h);
       text-align: center;
       a {
+        .p-rel;
         .d-block;
         border-bottom: 2px solid #c4c4c4;
         font-size: @fs-12;
@@ -708,6 +788,7 @@ iframe, img {
         }
         &.current {
           color: @blue-2c97ff;
+          font-weight: bold;
         }
       }
     }
@@ -715,6 +796,7 @@ iframe, img {
       position: absolute;
       bottom: -2px;
       left: 0;
+      z-index: 1001;
       border-bottom: 2px solid @blue-2c97ff;
       display: block;
       width: 20%;

@@ -594,12 +594,12 @@ function formChecked(ele, callback) {
 
 //手风琴
 function slideDownNav(ele, type, time) {
-    var _ele = ele || ".ft-slide-bar dt a";
+    var _ele = ele || ".fb-slide-list dt a";
     var _type = type || false;
     var _time = time || "normal";
     $(document).on("click", _ele, function () {
         var $parent = $(this).parent();
-        var $parents = $(this).parents(".ft-slide-bar");
+        var $parents = $(this).parents(".fb-slide-list");
         if (_type) {
             if (!$(this).hasClass("active")) {
                 $parents.find("dt").removeClass("current");
@@ -612,7 +612,7 @@ function slideDownNav(ele, type, time) {
         $parent.next().stop(true, true).slideToggle(_time);
     });
 
-    $(document).on("click", ".ft-slide-bar dd a", function () {
+    $(document).on("click", ".fb-slide-list dd a", function () {
         $(this).toggleClass("active").siblings().removeClass("active");
     });
 }

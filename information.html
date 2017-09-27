@@ -84,23 +84,5 @@
 <script src="js/box.js"></script>
 <script src="js/common.js"></script>
 <script src="js/base.js"></script>
-<script>
-    $(function () {
-        //密码验证
-        verifyPwd("#loginPsd", "#againPsd");
-
-        //清除文字
-        $(".clean-input").focus(function () {
-            $(this).next().show();
-        }).blur(function () {
-            if (!$(this).val()) {
-                $(this).next().hide();
-            }
-        });
-        $(".clean-btn").each(function () {
-            clearText(this, $(this).prev());
-        });
-    })
-</script>
 </body>
 </html>

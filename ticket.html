@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-增益券</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header border">
+        <div class=" left">
+            <a href="javascript:;"><i class="sprite icon-back"></i></a>
+        </div>
+        <div class="mid">
+            <label class="text"><span>我的增益券</span></label>
+        </div>
+        <div class="right text">
+            <a href="help.html">帮助</a>
+        </div>
+    </div>
+
+    <div class="wrap height">
+        <div class="fb-tab-bar wrap height top">
+            <div class="fb-tab-menu big fb-box-list no-mar abs-tl">
+                <ul class="row-2 clearfix">
+                    <li><a href="javascript:;" data-id="YES" class="current">可使用<span class="tag text-icon red">99</span></a></li>
+                    <li><a href="javascript:;" data-id="NO" class="">已失效</a></li>
+                </ul>
+                <span class="tab-line"></span>
+            </div>
+
+            <div class="fb-wrap-height wrap background g-f5">
+                <div class="fb-wrap-height fb-tab-cont">
+                    <div class="fb-wrap-height money-content active isLoaded" id="YES">
+                        <div class="wrap height overflow" id="YESFlow">
+                            <div class="overflow-box">
+                                <div class="cont-box">
+                                    <div class="fb-list pad border">
+                                        <div class="coupon-bar">
+                                            <div class="item clearfix red">
+                                                <i class="tag gray big"></i>
+                                                <i class="tag gray big"></i>
+                                                <div class="fl">
+                                                    <span>2.5</span>
+                                                    <em>%</em>
+                                                </div>
+                                                <div class="fr pad">
+                                                    <label class="tm-bold">单比认筹金额满2000使用</label>
+                                                    <label>该增益券全平台通用， 投标增加年化收益率</label>
+                                                    <a class="fb-btn line white small tc-fff"
+                                                       href="javascript:;">立即使用</a>
+                                                </div>
+                                            </div>
+                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12</div>
+                                            <div class="item clearfix red">
+                                                <i class="tag gray big"></i>
+                                                <i class="tag gray big"></i>
+                                                <div class="fl">
+                                                    <span>1.5</span>
+                                                    <em>%</em>
+                                                </div>
+                                                <div class="fr pad">
+                                                    <label class="tm-bold">单比认筹金额满2000使用</label>
+                                                    <label>该增益券全平台通用， 投标增加年化收益率</label>
+                                                    <a class="fb-btn line white small tc-fff"
+                                                       href="javascript:;">立即使用</a>
+                                                </div>
+                                            </div>
+                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12</div>
+                                        </div>
+                                    </div>
+                                    <div class="list-loading">
+                                        <i><img src="img/loading.gif"></i>
+                                        <span>加载中...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fb-wrap-height money-content" id="NO">
+                        <div class="wrap height overflow" id="NOFlow">
+                            <div class="overflow-box">
+                                <div class="cont-box">
+                                    <div class="fb-list pad border">
+                                        <div class="coupon-bar">
+                                            <div class="item clearfix gray">
+                                                <i class="tag gray big"></i>
+                                                <i class="tag gray big"></i>
+                                                <div class="fl">
+                                                    <span>2.5</span>
+                                                    <em>%</em>
+                                                </div>
+                                                <div class="fr pad">
+                                                    <label class="tm-bold">单比认筹金额满2000使用</label>
+                                                    <label>该增益券全平台通用， 投标增加年化收益率</label>
+                                                    <span><img src="img/ticket-none.png"></span>
+                                                </div>
+                                            </div>
+                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12</div>
+                                            <div class="item clearfix gray">
+                                                <i class="tag gray big"></i>
+                                                <i class="tag gray big"></i>
+                                                <div class="fl">
+                                                    <span>1.5</span>
+                                                    <em>%</em>
+                                                </div>
+                                                <div class="fr pad">
+                                                    <label class="tm-bold">单比认筹金额满2000使用</label>
+                                                    <label>该增益券全平台通用， 投标增加年化收益率</label>
+                                                    <span><img src="img/ticket-none.png"></span>
+                                                </div>
+                                            </div>
+                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12</div>
+                                        </div>
+                                    </div>
+                                    <div class="list-loading">
+                                        <i><img src="img/loading.gif"></i>
+                                        <span>加载中...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fb-tab-loading" style="display: none"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--置顶按钮-->
+<a class="p-fix go-top" href="javascript:;" id="goTop"><img src="img/icon-top.png"></a>
+
+<script type="text/template" id="listHtml">
+    <div class="item clearfix">
+        <label class="fl">
+            <span>加载数据：消费支出</span>
+            <em>2017-07-08 06:00</em>
+        </label>
+        <label class="fr">
+            <span class="tc-success">-36,999,00</span>
+        </label>
+    </div>
+</script>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        //切换菜单
+        var $menu = $(".fb-tab-menu");
+        var $current = $menu.find("a.current");
+        //当前滚动条
+        var $flowActive = $("#JYJLFlow");
+        scrollFun();
+
+        //tab-line
+        resizeInit(function (w) {
+            var width = w / $menu.find("li").length;
+            $(".tab-line").width(width).css("left", $current.offset().left + "px");
+        });
+        var nav = {
+            element: $menu.find("a"),
+            length: $menu.find("li").length,
+            navID: [],
+            current: $current.parent().index()
+        };
+        $menu.find("a").each(function () {
+            var $load = $(".fb-tab-loading");
+            nav.navID.push($(this).data("id"));
+            $(this).click(function () {
+                if ($(this).hasClass("current")) return false;
+                var $line = $(".tab-line");
+                var $top = $("#goTop");
+                $flowActive = $("#" + $(this).data("id") + "Flow");
+                $(this).addClass("current").parents("li").siblings().find("a").removeClass("current");
+                $line.css("left", $(this).offset().left + "px");
+
+                //ajax异步显示数据
+                var $current = $("#" + $(this).data("id"));
+                $current.addClass("active").siblings().removeClass("active");
+                if (!$current.hasClass("isLoaded")) {
+                    $load.show();
+                    setTimeout(function () {
+                        $load.hide();
+                        $current.addClass("isLoaded");
+                        scrollFun();
+
+                        ($flowActive.scrollTop() < 90) ? $top.hide() : $top.show();
+                    }, 1000);
+                } else {
+                    ($flowActive.scrollTop() < 90) ? $top.hide() : $top.show();
+                }
+            });
+        });
+
+        //页面滚动
+        function scrollFun() {
+            var ajaxDataNum = 0, downflag = false;
+            return pageScroll({
+                hasTop: true,
+                element: $flowActive[0],
+                ajaxFun: function () {
+                    if (!downflag) {
+                        downflag = true;
+                        var list = $("#listHtml").html();
+                        var str = "";
+                        for (var i = 0; i <= 5; i++) {
+                            str += list;
+                        }
+                        setTimeout(function () {
+                            ajaxDataNum++;
+                            if (ajaxDataNum >= 5) {
+                                $flowActive.find(".list-loading").html("没有更多数据");
+                                return false;
+                            }
+                            $flowActive.find(".fb-list").append(str);
+                            downflag = false;
+                        }, 1000);
+                    }
+                }
+            });
+        }
+    })
+</script>
+</body>
+</html>

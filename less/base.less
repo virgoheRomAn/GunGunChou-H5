@@ -1027,6 +1027,13 @@
 .tag {
   .set-layout("block", 6px, 6px);
   .border-radius(50%);
+  &.text-icon {
+    width: 16px;
+    .text-middle(16px);
+    font-size: @fs-10;
+    text-align: center;
+    color: @white;
+  }
   &.text {
     .set-layout("block", 50px, 24px);
     line-height: 22px;
@@ -1048,6 +1055,9 @@
   &.gray {
     background: #f4f4f4;
   }
+  &.gray-666 {
+    background: @g-666;
+  }
   &.big {
     width: 16px;
     height: 16px;
@@ -1057,6 +1067,50 @@
     .set-layout("block", 100%, 15px);
     &.gray {
       background: @g-f5f5;
+    }
+  }
+}
+
+//帮助中心
+.help-bar {
+  .layer-box;
+  padding: 0 20px;
+  .help-banner {
+    .layer-box;
+    height: 60px;
+    margin: 20px 0;
+    .border-radius(3px);
+    .fn-box-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+    padding-left: 60px;
+    i.sprite {
+      .abs-tl-mid;
+      left: 15px;
+      margin-left: 0;
+    }
+    label {
+      .p-rel;
+      z-index: 31;
+      .d-in-block;
+      width: 100%;
+      margin-top: 11px;
+      span {
+        .d-block;
+        font-size: @fs-14;
+        color: @blue-user;
+      }
+      em {
+        .d-block;
+        font-size: @fs-12;
+        color: @g-666;
+        margin-top: -4px;
+      }
+    }
+    img {
+      .p-abs;
+      top: 0;
+      right: 0;
+      .d-block;
+      height: 100%;
     }
   }
 }
@@ -1145,6 +1199,16 @@
           .fn-pos-tr(50%, 14px);
           margin-top: -16px;
         }
+        > span {
+          width: 60px;
+          height: 60px;
+          .p-abs;
+          .fn-pos-tr(50%, 19px);
+          margin-top: -30px;
+          img {
+            .layer-box-height;
+          }
+        }
       }
       label {
         position: relative;
@@ -1173,6 +1237,10 @@
     &.red {
       background: radial-gradient(left center, circle cover, rgb(255, 135, 128), rgb(248, 111, 112) 30%, rgb(232, 78, 95) 100%);
       background: -webkit-radial-gradient(left center, circle cover, rgb(255, 135, 128), rgb(248, 111, 112) 30%, rgb(232, 78, 95) 100%);
+    }
+    &.gray {
+      background: radial-gradient(left center, circle cover, #d3d2d2, #bfbebe 30%, #9b9a9a 100%);
+      background: -webkit-radial-gradient(left center, circle cover, #d3d2d2, #bfbebe 30%, #9b9a9a 100%);
     }
   }
 }
@@ -1298,6 +1366,12 @@
   background-position: -150px -48px;
 }
 
+.icon-dir-top {
+  width: 16px;
+  height: 11px;
+  background-position: -150px -69px;
+}
+
 .icon-setting1 {
   width: 31px;
   height: 31px;
@@ -1356,4 +1430,18 @@
   width: 31px;
   height: 31px;
   background-position: -270px -172px;
+}
+
+.icon-manager-phone {
+  width: 34px;
+  height: 34px;
+  background-position: -178px -170px;
+  margin: -17px 0 0 -17px;
+}
+
+.icon-service-phone {
+  width: 34px;
+  height: 30px;
+  background-position: -178px -136px;
+  margin: -15px 0 0 -17px;
 }

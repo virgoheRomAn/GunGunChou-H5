@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-帮助中心</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header border">
+        <div class=" left">
+            <a href="javascript:;"><i class="sprite icon-back"></i></a>
+        </div>
+        <div class="mid">
+            <label class="text"><span>帮助中心</span></label>
+        </div>
+    </div>
+    <div class="wrap height overflow" id="contentFlow">
+        <div class="overflow-box">
+            <div class="help-bar">
+                <div class="help-banner">
+                    <a href="tel:13612345678">
+                        <i class="sprite icon-manager-phone"></i>
+                        <label>
+                            <span>拨打理财经理热线</span>
+                            <em>赵尔构 13612345876</em>
+                        </label>
+                        <img src="img/help-icon1.png">
+                    </a>
+                </div>
+
+                <div class="help-banner">
+                    <a href="tel:023-123456">
+                        <i class="sprite icon-service-phone"></i>
+                        <label>
+                            <span>电话客服</span>
+                            <em>拨打客服电话</em>
+                        </label>
+                        <img src="img/help-icon2.png">
+                    </a>
+                </div>
+
+                <div class="fb-module">
+                    <div class="m-title no-pad tm-center">
+                        <span>常见问题</span>
+                    </div>
+                    <div class="m-cont no-pad">
+                        <div class="fb-slide-list">
+                            <dl>
+                                <dt>
+                                    <a href="javascript:;">
+                                        <label>众筹相关问题</label>
+                                        <i class="sprite icon-dir-top"></i>
+                                    </a>
+                                </dt>
+                                <dd>
+                                    <a href="help-information.html">
+                                        <label><em>·</em>如何注册新用户？</label>
+                                    </a>
+                                    <a href="help-information.html">
+                                        <label><em>·</em>如何悬着众筹？</label>
+                                    </a>
+                                </dd>
+                                <dt>
+                                    <a href="javascript:;">
+                                        <label>众筹相关问题</label>
+                                        <i class="sprite icon-dir-top"></i>
+                                    </a>
+                                </dt>
+                                <dd>
+                                    <a href="help-information.html">
+                                        <label><em>·</em>如何注册新用户？</label>
+                                    </a>
+                                    <a href="help-information.html">
+                                        <label><em>·</em>如何悬着众筹？</label>
+                                    </a>
+                                </dd>
+                                <dt>
+                                    <a href="javascript:;">
+                                        <label>众筹相关问题</label>
+                                        <i class="sprite icon-dir-top"></i>
+                                    </a>
+                                </dt>
+                                <dd>
+                                    <a href="help-information.html">
+                                        <label><em>·</em>如何注册新用户？如何注册新用户？如何注册新用户？如何注册新用户？</label>
+                                    </a>
+                                    <a href="help-information.html">
+                                        <label><em>·</em>如何悬着众筹？</label>
+                                    </a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--置顶按钮-->
+<a class="p-fix go-top" href="javascript:;" id="goTop"><img src="img/icon-top.png"></a>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        var $flowActive = $("#contentFlow");
+        pageScroll({
+            hasTop: true,
+            element: $flowActive[0]
+        });
+
+        //手风琴
+        slideDownNav();
+    })
+</script>
+</body>
+</html>
