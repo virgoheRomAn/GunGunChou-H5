@@ -94,11 +94,6 @@ function pageScroll(opt) {
  * @param callback  回调函数
  */
 function scrollToEle(ele, top, callback) {
-    if ((typeof ele).toString().toLocaleLowerCase() !== "string") {
-        callback = arguments[1];
-        top = arguments[0];
-        ele = "html,body";
-    }
     $(ele).animate({"scrollTop": top + "px"}, 300, function () {
         if (callback) callback.call(this);
     });

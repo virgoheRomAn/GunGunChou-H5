@@ -745,22 +745,31 @@
     .layer-box;
     padding: 35px 0;
     text-align: center;
-    font-weight: bold;
     > span, > label {
       .layer-box;
     }
     > span {
       font-size: @fs-18;
+      font-weight: bold;
     }
     > label {
       font-size: 3.0rem;
       color: @red-ff3d3d;
+      font-weight: bold;
     }
   }
   .wallet-money {
     border-top: 1px solid #e4e4e4;
     border-bottom: 1px solid #e4e4e4;
     padding: 10px 0;
+    > h2.title {
+      .d-block;
+      padding: 0 20px;
+      margin: 0;
+      .text-middle(30px);
+      font-size: @fs-15;
+      text-align: left;
+    }
     li {
       margin-bottom: 0;
     }
@@ -880,16 +889,55 @@
       .fr;
     }
   }
-  .cont{
+  .cont {
     .layer-box;
-    label{
+    label {
       .d-block;
       font-size: @fs-15;
       .text-middle(30px);
       padding-left: 30px;
-      &:first-of-type{
+      &:first-of-type {
         font-size: @fs-18;
       }
+    }
+  }
+}
+
+//资金流水
+.money-content {
+  .layer-box;
+  .d-none;
+  &.active {
+    .d-block;
+  }
+  .cont-box {
+    &.right {
+      label.fr {
+        .p-abs;
+        top: 50%;
+        right: 0;
+        .text-middle(40px);
+        margin-top: -20px;
+      }
+    }
+    label.fl, label.fr {
+      > span {
+        display: block;
+        font-size: @fs-14;
+      }
+      > em {
+        display: block;
+        font-size: @fs-12;
+      }
+    }
+    label.fl {
+      display: block;
+      width: 70%;
+    }
+    label.fr {
+      display: block;
+      width: 30%;
+      text-align: center;
     }
   }
 }

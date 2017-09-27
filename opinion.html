@@ -42,7 +42,8 @@
                         </div>
                     </div>
                     <div class="form-btn mt-40">
-                        <a class="fb-btn no-bd big radius background blue-bigger" href="javascript:;" id="sureBtn">提交反馈</a>
+                        <a class="fb-btn no-bd big radius background blue-bigger" href="javascript:;"
+                           id="sureBtn">提交反馈</a>
                     </div>
                 </div>
             </div>
@@ -54,5 +55,12 @@
 <script src="js/box.js"></script>
 <script src="js/common.js"></script>
 <script src="js/base.js"></script>
+<script>
+    $(function () {
+        $("#sureBtn").click(function () {
+            $.jAlert.success("意见提交成功，我们将尽快联系你！", null, {type: 3});
+        });
+    })
+</script>
 </body>
 </html>

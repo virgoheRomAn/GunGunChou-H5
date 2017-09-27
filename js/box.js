@@ -478,7 +478,7 @@
             .j-alert-intro{position: relative; display: table-cell; width: 100%; vertical-align: middle;}\
             .j-alert-icon{display: block; width: 24px; height: 24px;}\
             .j-alert-icon img{display: block; width: 100%; height: 100%;}\
-            .j-alert-text{display: block; width: 100%; line-height: 24px; font-size: 14px; color: #ffffff; text-align: center; white-space: nowrap;}\
+            .j-alert-text{display: block; width: 100%; line-height: 24px; font-size: 14px; color: #ffffff; text-align: center;}\
             .j-alert-hasIcon.j-alert-iconH .j-alert-icon{position: absolute; top:50%; left:0; margin-top: -12px; }\
             .j-alert-hasIcon.j-alert-iconH .j-alert-intro{padding-left: 30px;}\
             .j-alert-hasIcon.j-alert-iconH .j-alert-text{text-align: left;}\

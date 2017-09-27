@@ -373,6 +373,19 @@ FB.padZero = function (num, n) {
     }
     return num;
 };
+/**
+ * 提取字符串中的小数
+ * @param str
+ * @returns {Number}
+ */
+FB.numberStr = function (str) {
+    var leftStr = str.split(".")[0];
+    var rightStr = str.split(".").slice(1).join(".");
+    var integer = leftStr.replace(/[^0-9]/ig, "");
+    var float = rightStr.replace(/[^0-9]/ig, "");
+    var newNum = integer + "." + float;
+    return parseFloat(newNum);
+};
 //获取当前时间
 FB.getNowTime = function (type) {
     var myDate = new Date();
