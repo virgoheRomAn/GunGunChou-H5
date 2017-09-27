@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-帮助中心</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header border">
+        <div class=" left">
+            <a href="javascript:;"><i class="sprite icon-back"></i></a>
+        </div>
+        <div class="mid">
+            <label class="text"><span>平台公告</span></label>
+        </div>
+    </div>
+    <div class="wrap height overflow background g-f5" id="contentFlow">
+        <div class="overflow-box">
+            <div class="fb-list pad border notice-list">
+                <div class="item">
+                    <a href="notice-information.html">
+                        <label>关于客服电话变更通告</label>
+                        <label>
+                            <span>发布：滚滚筹平台</span>
+                            <em>2017-07-08 06:00</em>
+                        </label>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="notice-information.html">
+                        <label>新众筹客户服务协议变更</label>
+                        <label>
+                            <span>发布：滚滚筹平台</span>
+                            <em>2017-07-08 06:00</em>
+                        </label>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="notice-information.html">
+                        <label>众筹最低起始金额调动意见征集</label>
+                        <label>
+                            <span>发布：滚滚筹平台</span>
+                            <em>2017-07-08 06:00</em>
+                        </label>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--置顶按钮-->
+<a class="p-fix go-top" href="javascript:;" id="goTop"><img src="img/icon-top.png"></a>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        var $flowActive = $("#contentFlow");
+        pageScroll({
+            hasTop: true,
+            element: $flowActive[0]
+        });
+    })
+</script>
+</body>
+</html>

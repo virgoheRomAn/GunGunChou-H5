@@ -1115,6 +1115,34 @@
   }
 }
 
+//公告列表
+.notice-list {
+  background: @white;
+  .item {
+    &:last-of-type {
+      border-bottom: 0 none;
+    }
+    a {
+      color: @g-333;
+      font-size: @fs-14;
+      label {
+        .d-block;
+        &:nth-child(1) {
+          line-height: 20px;
+          margin-bottom: 3px;
+        }
+        &:nth-child(2) {
+          color: @g-666;
+          font-size: @fs-12;
+          em {
+            .fr;
+          }
+        }
+      }
+    }
+  }
+}
+
 //优惠券弹窗
 .j-confirm-box {
   .coupon-box {
