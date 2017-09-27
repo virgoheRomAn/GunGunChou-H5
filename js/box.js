@@ -208,19 +208,19 @@
                     var _newWidth = $countEle.outerWidth(true);
                     if (obj) {
                         if (!obj.width && obj.height) {
-                            w = _newWidth >= 200 ? 200 : _newWidth;
+                            w = _newWidth >= 200 ? 200 : _newWidth + 2;
                         } else if (!obj.height && obj.width) {
                             h = $countEle.css("width", w).outerHeight(true);
                             $countEle.removeAttr("style");
                         } else if (obj.width && obj.height) {
                             $countEle.css("padding", "0 15px");
                         } else if (!obj.width && !obj.height) {
-                            w = _newWidth >= 200 ? 200 : _newWidth + 30;
+                            w = _newWidth >= 200 ? 200 : _newWidth + 30 + 2;
                             h = _newHeight + 30;
                             $countEle.css("padding", "15px");
                         }
                     } else {
-                        w = _newWidth >= 200 ? 200 : _newWidth + 30;
+                        w = _newWidth >= 200 ? 200 : _newWidth + 30 + 2;
                         h = _newHeight + 30;
                         $countEle.css("padding", "15px");
                     }
