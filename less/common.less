@@ -344,6 +344,15 @@ iframe, img {
     font-size: @fs-14;
     color: @g-333;
     padding: 0 20px;
+    &.auto {
+      height: auto;
+      line-height: 20px;
+      padding: 10px 0;
+    }
+    > em {
+      font-size: @fs-12;
+      color: @g-666
+    }
     &.no-bd {
       border-bottom: 0 none;
     }
@@ -466,30 +475,36 @@ iframe, img {
       margin: 0 0 10px 0;
     }
   }
-  + .list-loading {
-    .layer-box;
-    .text-middle(36px);
-    text-align: center;
-    color: #aaaaaa;
-    margin: 10px 0;
-    &.margin {
-      margin: -10px 0 10px 0;
-    }
-    i {
-      display: inline-block;
-      width: 15px;
-      height: 15px;
-      position: relative;
-      top: 3px;
-      margin-right: 3px;
-    }
-    img {
-      .layer-box-height;
-    }
-    span {
-      color: @g-666;
-      font-size: @fs-12;
-    }
+}
+
+/*列表-加载*/
+.list-loading {
+  .layer-box;
+  .text-middle(36px);
+  text-align: center;
+  color: #aaaaaa;
+  margin: 10px 0;
+  &.g-f5{
+    background: @g-f5f5;
+    margin: -10px 0 0 0;
+  }
+  &.margin {
+    margin: -10px 0 10px 0;
+  }
+  i {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 3px;
+    margin-right: 3px;
+  }
+  img {
+    .layer-box-height;
+  }
+  span {
+    color: @g-666;
+    font-size: @fs-12;
   }
 }
 

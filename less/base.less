@@ -210,6 +210,34 @@
 
 //产品列表
 .product {
+  &.none {
+    border-top: 1px solid #e4e4e4;
+    padding-top: 10px;
+    margin-top: 10px;
+    .fb-list {
+      > .item {
+        padding: 0;
+        margin: 0;
+        .fn-box-shadow(none);
+        a {
+          padding-left: 82px;
+          .pro-img {
+            width: 72px;
+            height: 72px;
+          }
+          .pro-intro {
+            .pro-name {
+              top: -2px;
+              line-height: 17px;
+            }
+            .pro-time {
+              margin: 1px 0;
+            }
+          }
+        }
+      }
+    }
+  }
   .fb-list {
     .item {
       .fn-box-shadow(0 0 10px rgba(0, 0, 0, 0.2));
@@ -610,6 +638,29 @@
             margin: 10px 0;
           }
         }
+      }
+    }
+  }
+}
+
+//评价详情
+.evaluate-bar {
+  background: @white;
+  padding: 0;
+  .evaluate-list {
+    margin-top: 0;
+    .list li {
+      .p-rel;
+      border-bottom: 0 none;
+      padding: 10px 20px 20px;
+      &:after {
+        .layer-box;
+        .p-abs;
+        bottom: 0;
+        left: 0;
+        content: "";
+        height: 10px;
+        background: @g-f5f5;
       }
     }
   }
