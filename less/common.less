@@ -484,7 +484,7 @@ iframe, img {
   text-align: center;
   color: #aaaaaa;
   margin: 10px 0;
-  &.g-f5{
+  &.g-f5 {
     background: @g-f5f5;
     margin: -10px 0 0 0;
   }
@@ -776,6 +776,27 @@ iframe, img {
     @h: 44px;
     .layer-box;
     height: @h;
+    &.white {
+      background: @white;
+    }
+    //swiper
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+      border-bottom: 1px solid #e4e4e4;
+      .swiper-slide {
+        float: left;
+        width: 22%;
+        .text-middle(43px);
+        text-align: center;
+        color: @g-333;
+        font-size: @fs-14;
+        &.active {
+          color: @blue-user;
+          border-bottom: 2px solid @blue-user;
+        }
+      }
+    }
     //小红点
     .tag {
       .p-rel;

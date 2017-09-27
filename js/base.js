@@ -415,7 +415,6 @@ function slideHorizontalNav(ele, option) {
     };
     self._init();
 
-
     return opt;
 }
 
