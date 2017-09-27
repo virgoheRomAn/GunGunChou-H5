@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-充值</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header">
+        <div class=" left">
+            <a href="javascript:;"><i class="sprite icon-back"></i></a>
+        </div>
+        <div class="mid">
+            <label class="text"><span>充值</span></label>
+        </div>
+    </div>
+    <div class="wrap height overflow background g-f5">
+        <div class="overflow-box">
+            <div class="recharge-bar">
+                <div class="recharge-num">
+                    <label class="list-input no-bd">
+                        <span>充值金额：</span>
+                        <input type="number" placeholder="输入本次充值金额">
+                    </label>
+                </div>
+                <div class="recharge-type">
+                    <label>充值方式：</label>
+                    <div class="fb-box-list">
+                        <ul class="row-2 clearfix">
+                            <li>
+                                <a class="active" href="javascript:;">
+                                    <i class="sprite icon-aliPay"></i>
+                                    <span>支付宝支付</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="sprite icon-wechatPay"></i>
+                                    <span>微信支付</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="recharge-btn">
+                <a class="fb-btn no-bd big radius background blue-bigger" href="javascript:;" id="sure">确认充值</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        $(".recharge-type a").click(function () {
+            $(this).addClass("active").closest("li").siblings().find("a").removeClass("active");
+        });
+
+        $("#sure").click(function () {
+            var loading = $.jAlert.loading("跳转第三方支付中...");
+            setTimeout(function () {
+                $.jClose({
+                    ele: loading, type: 2, time: 1000, callback: function () {
+                        $.jAlert.success("充值成功！", null, {
+                            callback: function () {
+                                window.location.href = "recharge-state.html";
+                            }
+                        })
+                    }
+                })
+            }, 1000);
+        });
+    })
+</script>
+</body>
+</html>

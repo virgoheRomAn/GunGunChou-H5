@@ -761,7 +761,7 @@
     border-top: 1px solid #e4e4e4;
     border-bottom: 1px solid #e4e4e4;
     padding: 10px 0;
-    li{
+    li {
       margin-bottom: 0;
     }
     label {
@@ -787,6 +787,108 @@
         margin-top: -2px;
         color: @g-666;
         font-weight: bold;
+      }
+    }
+  }
+  .wallet-btn {
+    .layer-box;
+    padding: 0 20px;
+    margin-top: 30px;
+    a {
+      margin-top: 15px;
+    }
+  }
+}
+
+//充值
+.recharge-bar {
+  .layer-box;
+  background: @white;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  border-top: 1px solid #e4e4e4;
+  .recharge-num {
+    padding: 0 20px;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .recharge-type {
+    .layer-box;
+    padding: 0 20px;
+    &.border {
+      border-bottom: 1px solid #e4e4e4;
+    }
+    &.pad {
+      padding-bottom: 15px;
+    }
+    > label {
+      .layer-box;
+      .text-middle(42px);
+      font-size: @fs-14;
+      color: @g-333;
+    }
+    .fb-box-list {
+      li a {
+        .set-layout("block", 135px, 50px);
+        line-height: 48px;
+        border: 1px solid transparent;
+        padding: 0 10px 0 50px;
+        .border-radius(3px);
+        &.active {
+          border: 1px solid @red-ff3d3d;
+        }
+        i {
+          .p-abs;
+          .fn-pos-tl(50%, 10px);
+          margin: -15px 0 0 0;
+        }
+        span {
+          .d-block;
+          font-size: @fs-14;
+          color: @g-333;
+        }
+      }
+    }
+  }
+  + .recharge-btn {
+    padding: 0 20px;
+  }
+}
+
+//体现-银行卡
+.bank-card {
+  padding: 0 10px 5px;
+  background: #e15555;
+  .border-radius(3px);
+  color: @white;
+  .title {
+    .layer-box;
+    .text-middle(46px);
+    i.icon-bank-gs {
+      .p-rel;
+      top: 7px;
+      margin-right: 3px;
+      .d-in-block;
+      width: 25px;
+      height: 25px;
+      background-position: -233px -206px;
+    }
+    span {
+      font-size: @fs-15;
+    }
+    em {
+      font-size: @fs-12;
+      .fr;
+    }
+  }
+  .cont{
+    .layer-box;
+    label{
+      .d-block;
+      font-size: @fs-15;
+      .text-middle(30px);
+      padding-left: 30px;
+      &:first-of-type{
+        font-size: @fs-18;
       }
     }
   }
@@ -1194,4 +1296,16 @@
   width: 31px;
   height: 31px;
   background-position: 0 -269px;
+}
+
+.icon-aliPay {
+  width: 31px;
+  height: 31px;
+  background-position: -233px -172px;
+}
+
+.icon-wechatPay {
+  width: 31px;
+  height: 31px;
+  background-position: -270px -172px;
 }

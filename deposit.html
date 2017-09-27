@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-提现</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/user.min.css">
+</head>
+<body class="isHide">
+<div class="wrap height top">
+    <div class="header">
+        <div class=" left">
+            <a href="javascript:;"><i class="sprite icon-back"></i></a>
+        </div>
+        <div class="mid">
+            <label class="text"><span>提现</span></label>
+        </div>
+    </div>
+    <div class="wrap height overflow background g-f5">
+        <div class="overflow-box">
+            <div class="fb-module pad white mt-10 mb-10">
+                <div class="m-title no-pad border-light">
+                    <span>到账银行卡信息</span>
+                </div>
+                <div class="m-cont no-pad pt-10 pb-10">
+                    <div class="bank-card">
+                        <div class="title">
+                            <i class="sprite icon-bank-gs"></i>
+                            <span>中国工商银行</span>
+                            <em>到账银行</em>
+                        </div>
+                        <div class="cont">
+                            <label>4012 **** **** 5245617</label>
+                            <label>赵尔构</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="recharge-bar">
+                <div class="recharge-num">
+                    <label class="list-input no-bd">
+                        <span>提现金额：</span>
+                        <input type="number" placeholder="提现金额不得低于100元">
+                    </label>
+                </div>
+                <div class="recharge-type border pad">
+                    <label class="fs-12 tc-999">每天24:00前仅提供1次提现机会</label>
+                    <div class="form-list">
+                        <div class="item-text small">
+                            <span class="t">手续费：</span>
+                            <span class="c tc-ff3d3d">¥ 0.00</span>
+                        </div>
+                        <div class="item-text small">
+                            <span class="t">到账金额：</span>
+                            <span class="c tc-ff3d3d">¥ 200.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="recharge-num">
+                    <label class="list-input no-bd">
+                        <span>支付密码：</span>
+                        <input type="password" placeholder="请输入支付密码">
+                    </label>
+                </div>
+            </div>
+            <div class="recharge-btn">
+                <a class="fb-btn no-bd big radius background blue-bigger" href="javascript:;" id="sure">确认提现</a>
+                <span class="d-block tm-center tc-666 fs-12">根据银行实际情况大约在1-3个工作日内到账</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        $(".recharge-type a").click(function () {
+            $(this).addClass("active").closest("li").siblings().find("a").removeClass("active");
+        });
+
+        $("#sure").click(function () {
+            var loading = $.jAlert.loading("跳转第三方支付中...");
+            setTimeout(function () {
+                $.jClose({
+                    ele: loading, type: 2, time: 1000, callback: function () {
+                        $.jAlert.success("充值成功！", null, {
+                            callback: function () {
+                                window.location.href = "recharge-state.html";
+                            }
+                        })
+                    }
+                })
+            }, 1000);
+        });
+    })
+</script>
+</body>
+</html>
