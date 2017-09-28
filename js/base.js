@@ -395,10 +395,11 @@ function slideHorizontalNav(ele, option) {
         $(this).addClass("active").siblings().removeClass("active");
         var _curBar = navBox.find(".swiper-slide.active");
         var _index = _curBar.index();
-        var _width = _curBar.offset().left + _curBar[0].offsetWidth + 60;
+        var _width = _curBar.offset().left + _curBar[0].offsetWidth;
         if (_width > $(window).width()) {
-            navSwiper.slideNext();
-        } else if ((_width - 60) < _curBar[0].offsetWidth * 2) {
+            navSwiper.slideTo(_index, 300, false);
+            //navSwiper.slideNext();
+        } else if ((_width) < _curBar[0].offsetWidth * 2) {
             navSwiper.slidePrev();
         }
         if (opt.hasPlaceholder) self._placeholder();
