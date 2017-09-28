@@ -59,7 +59,8 @@
                                                        href="javascript:;">领取</a>
                                                 </div>
                                             </div>
-                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12<span class="fr tc-user">剩余：26张</span></div>
+                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12<span class="fr tc-user">剩余：26张</span>
+                                            </div>
                                             <div class="item clearfix red">
                                                 <i class="tag gray big"></i>
                                                 <i class="tag gray big"></i>
@@ -74,7 +75,8 @@
                                                        href="javascript:;">领取</a>
                                                 </div>
                                             </div>
-                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12<span class="fr tc-user">剩余：26张</span></div>
+                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12<span class="fr tc-user">剩余：26张</span>
+                                            </div>
                                             <div class="item clearfix red">
                                                 <i class="tag gray big"></i>
                                                 <i class="tag gray big"></i>
@@ -117,7 +119,8 @@
                                                     <span>已领完</span>
                                                 </div>
                                             </div>
-                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12<span class="fr tc-ff3d3d">剩余：0张</span></div>
+                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12<span
+                                                    class="fr tc-ff3d3d">剩余：0张</span></div>
                                             <div class="item clearfix red">
                                                 <i class="tag gray big"></i>
                                                 <i class="tag gray big"></i>
@@ -131,7 +134,8 @@
                                                     <span>已领完</span>
                                                 </div>
                                             </div>
-                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12<span class="fr tc-ff3d3d">剩余：0张</span></div>
+                                            <div class="coupon-time">有效期：2017-12-30至2018-01-12<span
+                                                    class="fr tc-ff3d3d">剩余：0张</span></div>
                                         </div>
                                     </div>
                                     <div class="list-loading">
@@ -244,6 +248,24 @@
                 }
             });
         }
+
+
+        $(document).on("click touchend", "#YESFlow a.fb-btn", function () {
+            $.jConfirm({
+                title: "使用说明",
+                intro: "投标单笔达到2000以上可使用该增益券",
+                close: true
+            }, [
+                {
+                    text: "我知道了",
+                    css: {color: "#018eff"}
+                }
+            ], "V",null,{
+                titleCss:{
+                    margin:"10px 0"
+                }
+            })
+        });
     })
 </script>
 </body>
