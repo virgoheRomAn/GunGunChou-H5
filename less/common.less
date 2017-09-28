@@ -380,9 +380,24 @@ iframe, img {
 
 /*手风琴*/
 .fb-slide-list {
+  &.gray {
+    dl dd {
+      background: @g-f5f5;
+      margin-left: 0;
+      padding: 5px 15px;
+      border-bottom: 1px solid #e4e4e4;
+    }
+  }
+  &.border {
+    dl dt {
+      border-bottom: 1px solid #e4e4e4;
+    }
+  }
   .layer-box;
   dl {
     .layer-box;
+    padding: 10px 0;
+    margin: 0;
     dt {
       .p-rel;
       .text-middle(42px);

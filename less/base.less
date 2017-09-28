@@ -680,6 +680,13 @@
     padding: 0 15px;
     background: @white;
   }
+  &.background {
+    border-bottom: 1px solid #ff7b2c;
+    span {
+      font-size: @fs-12;
+      color: #ff7b2c;
+    }
+  }
 }
 
 //页面title
@@ -740,6 +747,13 @@
         a {
           .d-block;
         }
+      }
+      &.no-background {
+        background: transparent;
+        height: auto;
+        line-height: 20px;
+        font-size: @fs-14;
+        color: @g-333;
       }
       a {
         .d-none;
@@ -823,6 +837,14 @@
     }
     li {
       margin-bottom: 0;
+      &:last-of-type {
+        label {
+          border-right: 0 none;
+          &:after {
+            border-right: 0 none;
+          }
+        }
+      }
     }
     label {
       .layer-box;
@@ -847,6 +869,23 @@
         margin-top: -2px;
         color: @g-666;
         font-weight: bold;
+      }
+    }
+    &.red {
+      label {
+        border-right: 1px solid #e4e4e4;
+        &:after {
+          content: normal;
+        }
+        span {
+          color: @g-666;
+          font-size: @fs-13;
+        }
+        em {
+          margin-top: 10px;
+          font-size: @fs-14;
+          color: #fd6d6d;
+        }
       }
     }
   }
@@ -1030,6 +1069,13 @@
     .fn-pos-bl(30px, 0);
     padding: 0 20px;
   }
+}
+
+.crowd-title {
+  text-align: center;
+  font-size: @fs-20;
+  font-weight: bold;
+  color: #ff7b2c;
 }
 
 //底部

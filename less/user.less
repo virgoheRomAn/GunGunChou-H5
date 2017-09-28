@@ -211,6 +211,15 @@
   @h: 48px;
   .layer-box;
 
+  &.small {
+    .item-text {
+      .text-middle(28px);
+      > span {
+        font-size: @fs-12;
+      }
+    }
+  }
+
   .form-step {
     .layer-box;
     .step-tag {
@@ -398,7 +407,7 @@
     .layer-box;
     .text-middle(48px);
     padding-left: 90px;
-    &.small{
+    &.small {
       .text-middle(26px);
     }
     > span {
