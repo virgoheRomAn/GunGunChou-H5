@@ -157,15 +157,21 @@
 <a class="p-fix go-top" href="javascript:;" id="goTop"><img src="img/icon-top.png"></a>
 
 <script type="text/template" id="listHtml">
-    <div class="item clearfix">
-        <label class="fl">
-            <span>加载数据：消费支出</span>
-            <em>2017-07-08 06:00</em>
-        </label>
-        <label class="fr">
-            <span class="tc-success">-36,999,00</span>
-        </label>
+    <div class="item clearfix red">
+        <i class="tag gray big"></i>
+        <i class="tag gray big"></i>
+        <div class="fl">
+            <span>2.5</span>
+            <em>%</em>
+        </div>
+        <div class="fr pad">
+            <label class="tm-bold">单比认筹金额满2000使用</label>
+            <label>该增益券全平台通用， 投标增加年化收益率</label>
+            <a class="fb-btn line white small tc-fff"
+               href="javascript:;">领取</a>
+        </div>
     </div>
+    <div class="coupon-time">有效期：2017-12-30至2018-01-12<span class="fr tc-user">剩余：26张</span></div>
 </script>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/swiper.jquery.min.js"></script>
@@ -178,7 +184,7 @@
         var $menu = $(".fb-tab-menu");
         var $current = $menu.find("a.current");
         //当前滚动条
-        var $flowActive = $("#JYJLFlow");
+        var $flowActive = $("#YESFlow");
         scrollFun();
 
         //tab-line
@@ -232,7 +238,7 @@
                         downflag = true;
                         var list = $("#listHtml").html();
                         var str = "";
-                        for (var i = 0; i <= 5; i++) {
+                        for (var i = 0; i <= 1; i++) {
                             str += list;
                         }
                         setTimeout(function () {
@@ -241,14 +247,13 @@
                                 $flowActive.find(".list-loading").html("没有更多数据");
                                 return false;
                             }
-                            $flowActive.find(".fb-list").append(str);
+                            $flowActive.find(".fb-list .coupon-bar").append(str);
                             downflag = false;
                         }, 1000);
                     }
                 }
             });
         }
-
 
         $(document).on("click touchend", "#YESFlow a.fb-btn", function () {
             $.jConfirm({
@@ -260,9 +265,9 @@
                     text: "我知道了",
                     css: {color: "#018eff"}
                 }
-            ], "V",null,{
-                titleCss:{
-                    margin:"10px 0"
+            ], "V", null, {
+                titleCss: {
+                    margin: "10px 0"
                 }
             })
         });
