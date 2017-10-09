@@ -194,6 +194,29 @@
         </div>
     </li>
 </script>
+<script type="text/template" id="vote">
+    <div class="vote-cont">
+        <p>1、投票结果才去少数服从多数的原则，赞成（或 不赞成）投票人数超过众筹总人数的50%即视为 当此投票通过。 </p>
+        <p>2、投票结果才去少数服从多数的原则，赞成（或 不赞成）投票人数超过众筹总人数的50%即视为 当此投票通过。 </p>
+        <p>3、投票结果才去少数服从多数的原则，赞成（或 不赞成）投票人数超过众筹总人数的50%即视为 </p>
+    </div>
+    <div class="vote-intro">
+        <div class="form-list small">
+            <div class="item-text">
+                <span class="t">众筹金额：</span>
+                <span class="c tc-ff3d3d">￥56233.65</span>
+            </div>
+            <div class="item-text">
+                <span class="t">回款金额：</span>
+                <span class="c tc-ff3d3d">￥11233.65</span>
+            </div>
+            <div class="item-text">
+                <span class="t">收益率：</span>
+                <span class="c tc-ff3d3d">11.11%</span>
+            </div>
+        </div>
+    </div>
+</script>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/swiper.jquery.min.js"></script>
 <script src="js/box.js"></script>
@@ -306,6 +329,37 @@
         //获取URL参数
         var navType = FB.getQueryString("id");
         if (!!navType) $("#inNav").find(".swiper-slide[data-id='" + navType + "']").click();
+
+        //投票
+        $(document).on("click touchend", ".crowd-btn a:eq(0)", function () {
+            $.jConfirm({
+                title: "我要投票",
+                intro: $("#vote").html(),
+                close: true
+            }, [
+                {
+                    text: "<em class='tc-user'>31.11%</em><span class=''>赞成</span>",
+                    cls: "border-none-right",
+                    callback: function () {
+                        $.jAlert.tips("你点击了赞成");
+                    }
+                },
+                {
+                    text: "<em class='tc-ff3d3d'>34.33%</em><span class=''>反对</span>",
+                    callback: function () {
+                        $.jAlert.tips("你点击了反对");
+                    }
+                }
+            ], "H", null, {
+                width: "250px",
+                cls: {
+                    boxCls: "coupon-box",
+                    titleCls: "coupon-title tc-333",
+                    tipsBarCls: "pad-all-0",
+                    btnCls: "vote-btn border-none-top"
+                }
+            });
+        });
     })
 </script>
 </body>

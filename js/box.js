@@ -365,6 +365,7 @@
                     if (css.cls.titleCls) titleBar.addClass(css.cls.titleCls);
                     if (css.cls.tipsBarCls) textBar.addClass(css.cls.tipsBarCls);
                     if (css.cls.tipsCls) textBar.find("div").addClass(css.cls.tipsCls);
+                    if (css.cls.btnCls) btnBar.addClass(css.cls.btnCls);
                 } else {
                     if (css.titleCss) titleBar.css(css.titleCss);
                     if (css.tipsBarCss) textBar.css(css.tipsBarCss);

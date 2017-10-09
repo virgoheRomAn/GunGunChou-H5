@@ -1245,6 +1245,60 @@
   padding-left: 82px;
 }
 
+.j-confirm-box {
+  .vote-cont {
+    padding: 5px 10px;
+    p {
+      padding: 3px 5px;
+      margin: 0;
+      line-height: 16px;
+      text-align: left;
+    }
+  }
+  .vote-intro {
+    background: @white;
+    padding: 0 10px;
+    .form-list {
+      border-bottom: 1px solid #c4c4c4;
+      padding: 5px;
+      .item-text {
+        .text-middle(22px);
+        .t {
+          color: @g-666;
+          text-align: left;
+        }
+        .c {
+          text-align: left;
+        }
+      }
+    }
+  }
+  .vote-btn {
+    background: @white;
+    .border-radius(0 0 5px 5px);
+    padding: 10px 0;
+    .j-btn {
+      height: auto;
+      line-height: normal;
+      em {
+        display: block;
+        text-align: center;
+        margin-bottom: 5px;
+      }
+      span {
+        &:extend(.fb-btn all);
+        border: 0 none;
+        .text-middle(36px);
+        width: 80%;
+        margin: auto;
+        font-size: @fs-14;
+        color: @white;
+        .border-radius(22px);
+      }
+    }
+  }
+}
+
 //优惠券弹窗
 .j-confirm-box {
   .coupon-box {
