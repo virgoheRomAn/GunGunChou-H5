@@ -74,7 +74,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="crowd-btn mt-15 clearfix">
-                                                                    <a class="fb-btn line-block background blue-bigger no-bd fb-radius-3 fs-15 fl vote"
+                                                                    <a class="fb-btn line-block background blue-bigger no-bd fb-radius-3 fs-15 fl"
                                                                        href="javascript:;">投票</a>
                                                                     <a class="fb-btn line-block line blue-light fs-15 fr"
                                                                        href="crowd-details.html">查看详情</a>
@@ -104,7 +104,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="crowd-btn mt-15 clearfix">
-                                                                    <a class="fb-btn line-block background blue-bigger no-bd fb-radius-3 fs-15 fl vote"
+                                                                    <a class="fb-btn line-block background blue-bigger no-bd fb-radius-3 fs-15 fl"
                                                                        href="javascript:;">投票</a>
                                                                     <a class="fb-btn line-block line blue-light fs-15 fr"
                                                                        href="crowd-details.html">查看详情</a>
@@ -134,7 +134,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="crowd-btn mt-15 clearfix">
-                                                                    <a class="fb-btn line-block background blue-bigger no-bd fb-radius-3 fs-15 fl vote"
+                                                                    <a class="fb-btn line-block background blue-bigger no-bd fb-radius-3 fs-15 fl"
                                                                        href="javascript:;">投票</a>
                                                                     <a class="fb-btn line-block line blue-light fs-15 fr"
                                                                        href="crowd-details.html">查看详情</a>
@@ -186,7 +186,7 @@
                 </div>
             </div>
             <div class="crowd-btn mt-15 clearfix">
-                <a class="fb-btn line-block background blue-bigger no-bd fb-radius-3 fs-15 fl vote"
+                <a class="fb-btn line-block background blue-bigger no-bd fb-radius-3 fs-15 fl"
                    href="javascript:;">投票</a>
                 <a class="fb-btn line-block line blue-light fs-15 fr"
                    href="crowd-details.html">查看详情</a>
@@ -194,37 +194,28 @@
         </div>
     </li>
 </script>
-<script type="text/template" id="payBox">
-    <li>
-        <label class="d-block mb-10 clearfix">
-            <span class="tc-ff3d3d fs-14 tm-bold ">加载数据：众筹中</span>
-            <em class="tc-999 fs-12 fr">认筹时间：2017-08-01 23:00</em>
-        </label>
-        <div class="product none border-none-top pt-0 mt-0 clearfix">
-            <div class="fb-list">
-                <div class="item">
-                    <a href="details.html">
-                        <label class="pro-img"><img
-                                src="img/product.jpg"></label>
-                        <div class="pro-intro">
-                            <label class="pro-name tm-clamp tc-333 fs-14">
-                                <em class="tc-user">第十期</em>
-                                凯迪拉克ATS-L2017款技术型项目
-                            </label>
-                            <span class="pro-time tm-ellipsis tc-999 fs-12">众筹金额：¥ 32,500,00</span>
-                            <span class="pro-time tm-ellipsis tc-999 fs-12">众筹金额：¥ 1,218,800</span>
-                        </div>
-                    </a>
-                </div>
+<script type="text/template" id="vote">
+    <div class="vote-cont">
+        <p>1、投票结果才去少数服从多数的原则，赞成（或 不赞成）投票人数超过众筹总人数的50%即视为 当此投票通过。 </p>
+        <p>2、投票结果才去少数服从多数的原则，赞成（或 不赞成）投票人数超过众筹总人数的50%即视为 当此投票通过。 </p>
+        <p>3、投票结果才去少数服从多数的原则，赞成（或 不赞成）投票人数超过众筹总人数的50%即视为 </p>
+    </div>
+    <div class="vote-intro">
+        <div class="form-list small">
+            <div class="item-text">
+                <span class="t">众筹金额：</span>
+                <span class="c tc-ff3d3d">￥56233.65</span>
             </div>
-            <div class="crowd-btn mt-15 clearfix">
-                <a class="fb-btn line-block background blue-bigger no-bd fb-radius-3 fs-15 fl vote"
-                   href="javascript:;">投票</a>
-                <a class="fb-btn line-block line blue-light fs-15 fr"
-                   href="crowd-details.html">查看详情</a>
+            <div class="item-text">
+                <span class="t">回款金额：</span>
+                <span class="c tc-ff3d3d">￥11233.65</span>
+            </div>
+            <div class="item-text">
+                <span class="t">收益率：</span>
+                <span class="c tc-ff3d3d">11.11%</span>
             </div>
         </div>
-    </li>
+    </div>
 </script>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/swiper.jquery.min.js"></script>
@@ -240,7 +231,6 @@
                 product.slideTo(index)
             }
         });
-
         //初始化产品列表左右滑动
         var scrollEle;
         var _clear_timer_ = 0;
@@ -287,7 +277,6 @@
                     scrollEle = scrollFun($active.find(".overflow").attr("id"));
                     console.log(scrollEle);
                 }
-
                 if ($loading.css("display") == "block") {
                     _clear_timer_ = setTimeout(function () {
                         $loading.hide();
@@ -303,7 +292,6 @@
                 }
             }
         });
-
         //页面滚动
         function scrollFun(ele) {
             var ajaxDataNum = 0, downflag = false;
@@ -332,45 +320,40 @@
                 }
             });
         }
-
         scrollEle = scrollFun("ALLFlow");
-
         //获取URL参数
         var navType = FB.getQueryString("id");
         if (!!navType) $("#inNav").find(".swiper-slide[data-id='" + navType + "']").click();
-
         //投票
-        $(document).on("click touchend", ".vote", function () {
+        $(document).on("click touchend", ".crowd-btn a:eq(0)", function () {
             $.jConfirm({
                 title: "我要投票",
-                intro: "11",
+                intro: $("#vote").html(),
                 close: true
             }, [
                 {
-                    text: "赞成",
-                    cls: "coupon-btn",
-                    type: 3,
+                    text: "<em class='tc-user'>31.11%</em><span class=''>赞成</span>",
+                    cls: "border-none-right",
                     callback: function () {
-
+                        $.jAlert.tips("你点击了赞成");
                     }
                 },
                 {
-                    text: "反对",
-                    cls: "coupon-btn",
-                    type: 3,
+                    text: "<em class='tc-ff3d3d'>34.33%</em><span class=''>反对</span>",
                     callback: function () {
-
+                        $.jAlert.tips("你点击了反对");
                     }
                 }
             ], "H", null, {
-                width: "290px",
+                width: "250px",
                 cls: {
-                    boxCls: "coupon-box pay-box",
-                    titleCls: "coupon-title",
-                    tipsBarCls: "coupon-tips"
+                    boxCls: "coupon-box",
+                    titleCls: "coupon-title tc-333",
+                    tipsBarCls: "pad-all-0",
+                    btnCls: "vote-btn border-none-top"
                 }
             });
-        })
+        });
     })
 </script>
 </body>
