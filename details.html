@@ -422,6 +422,7 @@
             loop: false,
             autoplayDisableOnInteraction: false,
             lazyLoading: false,
+            autoHeight: true,
             onInit: function (s) {
                 var $container = s.container;
                 var $active = $container.find(".swiper-slide-active");
@@ -429,7 +430,7 @@
                 $loading.hide();
                 //如果内容是异步加载
                 //加载完成之后记得给$container添加高度
-                $container.height($active.find(".product-information").outerHeight(true));
+                //$container.height($active.find(".product-information").outerHeight(true));
             },
             onSlideChangeStart: function (s) {
                 var $container = s.container;
@@ -437,7 +438,7 @@
 
                 //如果内容是异步加载
                 //加载完成之后记得给$container添加高度
-                $container.height($active.find(".product-information").outerHeight(true));
+                //$container.height($active.find(".product-information").outerHeight(true));
             },
             onSlideChangeEnd: function (s) {
                 clearTimeout(_clear_timer_);
