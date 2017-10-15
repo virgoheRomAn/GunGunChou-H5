@@ -623,7 +623,7 @@ FB.progressBox = function (options) {
         } else {
             clearInterval(_clear_timer_);
             $progress.addClass("end").removeClass("running");
-            console.log($text.offset().left);
+            $text.html(parseFloat(option.number).toString() + (option.format ? option.format : "%"));
             if($text.offset().left<=25){
                 $text.css("margin-right","-45px");
             }
