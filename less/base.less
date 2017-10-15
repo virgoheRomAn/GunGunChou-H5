@@ -246,7 +246,7 @@
         padding-left: 110px;
         .icon-sale {
           .p-abs;
-          .fn-pos-tl(-11px, -11px);
+          .fn-pos-tl(-26px, -26px);
         }
         .pro-img {
           .set-layout("block", 100px, 100px, "absolute");
@@ -408,6 +408,9 @@
         background: @white;
         text-shadow: none;
         -webkit-text-shadow: none;
+      }
+      .runner {
+        .border-radius(3px 0 0 3px);
       }
     }
     .de-table {
@@ -962,6 +965,14 @@
   .title {
     .layer-box;
     .text-middle(46px);
+    i {
+      .p-rel;
+      .d-in-block;
+      margin-right: 3px;
+      width: 25px;
+      height: 25px;
+      top: 7px;
+    }
     i.icon-bank-gs {
       .p-rel;
       top: 7px;
@@ -1784,6 +1795,21 @@
   }
 }
 
+.share {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  display: block;
+  width: 40px;
+  text-align: center;
+  i {
+    margin: 2px auto;
+    width: 24px;
+    height: 24px;
+    background-position: -67px -240px;
+  }
+}
+
 //图标集合
 .icon-warn {
   width: 22px;
@@ -1871,8 +1897,8 @@
 }
 
 .icon-sale {
-  width: 52px;
-  height: 52px;
+  width: 102px;
+  height: 102px;
   &.going {
     background-position: -248px 0;
   }
@@ -1882,6 +1908,30 @@
   &.end {
     background-position: -248px -113px;
 
+  }
+  &.state1 {
+    background-position: 1px 2px;
+  }
+  &.state2 {
+    background-position: -103px 0;
+  }
+  &.state3 {
+    background-position: -207px 0;
+  }
+  &.state4 {
+    background-position: -311px 0;
+  }
+  &.state5 {
+    background-position: 0 -103px;
+  }
+  &.state6 {
+    background-position: -103px -103px;
+  }
+  &.state7 {
+    background-position: -207px -103px;
+  }
+  &.state8 {
+    background-position: -311px -103px;
   }
 }
 
@@ -1990,4 +2040,63 @@
   height: 30px;
   background-position: -178px -136px;
   margin: -15px 0 0 -17px;
+}
+
+//银行小图标
+.bank-gs-small {
+  background-position: -93px -127px;
+}
+
+.bank-sf-small {
+  background-position: -121px -128px;
+}
+
+.bank-pa-small {
+  top: 0 !important;
+  height: 10px !important;
+  background-position: -150px -130px;
+}
+
+.bank-zx-small {
+  background-position: -93px -154px
+}
+
+.bank-zs-small {
+  background-position: -93px -182px;
+}
+
+.bank-yz-small {
+  background-position: -93px -211px;
+}
+
+.bank-zg-small {
+  background-position: -93px -240px;
+}
+
+.bank-pf-small {
+  background-position: -121px -158px;
+}
+
+.bank-ny-small {
+  background-position: -121px -185px;
+}
+
+.bank-ms-small {
+  background-position: -121px -213px;
+}
+
+.bank-jt-small {
+  background-position: -121px -239px;
+}
+
+.bank-js-small {
+  background-position: -150px -147px;
+}
+
+.bank-gf-small {
+  background-position: -150px -180px;
+}
+
+.bank-gd-small {
+  background-position: -150px -207px;
 }
