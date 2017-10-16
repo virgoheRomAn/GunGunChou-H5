@@ -131,10 +131,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="list-loading background">
-                    <i><img src="img/loading.gif"></i>
-                    <span>载入详情中...</span>
+                <div class="fb-module gray pt-30 pb-35 pl-20 pr-20">
+                    <div class="fl-title">
+                        <span class="background">向上滑动显示产品详情</span>
+                    </div>
                 </div>
+                <!--<div class="list-loading background">-->
+                    <!--<i><img src="img/loading.gif"></i>-->
+                    <!--<span>载入详情中...</span>-->
+                <!--</div>-->
                 <a class="d-none" href="javascript:;" id="details">显示详情</a>
             </div>
         </div>
@@ -508,7 +513,7 @@
             },
             closeCallback: function () {
                 var bottom = scroll.dHeight - scroll.wHeight;
-                scroll.goToNumber(bottom - 42);
+                scroll.goToNumber(bottom - 77);
             }
         });
 
