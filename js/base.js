@@ -53,16 +53,16 @@ function pageScroll(opt) {
     var isWindow = opts.element == window;
     var beforeScrollTop = $ele.scrollTop();
     $ele.scroll(function () {
-        var pageHeight = isWindow ? $(document).height() : $(this).find(".overflow-box").eq(0).height();
-        var windowHeight = $(this).height();
-        var afterScrollTop = $(this).scrollTop();
+        var pageHeight = opts.dHeight = isWindow ? $(document).height() : $(this).find(".overflow-box").eq(0).height();
+        var windowHeight = opts.wHeight = $(this).height();
+        var afterScrollTop = opts.scrollTops = $(this).scrollTop();
         var delta = afterScrollTop - beforeScrollTop;
         var _dir_ = (delta > 0 ? "down" : "up");
         if (opts.hasTop) {
             afterScrollTop > 100 ? $top.fadeIn() : $top.fadeOut();
         }
 
-        if (opts.scrollFun) opts.scrollFun.call(this, afterScrollTop, _dir_, _isTop);
+        if (opts.scrollFun) opts.scrollFun.call(this, afterScrollTop, windowHeight, _dir_, _isTop);
 
         if ((afterScrollTop + windowHeight) >= pageHeight) {
             if (opts.ajaxFun) opts.ajaxFun.call(this, afterScrollTop, _dir_, _isTop);
@@ -72,13 +72,23 @@ function pageScroll(opt) {
     }).data("scroll", true);
 
     $top.click(function () {
-        _isTop = true;
-        var scrollEle = isWindow ? "html,body" : opts.element;
-        scrollToEle(scrollEle, 0, function () {
-            _isTop = false;
+        opts.goScrollTop(0, function () {
             if (opts.topFun) opts.topFun.call($ele[0], _isTop);
         });
     });
+
+    opts.goScrollTop = function (num, callback) {
+        _isTop = true;
+        var scrollEle = isWindow ? "html,body" : opts.element;
+        scrollToEle(scrollEle, num, function () {
+            _isTop = false;
+            if (callback) callback();
+        });
+    };
+
+    opts.goToNumber = function (top, callback) {
+        opts.goScrollTop(top, callback);
+    };
 
     opts.scrollToElement = function (ele, top, callback) {
         scrollToEle(ele, top, callback);

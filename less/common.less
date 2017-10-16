@@ -96,7 +96,7 @@ iframe, img {
   }
 }
 
-.sprite-state{
+.sprite-state {
   display: block;
   position: relative;
   background: url("@{img}/state-new.png") no-repeat;
@@ -508,6 +508,12 @@ iframe, img {
   text-align: center;
   color: #aaaaaa;
   margin: 10px 0;
+  &.background {
+    background: @white;
+    margin: 0;
+    height: auto;
+    padding-bottom: 10px;
+  }
   &.g-f5 {
     background: @g-f5f5;
     margin: -10px 0 0 0;
@@ -796,6 +802,12 @@ iframe, img {
 /*菜单切换*/
 .fb-tab-bar {
   .layer-box;
+  &.pad-top{
+    padding-top: 54px;
+    .fb-tab-menu{
+      .abs-tl;
+    }
+  }
   .fb-tab-menu {
     @h: 44px;
     .layer-box;
@@ -1041,10 +1053,24 @@ iframe, img {
       height: 41px;
       padding: 0 15px;
       border-bottom: 1px solid @g-e4e4;
+      &.big {
+        height: 45px;
+        .fb-disk-title {
+          .text-middle(44px);
+          font-size: @fs-18;
+          font-weight: normal;
+          padding: 0 50px;
+        }
+        .fb-disk-close{
+          width: 44px;
+          .text-middle(44px);
+          font-size: 2.8rem;
+        }
+      }
       &.no-bd {
         border-bottom: 0 none;
       }
-      &.biger-pad {
+      &.bigger-pad {
         padding: 0 20px;
       }
       .fb-disk-title {
@@ -1089,8 +1115,9 @@ iframe, img {
       height: 40px;
       line-height: 36px;
       text-align: center;
-      font-size: 2.6rem;
+      font-size: 2.4rem;
       color: @g-999;
+      font-family: "宋体", arial, helvetica, sans-serif;
       i {
         .p-abs;
         .fn-pos-tl(50%, 50%);
