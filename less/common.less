@@ -218,6 +218,10 @@ iframe, img {
 //盒子布局
 .wrap {
   .layer-box;
+  &.image {
+    background: #7919e7 url("../img/new-bg.jpg") no-repeat top;
+    background-size: 100% auto;
+  }
   &.height {
     height: 100%;
   }
@@ -237,6 +241,9 @@ iframe, img {
     }
     &.big {
       padding-bottom: @base*90;
+    }
+    &.bto-64 {
+      padding-bottom: @base*64;
     }
   }
   &.background {
@@ -342,7 +349,7 @@ iframe, img {
   &.pad {
     padding: 0 20px;
   }
-  &.gray{
+  &.gray {
     background: @g-f5f5 !important;
   }
   &.white {
@@ -805,9 +812,9 @@ iframe, img {
 /*菜单切换*/
 .fb-tab-bar {
   .layer-box;
-  &.pad-top{
+  &.pad-top {
     padding-top: 54px;
-    .fb-tab-menu{
+    .fb-tab-menu {
       .abs-tl;
     }
   }
@@ -1064,7 +1071,7 @@ iframe, img {
           font-weight: normal;
           padding: 0 50px;
         }
-        .fb-disk-close{
+        .fb-disk-close {
           width: 44px;
           .text-middle(44px);
           font-size: 2.8rem;
