@@ -324,7 +324,9 @@
                 titleStr = closeStr;
             }
 
-            _html += '<div id="jDisk" class="j-confirm-box">';
+            var diskID = "jDisk" + new Date().getTime() + "";
+
+            _html += '<div id="' + diskID + '" class="j-confirm-box">';
             _html += '<div class="j-confirm ' + _a + ' animated" style="height: ' + _h + 'px; width: ' + _w + 'px; margin: -' + _h / 2 + 'px 0 0 -' + _w / 2 + 'px;">';
 
             _html += titleStr;
@@ -337,9 +339,10 @@
             $(document.body).append(_html);
 
             //添加样式
-            var $box = $(".j-confirm-box");
-            var textBar = $(".j-confirm-text"), btnBar = $(".j-confirm-btn"), titleBar = $(".j-confirm-title"),
-                btnBox = $(".j-btn");
+            var $box = $("#" + diskID);
+            var textBar = $box.find(".j-confirm-text"), btnBar = $box.find(".j-confirm-btn"),
+                titleBar = $box.find(".j-confirm-title"),
+                btnBox = $box.find(".j-btn");
             //按钮加样式-首先读取按钮组中设置的样式，
             //其次读取css中btnCss数组
             btnBox.each(function (i) {
@@ -380,11 +383,12 @@
             var __h = css ? (css.height ? parseInt(css.height) + padHeight : textBar.outerHeight(true)) : textBar.outerHeight(true);
             var _newHeight = btnBar.outerHeight(true);
             textBar.height(_textHeight);
-            _setBoxLayout("#jDisk .j-confirm", _w, __h + _newHeight + ((!titleBar || titleBar.length == 0) ? 0 : titleBar.outerHeight(true)));
+            _setBoxLayout("#" + diskID + " .j-confirm", _w, __h + _newHeight + ((!titleBar || titleBar.length == 0) ? 0 : titleBar.outerHeight(true)));
 
             //绑定函数
             $(document).on("click", ".j-close", function () {
                 $.jClose({
+                    ele: $box,
                     type: 2,
                     time: 300
                 });
@@ -403,7 +407,7 @@
                 } else if (callbacks && Object.prototype.toString.call(callbacks) == '[object Array]') {
                     $(this).click(function () {
                         $.jClose({
-                            ele: $(".j-confirm-box"),
+                            ele: $box,
                             type: 2,
                             time: 300,
                             callback: callbacks[i].call(this)
@@ -412,7 +416,7 @@
                 } else {
                     $(this).click(function () {
                         $.jClose({
-                            ele: $(".j-confirm-box"),
+                            ele: $box,
                             type: 2,
                             time: 300,
                             callback: function () {

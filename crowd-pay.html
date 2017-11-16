@@ -161,11 +161,25 @@
                             setTimeout(function () {
                                 $.jClose({
                                     ele: loading, type: 2, time: 1000, callback: function () {
-                                        $.jAlert.success("支付成功！", null, {
+                                        /*$.jAlert.success("支付成功！", null, {
                                             callback: function () {
                                                 window.location.reload();
                                             }
-                                        })
+                                        })*/
+                                        $.jConfirm({
+                                            title: "温馨提示",
+                                            intro: "众筹成功,是否立即开启指纹支付？",
+                                            close: true
+                                        },[
+                                            {
+                                                text:"开启",
+                                                cls:""
+                                            },
+                                            {
+                                                text:"不开启",
+                                                cls:""
+                                            }
+                                        ]);
                                     }
                                 })
                             }, 1000);
