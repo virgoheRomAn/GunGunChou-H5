@@ -599,7 +599,11 @@ FB.progressBox = function (options) {
             runner: ".runner"
         },
         textMove: false,    //文字是否跟随移动
+        add: 0.1,   //添加比例
         number: "0",
+        unfinishedNum: "0", //分段模式下的未完成的数字
+        finishedNum: "0",   //分段模式下完成的数字
+        section: true,  //是否分段
         time: 1000
     };
     var option = $.extend({}, defOpt, options);
@@ -607,27 +611,68 @@ FB.progressBox = function (options) {
     var $progress = $(ele.container);
     var $text = !$progress.find(ele.text).length ? $(ele.text) : $progress.find(ele.text);
     var $run = $progress.find(ele.runner);
-    var _clear_timer_ = 0, num = 0;
+    var _clear_timer_ = 0, num = 0.0;
     var time = option.time ? option.time : 0;
     var interval = time / 60;
     var that = this;
     clearInterval(_clear_timer_);
     $progress.addClass("running");
     var timeFun = function () {
-        if (num <= parseInt(option.number)) {
-            $text.html(num.toString() + (option.format ? option.format : "%"));
-            $run.css("width", num / 100 * 100 + "%");
-            if (option.textMove) $text.css("right", (100 - num) / 100 * 100 + "%");
-            num++;
-            if (option.startFun) option.startFun.call(that, option);
-        } else {
-            clearInterval(_clear_timer_);
-            $progress.addClass("end").removeClass("running");
-            $text.html(parseFloat(option.number).toString() + (option.format ? option.format : "%"));
-            if($text.offset().left<=25){
-                $text.css("margin-right","-45px");
+        if (!option.section) {
+            if (num <= Math.ceil(option.number)) {
+                $text.html(num.toString() + (option.format ? option.format : "%"));
+                $run.css("width", num / 100 * 100 + "%");
+                if (option.textMove) $text.css("right", (100 - num) / 100 * 100 + "%");
+                num++;
+                if (option.startFun) option.startFun.call(that, option);
+            } else {
+                clearInterval(_clear_timer_);
+                $progress.addClass("end").removeClass("running");
+                $text.html(parseFloat(option.number).toString() + (option.format ? option.format : "%"));
+                if ($text.offset().left <= 25) {
+                    $text.css("margin-right", "-45px");
+                }
+                if (option.endFun) option.endFun.call(that, option);
             }
-            if (option.endFun) option.endFun.call(that, option);
+        } else {
+            var finished = $progress.find(".runner.finished");
+            var unfinished = $progress.find(".runner.unfinished");
+            var $finishedText = $progress.find(".meter.finished");
+            var $unfinishedText = $progress.find(".meter.unfinished");
+            if (num <= (parseFloat(option.finishedNum) + parseFloat(option.unfinishedNum))) {
+                if (num <= parseFloat(option.finishedNum)) {
+                    $unfinishedText.hide();
+                    var width = $finishedText.html(num.toFixed(2).toString() + (option.format ? option.format : "%")).outerWidth(true);
+                    var right = ((100 - num) / 100 * $progress.width() - width / 2) < 0 ? 0 : ((100 - num) / 100 * $progress.width() - width / 2);
+                    $unfinishedText.html(num.toString() + (option.format ? option.format : "%"));
+                    finished.css("width", num / 100 * 100 + "%");
+                    unfinished.css("width", num / 100 * 100 + "%");
+                    if (option.textMove) (parseFloat(option.finishedNum)) === 0 ? $finishedText.css({"right": (100 - num) / 100 * $progress.width() - width}) : $finishedText.css({"right": right});
+                } else {
+                    $unfinishedText.show();
+                    var numText = num + option.add;
+                    var unWidth = $unfinishedText.html(numText.toFixed(2).toString() + (option.format ? option.format : "%")).outerWidth(true);
+                    var unRight = ((100 - num) / 100 * $progress.width() - unWidth / 2) < 0 ? 0 : ((100 - num) / 100 * $progress.width() - unWidth / 2);
+                    unfinished.css("width", num / 100 * 100 + "%");
+                    if (option.textMove) $unfinishedText.css({"right": unRight});
+                }
+                // if (!option.finishedNum.split("0")[1].length) {
+                //     num++
+                // } else {
+                //     num = num + 0.1;
+                // }
+                num = num +  option.add;
+                if (option.startFun) option.startFun.call(that, option);
+            } else {
+                clearInterval(_clear_timer_);
+                $progress.addClass("end").removeClass("running");
+                if (option.endFun) option.endFun.call(that, option);
+                $finishedText.html(parseFloat(option.finishedNum).toFixed(2).toString() + (option.format ? option.format : "%"));
+                $unfinishedText.html((parseFloat(option.finishedNum) + parseFloat(option.unfinishedNum)).toFixed(2).toString() + (option.format ? option.format : "%"));
+                if (Math.ceil(option.finishedNum) === 100) {
+                    finished.css("border-radius", "3px");
+                }
+            }
         }
     };
     _clear_timer_ = setInterval(timeFun, interval);

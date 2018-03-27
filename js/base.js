@@ -24,8 +24,11 @@ function setProgress(ele, start, end) {
                 text: $(that).find(".meter"),
                 runner: $(that).find(".runner")
             },
-            number: $(that).find(".meter").text().split("%")[0],
-            time: 1000,
+            // number: $(that).find(".meter").text().split("%")[0],
+            unfinishedNum: $(that).find(".meter.unfinished").text().split("%")[0],
+            finishedNum: $(that).find(".meter.finished").text().split("%")[0],
+            time: 0,
+            add: 0.1,
             textMove: true,
             startFun: function (opt) {
                 if (start) start.call(this, opt);

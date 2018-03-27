@@ -57,9 +57,11 @@
                         <span class="fl">已筹款：<em class="tc-ff3d3d">¥ 118,000</em></span>
                     </label>
                     <div class="de-progress">
-                        <div class="fb-progress gradient fb-radius-3">
-                            <em class="meter">100%</em>
-                            <span class="runner"></span>
+                        <div class="fb-progress section gradient fb-radius-3">
+                            <em class="meter finished">80.5%</em>
+                            <em class="meter unfinished">10.4%</em>
+                            <span class="runner finished"></span>
+                            <span class="runner unfinished"></span>
                         </div>
                     </div>
                     <div class="de-table">
@@ -253,6 +255,46 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                <tr>
+                                                    <td>*钟祥</td>
+                                                    <td>￥20,000</td>
+                                                    <td>2017-06-14 15:31:20</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>*钟祥</td>
+                                                    <td>￥20,000</td>
+                                                    <td>2017-06-14 15:31:20</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>*钟祥</td>
+                                                    <td>￥20,000</td>
+                                                    <td>2017-06-14 15:31:20</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>*钟祥</td>
+                                                    <td>￥20,000</td>
+                                                    <td>2017-06-14 15:31:20</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>*钟祥</td>
+                                                    <td>￥20,000</td>
+                                                    <td>2017-06-14 15:31:20</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>*钟祥</td>
+                                                    <td>￥20,000</td>
+                                                    <td>2017-06-14 15:31:20</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>*钟祥</td>
+                                                    <td>￥20,000</td>
+                                                    <td>2017-06-14 15:31:20</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>*钟祥</td>
+                                                    <td>￥20,000</td>
+                                                    <td>2017-06-14 15:31:20</td>
+                                                </tr>
                                                 <tr>
                                                     <td>*钟祥</td>
                                                     <td>￥20,000</td>
@@ -503,6 +545,7 @@
                         if ($loading.css("display") == "block") {
                             _clear_timer_ = setTimeout(function () {
                                 $loading.hide();
+                                s.update();
                             }, 1000);
                         }
                     }
