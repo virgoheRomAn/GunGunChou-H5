@@ -565,6 +565,14 @@ iframe, img {
     background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#FFAD00), to(#FE3030));
     background-image: linear-gradient(linear, 0% 0%, 100% 0%, from(#FFAD00), to(#FE3030));
     .border-radius(3px);
+    &.finished {
+      .border-radius(3px 0 0 3px);
+      z-index: 999;
+    }
+    &.unfinished{
+      background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#06cfff), to(#0386ff));
+      background-image: linear-gradient(linear, 0% 0%, 100% 0%, from(#06cfff), to(#0386ff));
+    }
   }
   .meter {
     .p-abs;
