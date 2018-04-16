@@ -453,7 +453,7 @@
           .border-radius(3px 0 0 3px);
           z-index: 999;
         }
-        &.unfinished{
+        &.unfinished {
           background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(#06cfff), to(#0386ff));
           background-image: linear-gradient(linear, 0% 0%, 100% 0%, from(#06cfff), to(#0386ff));
         }
@@ -2223,4 +2223,45 @@
 
 .bank-gd-small {
   background-position: -150px -207px;
+}
+
+.disk-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
+  display: block;
+  height: 100%;
+  width: 100%;
+  > label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    display: block;
+    width: 300px;
+    margin: -165px 0  0 -150px;
+    > .link-go {
+      display: block;
+      width: 150px;
+      height: 40px;
+      position: absolute;
+      bottom: 35px;
+      left: 50%;
+      margin-left: -75px;
+    }
+    > a.close {
+      display: block;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: -10px;
+      right: -20px;
+    }
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
 }

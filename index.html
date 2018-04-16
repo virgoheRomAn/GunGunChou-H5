@@ -221,6 +221,15 @@
         </div>
     </div>
 </div>
+<div class="disk-img" id="disk">
+    <label class="">
+        <img src="img/special/disk-img.png">
+        <a class="link-go" href="#"></a>
+        <a class="close" href="javascript:;" onclick="document.getElementById('disk').style.display='none';"><img src="img/special/disk-close.png"></a>
+    </label>
+
+</div>
+
 
 <script type="text/template" id="couponBox">
     <div class="coupon-bar">
@@ -258,21 +267,6 @@
 <script src="js/base.js"></script>
 <script>
     $(function () {
-        //弹出优惠券
-        $.jConfirm({
-            title: "恭喜你获得奖励!",
-            intro: $("#couponBox").html(),
-            close: false
-        }, [
-            {text: "我知道了", cls: "coupon-btn"}
-        ], "V", null, {
-            width: "250px",
-            cls: {
-                boxCls: "coupon-box",
-                titleCls: "coupon-title",
-                tipsBarCls: "coupon-tips"
-            }
-        });
 
         //轮播图
         FB.newSwiper("#banner", 1, {
