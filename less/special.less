@@ -40,6 +40,9 @@
 
 .special-body {
   background: #ff2b65;
+  &.background {
+    background: #609efb;
+  }
 }
 
 .special-box {
@@ -63,6 +66,44 @@
     width: 100%;
     background: #ff2b65 url("../img/special/banner2.jpg") no-repeat;
     background-size: cover;
+  }
+  .container2 {
+    position: relative;
+    display: block;
+    width: 100%;
+    top: -12px;
+    z-index: 1000;
+    .text-box {
+      position: relative;
+      background: url("../img/special/banner-text.png") no-repeat;
+      background-size: 100% 110px;
+      display: block;
+      width: 97%;
+      //margin: auto;
+      > label {
+        display: block;
+        height: 55px;
+        text-align: center;
+        line-height: 55px;
+        font-size: 14px;
+        color: #018eff;
+        font-weight: bold;
+        &:last-of-type {
+          line-height: 44px;
+        }
+        > b {
+          font-size: 20px;
+          font-weight: bold;
+          margin-right: 5px;
+          margin-left: 5px;
+          font-family: "黑体", arial, helvetica, sans-serif;
+        }
+        em {
+          color: #2d43bf;
+          font-weight: bold;
+        }
+      }
+    }
   }
   .sp-module {
     position: relative;
@@ -321,6 +362,143 @@
       }
     }
   }
+  .sp-module2 {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0 15px;
+    margin-top: 25px;
+    > i {
+      position: absolute;
+      right: 0;
+      top: -15px;
+      z-index: 100;
+      width: 33px;
+      display: block;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    .item {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin-bottom: 55px;
+      .title {
+        position: absolute;
+        z-index: 60;
+        text-align: center;
+        color: #ffffff;
+        font-size: 16px;
+        letter-spacing: 1px;
+        left: 50%;
+        top: -29px;
+        height: 34px;
+        line-height: 30px;
+        &.small {
+          margin-left: -65px;
+          width: 130px;
+          background: url("../img/special/t-b.png") no-repeat;
+          background-size: 100% 100%;
+        }
+        &.big {
+          background: url("../img/special/t-s.png") no-repeat;
+          background-size: 100% 100%;
+          width: 188px;
+          margin-left: -94px;
+        }
+      }
+      .cont {
+        position: relative;
+        display: block;
+        width: 100%;
+        border: 2px solid #265ec0;
+        background: #f6fdff;
+        border-radius: 5px;
+        padding: 20px 15px 10px;
+        &.register {
+          p {
+            position: relative;
+            display: block;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            height: 30px;
+            line-height: 30px;
+            font-size: 15px;
+            text-align: center;
+            > i {
+              display: inline-block;
+              padding: 0 8px;
+              height: 22px;
+              line-height: 22px;
+              background: #e97552;
+              color: #ffd94e;
+              border-radius: 3px;
+            }
+            > label {
+              span {
+                font-size: 12px;
+                em {
+                  color: #018eff;
+                }
+              }
+            }
+          }
+        }
+        &.about {
+          a {
+            display: block;
+            margin: 30px auto;
+            text-align: center;
+            font-size: 12px;
+            background: url("../img/special/b-s.png") no-repeat;
+            background-size: 100% 100%;
+            width: 230px;
+            height: 34px;
+            line-height: 28px;
+            color: #333333;
+            &.big {
+              background: url("../img/special/b-b.png") no-repeat;
+              background-size: 100% 100%;
+              width: 260px;
+            }
+          }
+        }
+        .icon-list {
+          .d-flex;
+          .flex-direction;
+          width: 100%;
+          .list-item {
+            .d-flex;
+            .flex-direction(row);
+            .flex-align;
+            width: 100%;
+            i {
+              display: block;
+              width: 120px;
+              padding-top: 15px;
+              img {
+                display: block;
+                width: 100%;
+              }
+            }
+            label {
+              .d-flex;
+              .flex-direction;
+              font-size: 14px;
+              span {
+                display: block;
+                color: #267fff;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
   .footer-text {
     margin: 100px 0 20px 0;
     text-align: center;
@@ -349,6 +527,22 @@
         width: 100%;
         height: 100%;
       }
+    }
+  }
+  .ewm {
+    display: block;
+    width: 100px;
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+    margin: 0 auto 40px;
+    label, img {
+      display: block;
+      width: 100%;
+    }
+    span{
+      display: block;
+      margin-top: 15px;
     }
   }
 }

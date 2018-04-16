@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="no"/>
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>滚滚筹-专题2</title>
+    <link rel="stylesheet" href="css/common.min.css">
+    <link rel="stylesheet" href="css/base.min.css">
+    <link rel="stylesheet" href="css/special.min.css">
+</head>
+<body class="isHide special-body background">
+<div class="wrap height overflow">
+    <div class="special-box">
+        <div class="banner">
+            <label><img src="img/special/banner3.jpg"/></label>
+        </div>
+        <div class="container2">
+            <div class="text-box">
+                <label><b>今天</b>是我和滚滚车并肩作战的第<b><em class="number-animate" data-number="100">100</em>天</b></label>
+                <label>累计收益：<em><b class="number-animate tm-bold" data-number="586932">586,932</b>元</em></label>
+            </div>
+            <div class="sp-module2">
+                <i><img src="img/special/t-icon.png"></i>
+                <div class="item">
+                    <h2 class="title small">注册即送</h2>
+                    <div class="cont register">
+                        <p>
+                            <i>6666</i>
+                            <label>积分<span>(投标时可抵扣<em>66.66元</em>)</span></label>
+                        </p>
+                        <p>
+                            <i>5%</i>
+                            <label>增益券一张<span>(增加投标金额的<em>5%</em>收益)</span></label>
+                        </p>
+                    </div>
+                </div>
+                <div class="item">
+                    <h2 class="title big">安全理财就选滚滚车</h2>
+                    <div class="cont">
+                        <div class="icon-list">
+                            <div class="list-item">
+                                <i><img src="img/special/icon1.png"></i>
+                                <label>
+                                    <span>全额兑付</span>
+                                    <em>风控流程全程管理，历史投资人100%全额 兑付，本息无损失。</em>
+                                </label>
+                            </div>
+                            <div class="list-item">
+                                <i><img src="img/special/icon2.png"></i>
+                                <label>
+                                    <span>安全保障</span>
+                                    <em>风控流程全程管理，历史投资人100%全额 兑付，本息无损失。</em>
+                                </label>
+                            </div>
+                            <div class="list-item">
+                                <i><img src="img/special/icon3.png"></i>
+                                <label>
+                                    <span>优质资产</span>
+                                    <em>风控流程全程管理，历史投资人100%全额 兑付，本息无损失。</em>
+                                </label>
+                            </div>
+                            <div class="list-item">
+                                <i><img src="img/special/icon4.png"></i>
+                                <label>
+                                    <span>灵活理财</span>
+                                    <em>风控流程全程管理，历史投资人100%全额 兑付，本息无损失。</em>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <h2 class="title big">1分钟了解滚滚车</h2>
+                    <div class="cont about">
+                        <a href="#">车商申请融资买车销售车辆分红</a>
+                        <a class="big" href="#">滚滚车审核车商、放款发标、巡查车辆</a>
+                        <a href="#">投资人投资获取收益</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ewm">
+                <label><img src="img/special/ewm.png"></label>
+                <span>长按识别二维码<br>立即注册</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/swiper.jquery.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/box.js"></script>
+<script src="js/common.js"></script>
+<script src="js/base.js"></script>
+<script>
+    $(function () {
+        //数字动画
+        $(".number-animate").each(function () {
+            var $that = $(this);
+            var text = $that.data("number");
+            $that.animateNumber({
+                number: text,
+                numberStep: function (num, tween) {
+                    var target = $(tween.elem);
+                    target.prop('number', num).html(FB.numberFormat(num, 0));
+                }
+            }, 3000);
+        });
+
+    })
+</script>
+</body>
+</html>

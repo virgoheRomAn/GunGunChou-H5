@@ -51,8 +51,8 @@
                 <div class="content">
                     <div class="ac-tag">
                         <span>截止昨日，您的统计数据</span>
-                        <label>邀请人数：<em>53</em></label>
-                        <label>总投资金额：<em>￥9000000.23</em></label>
+                        <label>邀请人数：<em class="number-animate" data-number="53">53</em></label>
+                        <label>总投资金额：<em>￥<b class="number-animate" data-number="9000000.23">9000000.23</b></em></label>
                     </div>
                     <div class="ac-tag2">
                         <label>获得的奖励是： <a href="javascript:;">扫地机器人</a></label>
@@ -157,6 +157,7 @@
 </div>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/swiper.jquery.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
 <script src="js/box.js"></script>
 <script src="js/common.js"></script>
 <script src="js/base.js"></script>
@@ -167,6 +168,18 @@
             clickEle: ".filtrate",
             diskEle: ".filtrate-pop-disk",
             animateEle: ".filtrate-pop-box"
+        });
+        //数字动画
+        $(".number-animate").each(function () {
+            var $that = $(this);
+            var text = $that.data("number");
+            $that.animateNumber({
+                number: text,
+                numberStep: function (num, tween) {
+                    var target = $(tween.elem);
+                    target.prop('number', num).html(FB.numberFormat(num, 0));
+                }
+            }, 3000);
         });
     })
 </script>
